@@ -1,0 +1,9 @@
+# Site settings
+title: Simple is better than complex
+email: vitor@freitas.com
+description: Simple is better than complex
+baseurl: ""
+url: "http://simpleisbetterthancomplex.com"
+
+# Build settings
+markdown: kramdown
