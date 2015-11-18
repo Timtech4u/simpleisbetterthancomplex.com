@@ -1,5 +1,8 @@
 ---
 layout: page
-title: Cookies
+title: Cookies — Simple is better than complex
 permalink: /cookies/
 ---
+
+<h4 class="page-title">Cookies</h4>
+<hr class="sm">

@@ -904,3 +904,29 @@ footer ul li a:hover {
   color: #fff;
   border-bottom: 1px solid #fff;
 }
+
+.page-title {
+  margin-bottom: 1rem;
+}
+
+hr.sm {
+  background-color: #ccc;
+  border: 0 none;
+  display: inline-block;
+  height: 2px;
+  margin: 0 0 15px;
+  width: 40px;
+}
+
+.post .post-title {
+  margin-bottom: .5rem;
+}
+
+.bullet {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.bullet:before {
+  content: '•';
+}

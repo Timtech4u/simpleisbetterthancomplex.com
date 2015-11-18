@@ -2,22 +2,16 @@
 layout: page
 ---
 
-<div class="home">
+<h4 class="page-title">Last updates</h4>
+<hr class="sm">
 
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+{% for post in site.posts %}
+  <div class="post">
+    <h5 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
+    <p class="post-meta">
+      {{ post.date | date: "%b %-d, %Y" }}
+      <span class="bullet"></span>
+      {{ post.author }}
+    </p>
+  </div>
+{% endfor %}
