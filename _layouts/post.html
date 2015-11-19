@@ -7,12 +7,11 @@ layout: default
   <p class="post-meta">
     {{ page.date | date: "%b %-d, %Y" }}
     {% if page.author %} <span class="bullet"></span> {{ page.author }}{% endif %}
-    {% if page.meta %} • {{ page.meta }}{% endif %}
+    {% if page.meta %} <span class="bullet"></span> {{ page.meta }}{% endif %}
   </p>
   <article>
     {{ content }}
   </article>
-
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
@@ -22,13 +21,10 @@ layout: default
     
     (function() {
     var d = document, s = d.createElement('script');
-
     s.src = '//simpleisbetterthancomplex.disqus.com/embed.js';
-
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
 </div>

@@ -930,3 +930,14 @@ hr.sm {
 .bullet:before {
   content: '•';
 }
+
+blockquote {
+  border-left: 5px solid #eee;
+  font-size: 1.75rem;
+  margin: 0 0 20px;
+  padding: 10px 20px;
+}
+
+blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {
+  margin-bottom: 0;
+}
