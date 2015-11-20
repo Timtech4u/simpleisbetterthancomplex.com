@@ -870,11 +870,15 @@ header .logo span {
   color: #1EAEDB;
 }
 
+main {
+  padding-top: 10px;
+}
+
 main .container .content {
   background-color: #fff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin-top: -55px;
+  margin-top: -60px;
   padding: 20px;
   border: 1px solid #ddd;
   min-height: 600px;
@@ -940,4 +944,20 @@ blockquote {
 
 blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {
   margin-bottom: 0;
+}
+
+.tag {
+  background-color: #1EAEDB;
+  border-radius: 3px;
+  padding: 4px 8px;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.tag .badge {
+  border-radius: 20px;
+  background-color: #fff;
+  color: #1EAEDB;
+  padding: 0 5px;
+  font-size: 1.1rem;
 }
