@@ -952,6 +952,7 @@ blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {
   padding: 4px 8px;
   color: #fff;
   font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 .tag .badge {
