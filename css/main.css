@@ -962,3 +962,7 @@ blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {
   padding: 0 5px;
   font-size: 1.1rem;
 }
+
+table tbody tr td {
+  vertical-align: top;
+}

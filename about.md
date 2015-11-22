@@ -12,7 +12,7 @@ I'm a passionate software developer, currently working with Python and Django. I
 
 I created this blog to share some of my thoughts and experience about programming. To be honest, I'm no Python/Django expert, but we all have something good to share. Besides, we learn much more by teaching what we know.
 
-The name of this blog — if you are familiar with Python probably you already got the reference — was inspired by “The Zen of Python”, created by Tim Peters, which is an [easter egg][the-zen-of-python] that can be found in Python version 2.1.2 or later by typing `import this` in a Python interpreter.
+The name of this blog — if you are familiar with Python probably you already got the reference — was inspired by “The Zen of Python”, created by Tim Peters, which is an [easter egg][the-zen-of-python]{:target="_blank"} that can be found in Python version 2.1.2 or later by typing `import this` in a Python interpreter.
 
 If you haven't read it yet, take a moment and read it, you won't regret:
 
@@ -39,7 +39,7 @@ If you haven't read it yet, take a moment and read it, you won't regret:
 
 This tells a lot about the Python philosophy, and why I really enjoy writing code in Python. In fact, this principles can be applied to any programming language. Writing good code, clear, readable, understandable depends more on you than on the programming language you are working with. And for me, the most important principle of “The Zen of Python” is: **simple is better than complex**.
 
-Steve Jobs stated once that [“simple can be harder than complex”][steve-jobs-quote]. And that's true. Requires a lot of hard work to get your thinking clean, to come up with a simple solution. But a simple solution is always better than a complex one.
+Steve Jobs stated once that [“simple can be harder than complex”][steve-jobs-quote]{:target="_blank"}. And that's true. Requires a lot of hard work to get your thinking clean, to come up with a simple solution. But a simple solution is always better than a complex one.
 
 Simple communicates better. Simple creates a instant connection. Simplicity is something you can apply in everything in your life -- not only programming.
 
