@@ -62,7 +62,7 @@ Woid is a web crawler that collects top stories on some web sites I usually read
 It's a fairly simple Django project, but if you are curious about how to do some simple crawling, it might be useful.
 
 * [Clients][woid-clients]{:target="_blank"}
-  * Basic clients using the requests library and BeautifulSoup to parse the data
+  * Basic clients using the [requests][woid-requests]{:target="_blank"} library and [Beautiful Soup][woid-bs4]{:target="_blank"} to parse the data
 * [Crawlers][woid-crawlers]{:target="_blank"}
   * Getting the parsed data, calculating story score and saving the updates to the database
 * [Server script][woid-top]{:target="_blank"}
@@ -142,6 +142,8 @@ That's it for now. I hope those projects can help you learning a little bit more
 [bootcamp-demo]: http://trybootcamp.vitorfs.com/
 
 [woid-clients]: https://github.com/vitorfs/woid/blob/master/woid/apps/services/wrappers.py
+[woid-requests]: http://docs.python-requests.org/en/latest/
+[woid-bs4]: http://www.crummy.com/software/BeautifulSoup/bs4/doc/
 [woid-crawlers]: https://github.com/vitorfs/woid/blob/master/woid/apps/services/crawlers.py
 [woid-top]: https://github.com/vitorfs/woid/blob/master/scripts/top.py
 [woid-source]: https://github.com/vitorfs/woid/

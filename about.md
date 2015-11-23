@@ -7,6 +7,8 @@ permalink: /about/
 <h4 class="page-title">About</h4>
 <hr class="sm">
 
+
+<img src="{{ "/img/picture.jpg" | prepend: site.baseurl }}" class="profile-picture">
 My name is Vitor Freitas, I'm a software developer and researcher from Brazil. At the moment, I'm living in Oulu, Finland doing my Ph.D.
 I'm a passionate software developer, currently working with Python and Django. I also worked several years in industry with Java, C♯ and ASP/VBScript.
 
