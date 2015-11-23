@@ -7,11 +7,15 @@ layout: page
 
 {% for post in site.posts %}
   <div class="post">
-    <h5 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
+    <h5 class="post-title">
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h5>
     <p class="post-meta">
       {{ post.date | date: "%b %-d, %Y" }}
       <span class="bullet"></span>
       {{ post.author }}
     </p>
+    {{ post.excerpt }}
+    <a href="{{ post.url | prepend: site.baseurl }}">Read more</a>
   </div>
 {% endfor %}

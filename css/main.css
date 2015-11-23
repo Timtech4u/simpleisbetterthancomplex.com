@@ -918,8 +918,12 @@ hr.sm {
   border: 0 none;
   display: inline-block;
   height: 2px;
-  margin: 0 0 15px;
-  width: 40px;
+  margin: 0 0 2rem;
+  width: 4rem;
+}
+
+.post {
+  margin-bottom: 2rem;
 }
 
 .post .post-title {
@@ -933,6 +937,10 @@ hr.sm {
 
 .bullet:before {
   content: '•';
+}
+
+.post p {
+  margin-bottom: 1rem;
 }
 
 blockquote {
@@ -965,4 +973,12 @@ blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {
 
 table tbody tr td {
   vertical-align: top;
+}
+
+article {
+  font-size: 1.7rem;
+}
+
+article img {
+  max-width: 100%;
 }
