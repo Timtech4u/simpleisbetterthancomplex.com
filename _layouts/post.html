@@ -4,6 +4,9 @@
   {% include head.html %}
   {% include open_graph.html %}
   <meta property="og:type" content="article">
+  {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag }}">
+  {% endfor %}
 </head>
 <body>
   {% include header.html %}
