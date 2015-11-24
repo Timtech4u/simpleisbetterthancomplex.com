@@ -999,6 +999,9 @@ header nav a + a {
   margin-left: 1rem;
 }
 
-.post {
- margin: 4rem 5rem 2rem;
+.post h3 {
+  border-bottom: 1px solid #e1e1e1;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
 }

@@ -1,32 +1,45 @@
----
-layout: default
----
-
-<div class="twelve columns content">
-  <div class="post">
-    <h3>{{ page.title }}</h3>
-    <p class="post-meta">
-      {{ page.date | date: "%b %-d, %Y" }}
-      {% if page.author %} <span class="bullet"></span> {{ page.author }}{% endif %}
-      {% if page.meta %} <span class="bullet"></span> {{ page.meta }}{% endif %}
-    </p>
-    <article>
-      {{ content }}
-    </article>
-    <div id="disqus_thread"></div>
-  </div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
-      this.page.identifier = '{{ page.id }}';
-    };
-    
-    (function() {
-    var d = document, s = d.createElement('script');
-    s.src = '//simpleisbetterthancomplex.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+  {% include open_graph.html %}
+  <meta property="og:type" content="article">
+</head>
+<body>
+  {% include header.html %}
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns content">
+          <div class="post">
+            <h3>{{ page.title }}</h3>
+            <p class="post-meta">
+              {{ page.date | date: "%b %-d, %Y" }}
+              {% if page.author %} <span class="bullet"></span> {{ page.author }}{% endif %}
+              {% if page.meta %} <span class="bullet"></span> {{ page.meta }}{% endif %}
+            </p>
+            <article>
+              {{ content }}
+            </article>
+            <div id="disqus_thread"></div>
+          </div>
+          <script>
+            var disqus_config = function () {
+              this.page.url = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
+              this.page.identifier = '{{ page.id }}';
+            };
+            (function() {
+            var d = document, s = d.createElement('script');
+            s.src = '//simpleisbetterthancomplex.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% include footer.html %}
+</body>
+</html>
