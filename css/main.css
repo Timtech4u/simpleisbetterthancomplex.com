@@ -922,12 +922,16 @@ hr.sm {
   width: 4rem;
 }
 
-.post {
+.post-summary {
   margin-bottom: 2rem;
 }
 
-.post .post-title {
+.post-summary .post-title {
   margin-bottom: .5rem;
+}
+
+.post-summary p {
+  margin-bottom: 1rem;
 }
 
 .bullet {
@@ -937,10 +941,6 @@ hr.sm {
 
 .bullet:before {
   content: '•';
-}
-
-.post p {
-  margin-bottom: 1rem;
 }
 
 blockquote {
@@ -988,4 +988,17 @@ article img {
   width: 150px; 
   border-radius: 8px; 
   margin-left: 10px;
+}
+
+header nav {
+  display: inline;
+  margin-left: 2rem;
+}
+
+header nav a + a {
+  margin-left: 1rem;
+}
+
+.post {
+ margin: 4rem 5rem 2rem;
 }

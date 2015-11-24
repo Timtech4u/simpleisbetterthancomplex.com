@@ -3,16 +3,18 @@ layout: default
 ---
 
 <div class="twelve columns content">
-  <h3>{{ page.title }}</h3>
-  <p class="post-meta">
-    {{ page.date | date: "%b %-d, %Y" }}
-    {% if page.author %} <span class="bullet"></span> {{ page.author }}{% endif %}
-    {% if page.meta %} <span class="bullet"></span> {{ page.meta }}{% endif %}
-  </p>
-  <article>
-    {{ content }}
-  </article>
-  <div id="disqus_thread"></div>
+  <div class="post">
+    <h3>{{ page.title }}</h3>
+    <p class="post-meta">
+      {{ page.date | date: "%b %-d, %Y" }}
+      {% if page.author %} <span class="bullet"></span> {{ page.author }}{% endif %}
+      {% if page.meta %} <span class="bullet"></span> {{ page.meta }}{% endif %}
+    </p>
+    <article>
+      {{ content }}
+    </article>
+    <div id="disqus_thread"></div>
+  </div>
   <script>
     var disqus_config = function () {
       this.page.url = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
