@@ -4,6 +4,7 @@ title:  "Small Open-Source Django Projects to Get Started"
 date:   2015-11-23 12:30:00
 author: Vitor Freitas
 tags: django python
+thumbnail: "/media/bootcamp.png"
 ---
 
 Learning Django and Python can be very fun. I personally love programming with Python and for the most part, work with the Django framework. But in the beginning some stuff can be confusing, especially if you are coming from a Java or C♯ background, like me.
