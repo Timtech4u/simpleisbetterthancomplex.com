@@ -990,15 +990,6 @@ article img {
   margin-left: 10px;
 }
 
-header nav {
-  display: inline;
-  margin-left: 2rem;
-}
-
-header nav a + a {
-  margin-left: 1rem;
-}
-
 .post h3 {
   border-bottom: 1px solid #e1e1e1;
   margin-top: 2rem;
