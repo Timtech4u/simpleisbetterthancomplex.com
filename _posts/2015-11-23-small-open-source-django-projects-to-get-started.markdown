@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Small Open-Source Django Projects to Get Started"
-date:   2015-11-23 12:30:00
+date:   2015-11-23 12:00:00
 author: Vitor Freitas
 tags: django python
 thumbnail: "/media/bootcamp.png"
