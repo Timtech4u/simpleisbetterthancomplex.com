@@ -133,6 +133,26 @@ In case you want to temporarily change some of the settings parameter, you can o
 DEBUG=False python manage.py
 {% endhighlight %}
 
+#### Deploying to Heroku
+
+If you are deploying your application to [Heroku][heroku]{:target="_blank"} using Git, you can't have an `.env` file in your project root. That's not a problem, because Python Decouple will retreive the environment variables, and Heroku let you define those variables on it's dashboard.
+
+Inside Heroku's dashboard, first select your app and click on the **Settings** tab.
+
+![Heroku Settings]({{ "/media/2015-11-26-package-of-the-week-python-decouple/heroku-settings.png" | prepend: site.baseurl }} "Heroku")
+
+Inside the **Settings** tab click on the **Reveal Config Vars** button and add your variables as you would do in the `.env` file.
+
+![Heroku Config Vars]({{ "/media/2015-11-26-package-of-the-week-python-decouple/heroku-config.png" | prepend: site.baseurl }} "Heroku")
+
+That's it! You are all set up.
+
+#### Tip for a easier setup
+
+Since we don't commit our `.env` file to the remote repository, and it's required for the project to run properly, it can be confusing for newcomers who aren't familiar with Python Decouple to setup and run your project.
+
+One thing I like to do in my open source projects is to commit a sample file, usually I name it `.env.example`, in the project root, with some sample data, so the one who is trying to run the project must just rename the file to `.env` and put the proper values.
+
 ***
 
 Python Decouple is a must have app if you are developing with Django. Personally I use it in all my Django projects. It's important to keep your application credentials like API Keys, Amazon S3, email parameters, database parameters safe, specially if it's an open source repository. Also no more `development_settings.py` and `production_settings.py`, use just one `settings.py` for your whole project.
@@ -141,4 +161,5 @@ Python Decouple was developed by [Henrique Bastos][henrique-bastos]{:target="_bl
 
 [python-decouple-pypi]: https://pypi.python.org/pypi/python-decouple
 [python-decouple-github]: https://github.com/henriquebastos/python-decouple
+[heroku]: https://heroku.com
 [henrique-bastos]: http://henriquebastos.net
