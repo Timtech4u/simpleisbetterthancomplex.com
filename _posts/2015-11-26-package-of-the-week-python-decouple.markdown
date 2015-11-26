@@ -117,7 +117,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 ##### Default values
 
-You can add an extra parameter to the `config` function, to define a default value, in case there is an undefined value in the `.env` file.
+You can add an extra argument to the `config` function, to define a default value, in case there is an undefined value in the `.env` file.
 
 {% highlight python %}
 DEBUG = config('DEBUG', default=True, cast=bool)
