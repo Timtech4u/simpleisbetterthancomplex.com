@@ -44,7 +44,7 @@ DATABASES = {
 }
 {% endhighlight %}
 
-First create a file named `.env` in the root of your project:
+First create a file named `.env` in the root of your project. You can also use a `.ini` file, in case the `.env` isn't suitable for your use case. See the [documentation][python-decouple-pypi]{:target="_blank"} for further instructions.
 
 {% highlight bash %}
 SECRET_KEY=3izb^ryglj(bvrjb2_y1fZvcnbky#358_l6-nn#i8fkug4mmz!
@@ -117,6 +117,28 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 ##### Default values
 
-You can add an extra parameter to the `config` function, to define a default value, incase there is an undefined value in the `.env` file.
+You can add an extra parameter to the `config` function, to define a default value, in case there is an undefined value in the `.env` file.
+
+{% highlight python %}
+DEBUG = config('DEBUG', default=True, cast=bool)
+{% endhighlight %}
+
+Meaning you won't need to define the `DEBUG` parameter in the `.env` file in the development environment for example.
+
+##### Overriding config files
+
+In case you want to temporarily change some of the settings parameter, you can override it with environment variables:
+
+{% highlight bash %}
+DEBUG=False python manage.py
+{% endhighlight %}
+
+***
+
+Python Decouple is a must have app if you are developing with Django. Personally I use it in all my Django projects. It's important to keep your application credentials like API Keys, Amazon S3, email parameters, database parameters safe, specially if it's an open source repository. Also no more `development_settings.py` and `production_settings.py`, use just one `settings.py` for your whole project.
+
+Python Decouple was developed by [Henrique Bastos][henrique-bastos]{:target="_blank"} and it is distributed under the MIT license. You can learn more about it reading it's [documentation][python-decouple-pypi]{:target="_blank"}. The source code is available on [GitHub][python-decouple-github]{:target="_blank"}.
 
 [python-decouple-pypi]: https://pypi.python.org/pypi/python-decouple
+[python-decouple-github]: https://github.com/henriquebastos/python-decouple
+[henrique-bastos]: http://henriquebastos.net
