@@ -22,6 +22,8 @@ $ pip install python-decouple
 
 Or download it from [PyPI][python-decouple-pypi]{:target="_blank"} if you prefer.
 
+***
+
 #### Usage
 
 Let's consider the following `settings.py` file, to explain how to use the library.
@@ -133,6 +135,8 @@ In case you want to temporarily change some of the settings parameter, you can o
 DEBUG=False python manage.py
 {% endhighlight %}
 
+***
+
 #### Deploying to Heroku
 
 If you are deploying your application to [Heroku][heroku]{:target="_blank"} using Git, you can't have an `.env` file in your project root. That's not a problem, because Python Decouple will retreive the environment variables, and Heroku let you define those variables on it's dashboard.
@@ -147,11 +151,53 @@ Inside the **Settings** tab click on the **Reveal Config Vars** button and add y
 
 That's it! You are all set up.
 
+***
+
 #### Tip for a easier setup
 
 Since we don't commit our `.env` file to the remote repository, and it's required for the project to run properly, it can be confusing for newcomers who aren't familiar with Python Decouple to setup and run your project.
 
-One thing I like to do in my open source projects is to commit a sample file, usually I name it `.env.example`, in the project root, with some sample data, so the one who is trying to run the project must just rename the file to `.env` and put the proper values.
+One thing I like to do in my open source projects is to commit a sample file, usually I name it `.env.example`, in the project root, with some sample data. So the one who is trying to run the project must just rename the file to `.env` and put the proper values.
+
+![.env.example]({{ "/media/2015-11-26-package-of-the-week-python-decouple/env-sample.png" | prepend: site.baseurl }} ".env.example")
+
+You can see a real use case checking the [Parsifal repository][parsifal-env]{:target="_blank"}.
+
+***
+
+#### Integrating with Travis CI
+
+The previous tip can be useful if you are integrating with [Travis CI][travis-ci]{:target="_blank"}. Actually I fill my project's `.env.example` file with the required parameters to run on the Travis CI environment. Then all you have to do, is to run a `before_script` renaming the `.env.example` file to `.env`.
+
+##### .travis.yml sample file
+
+{% highlight yaml %}
+language: python
+python:
+  - "2.7"
+install: "pip install -r requirements.txt"
+before_script:
+  - cp .env.example .env
+  - python manage.py migrate
+script:
+  - python manage.py test --settings=parsifal.test_settings
+sudo: false
+{% endhighlight %}
+
+***
+
+#### See in practice
+
+As I stated before in this article, I use Python Decouple in all my Django projects. So if you want to see some examples, visit the links below:
+
+* Parsifal
+  * [settings.py][parsifal-settings]{:target="_blank"}
+  * [.env][parsifal-env]{:target="_blank"}
+  * [.travis.yml][parsifal-travis]{:target="_blank"}
+* Bootcamp
+  * [settings.py][bootcamp-settings]{:target="_blank"}
+  * [.env][bootcamp-env]{:target="_blank"}
+  * [.travis.yml][bootcamp-travis]{:target="_blank"}
 
 ***
 
@@ -163,3 +209,10 @@ Python Decouple was developed by [Henrique Bastos][henrique-bastos]{:target="_bl
 [python-decouple-github]: https://github.com/henriquebastos/python-decouple
 [heroku]: https://heroku.com
 [henrique-bastos]: http://henriquebastos.net
+[travis-ci]: https://travis-ci.org/
+[parsifal-settings]: https://github.com/vitorfs/parsifal/blob/master/parsifal/settings.py
+[parsifal-env]: https://github.com/vitorfs/parsifal/blob/master/.env.example
+[parsifal-travis]: https://github.com/vitorfs/parsifal/blob/master/.travis.yml
+[bootcamp-settings]: https://github.com/vitorfs/bootcamp/blob/master/bootcamp/settings.py
+[bootcamp-env]: https://github.com/vitorfs/bootcamp/blob/master/.env.example
+[bootcamp-travis]: https://github.com/vitorfs/bootcamp/blob/master/.travis.yml

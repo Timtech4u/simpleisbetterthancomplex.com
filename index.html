@@ -27,4 +27,6 @@ layout: page
   </div>
 {% endfor %}
 
-<script id="dsq-count-scr" src="//simpleisbetterthancomplex.disqus.com/count.js" async></script>
+{% if jekyll.environment == "production" %}
+  <script id="dsq-count-scr" src="//simpleisbetterthancomplex.disqus.com/count.js" async></script>
+{% endif %}

@@ -9,4 +9,6 @@
     </ul>
   </div>
 </footer>
-<script src="{{ "/js/ga.js" | prepend: site.baseurl }}"></script>
+{% if jekyll.environment == "production" %}
+  <script src="{{ "/js/ga.js" | prepend: site.baseurl }}"></script>
+{% endif %}
