@@ -981,6 +981,8 @@ article {
 
 article img {
   max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 .profile-picture {

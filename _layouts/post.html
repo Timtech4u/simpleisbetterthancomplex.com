@@ -21,6 +21,11 @@
               {% if page.author %} <span class="bullet"></span> {{ page.author }}{% endif %}
               {% if page.meta %} <span class="bullet"></span> {{ page.meta }}{% endif %}
             </p>
+            <p class="post-tags">
+              {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </p>
             <article>
               {{ content }}
             </article>
