@@ -10,3 +10,10 @@
 {% endif %}
 <meta property="fb:admins" content="{{ site.fb_admins }}">
 <meta property="fb:app_id" content="{{ site.fb_appid }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ site.twitter }}">
+<meta name="twitter:creator" content="{{ site.twitter }}">
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+<meta name="twitter:image" content="{% if page.thumbnail %}{{ page.thumbnail | prepend: site.baseurl | prepend: site.url }}{% else %}{{ "/img/fb_banner.png" | prepend: site.baseurl | prepend: site.url }}{% endif %}">
