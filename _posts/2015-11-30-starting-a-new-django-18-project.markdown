@@ -4,6 +4,7 @@ title: "Starting a New Django 1.8 Project"
 date: 2015-11-30 12:00:00
 author: Vitor Freitas
 tags: django python
+thumbnail: "/media/2015-11-30-starting-a-new-django-18-project/virtualenv.png"
 ---
 
 In this article you will find some useful tips regarding starting a new Django project and preparing a development environment. The steps below describes what I generally do when I'm starting a new project. 
@@ -38,7 +39,7 @@ $ source bin/activate
 
 You will notice that the name of the active virtualenv will now appear on the left of the prompt. Your terminal should look like something like this:
 
-![virtualenv]({{ "/media/2015-11-30/virtualenv.png" | prepend: site.baseurl }} "Creating a python virtual environment")
+![virtualenv]({{ "/media/2015-11-30-starting-a-new-django-18-project/virtualenv.png" | prepend: site.baseurl }} "Creating a python virtual environment")
 
 ***
 

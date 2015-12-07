@@ -4,7 +4,7 @@ title:  "Small Open-Source Django Projects to Get Started"
 date:   2015-11-23 12:00:00
 author: Vitor Freitas
 tags: django python
-thumbnail: "/media/bootcamp.png"
+thumbnail: "/media/2015-11-23-small-open-source-django-projects-to-get-started/bootcamp.png"
 ---
 
 Learning Django and Python can be very fun. I personally love programming with Python and for the most part, work with the Django framework. But in the beginning some stuff can be confusing, especially if you are coming from a Java or C♯ background, like me.
@@ -21,7 +21,7 @@ In this post I will present you some of my open-source Django projects, which ca
 
 #### Bootcamp
 
-![Bootcamp]({{ "/media/bootcamp.png" | prepend: site.baseurl }} "Bootcamp: An enterprise social network")
+![Bootcamp]({{ "/media/2015-11-23-small-open-source-django-projects-to-get-started/bootcamp.png" | prepend: site.baseurl }} "Bootcamp: An enterprise social network")
 
 Bootcamp is a simple concept of a enterprise social network. I've developed it to encourage the developers of a company I worked in the past to collaborate and share experiences. It's meant to be closed and to run inside a company. 
 
@@ -56,7 +56,7 @@ You can grab the source code on GitHub and try the live demo on:
 
 #### Woid
 
-![Woid]({{ "/media/woid.png" | prepend: site.baseurl }} "Woid")
+![Woid]({{ "/media/2015-11-23-small-open-source-django-projects-to-get-started/woid.png" | prepend: site.baseurl }} "Woid")
 
 Woid is a web crawler that collects top stories on some web sites I usually read. I developed it be my home page so I can keep track of what people are talking about at the moment, so I never miss a good story. I also archive them, so I can look back and see what was the most discussed topic on a specific date.
 
@@ -80,7 +80,7 @@ You can grab the source code on GitHub and see the actual site on:
 
 #### Bloodhound
 
-![Bloodhound]({{ "/media/bloodhound.png" | prepend: site.baseurl }} "Bloodhound")
+![Bloodhound]({{ "/media/2015-11-23-small-open-source-django-projects-to-get-started/bloodhound.png" | prepend: site.baseurl }} "Bloodhound")
 
 Bloodhound is also a simple web crawler that runs the whole day indexing and tracking price changes on a Finnish retail store named [Verkkokauppa][bloodhound-verkkokauppa]{:target="_blank"}. The idea was to store all the price changes for every product in their website, so before I buy something, I could check if I'm paying the best price.
 
@@ -105,7 +105,7 @@ You can grab the source code on GitHub and see the actual site on:
 
 #### Parsifal
 
-![Parsifal]({{ "/media/parsifal.png" | prepend: site.baseurl }} "Parsifal")
+![Parsifal]({{ "/media/2015-11-23-small-open-source-django-projects-to-get-started/parsifal.png" | prepend: site.baseurl }} "Parsifal")
 
 Parsifal is a tool I developed a couple of years ago, while doing my Masters Degree. If you are not familiar with some research practices, this app might not be really meaningful for you and what it does can be confusing. Anyway, it's meant to help researchers do literature reviews.
 

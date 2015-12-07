@@ -4,6 +4,7 @@ title:  "Package of the Week: Django Widget Tweaks"
 date:   2015-12-04 12:00:00
 author: Vitor Freitas
 tags: python django package
+thumbnail: "/media/2015-12-04-package-of-the-week-django-widget-tweaks/bootstrap-form.png"
 ---
 
 When it comes to build forms, [Django Forms][django-forms]{:target="_blank"} can be really handy. If your application provide ways for the end-user to input data, it's strongly advised to do so through the built-in Django Forms. It will automate a good amount of work as well as providing a really stable and secure functionality.
