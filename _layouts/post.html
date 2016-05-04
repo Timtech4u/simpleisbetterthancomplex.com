@@ -13,22 +13,45 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="twelve columns content">
-          <div class="post">
-            <h3>{{ page.title }}</h3>
-            <p class="post-meta">
-              {{ page.date | date: "%b %-d, %Y" }}
-              {% if page.author %} <span class="bullet"></span> {{ page.author }}{% endif %}
-              {% if page.meta %} <span class="bullet"></span> {{ page.meta }}{% endif %}
-            </p>
-            <p class="post-tags">
-              {% for tag in page.tags %}
-                <span class="tag">{{ tag }}</span>
-              {% endfor %}
-            </p>
+        <div class="ten offset-by-one columns content post">
+          <div class="card">
+            {% if page.category %}
+              <h5 class="post-category">{{ page.category }}</h5>
+              <hr class="dashed">
+            {% endif %}
+            <h3 class="post-title">{{ page.title }}</h3>
+            <ul class="post-meta">
+              <li>
+                <i class="fa fa-calendar"></i> {{ page.date | date: "%b %-d, %Y" }}
+              </li>
+              {% if page.author %}
+                <li>
+                  <a href="{{ "/about/" | prepend: site.baseurl }}">
+                    <i class="fa fa-user"></i> {{ page.author }}
+                  </a>
+                </li>
+              {% endif %}
+              <li>
+                <a href="#disqus_thread" data-disqus-identifier="{{ page.id }}">
+                  <i class="fa fa-comments"></i> Comments
+                </a>
+              </li>
+              {% if page.meta %}
+                <li>{{ page.meta }}</li>
+              {% endif %}
+            </ul>
             <article>
               {{ content }}
             </article>
+            <hr class="dashed">
+            <div class="row">
+              <div class="six columns post-tags">
+                {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+              </div>
+              <div class="six columns post-share">
+                {% include social_share.html url=page.url title=page.title excerpt=page.excerpt %}
+              </div>
+            </div>
             {% if jekyll.environment == "production" %}
               <div id="disqus_thread"></div>
               <script>
@@ -45,6 +68,12 @@
               </script>
               <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
             {% endif %}
+          </div>
+          <div class="card">
+            <div class="row">
+            <h4>Popular posts</h4>
+            {% include popular_posts.html %}
+            </div>
           </div>
         </div>
       </div>

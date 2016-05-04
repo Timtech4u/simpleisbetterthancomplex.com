@@ -55,14 +55,14 @@ For more information on the usage of cookies by Google Analytics please see the 
 
 If you would like to restrict the use of cookies you can control this in your Internet browser. Links to advice on how to do this for the most popular Internet browsers are provided below for convenience and will be available for the Internet browser of your choice either online or via the software help (normally available via key F1).
 
-**Internet Explorer**  
+**Internet Explorer**
 [http://windows.microsoft.com/en-GB/windows7/Block-enable-or-allow-cookies](http://windows.microsoft.com/en-GB/windows7/Block-enable-or-allow-cookies){:target="_blank"}
 
-**Google Chrome**  
+**Google Chrome**
 [https://support.google.com/chrome/bin/answer.py?hl=en-GB&answer=95647&p=cpn_cookies](https://support.google.com/chrome/bin/answer.py?hl=en-GB&answer=95647&p=cpn_cookies){:target="_blank"}
 
-**Mozilla Firefox**  
+**Mozilla Firefox**
 [http://support.mozilla.org/en-US/kb/Blocking%20cookies](http://support.mozilla.org/en-US/kb/Blocking%20cookies){:target="_blank"}
 
-**Apple Safari**  
+**Apple Safari**
 [http://docs.info.apple.com/article.html?artnum=32467](http://docs.info.apple.com/article.html?artnum=32467){:target="_blank"}

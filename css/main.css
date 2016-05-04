@@ -459,7 +459,7 @@ th {
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box; }
@@ -549,7 +549,7 @@ are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
   font-size: 62.5%; }
 body {
-  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  font-size: 1.8em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -851,36 +851,86 @@ there.
 */
 
 body {
-  background-color: #f6f6f6;
+  background-color: #f9f9f9;
 }
 
 header {
-  background-color: #e5e5e5;
-  padding: 30px 0 60px;
+  margin-bottom: 4rem;
 }
 
-header .logo {
+header {
+  background-color: #333;
+}
+
+header ul.menu {
+  margin: 0;
+}
+
+header ul.menu li {
+  list-style: none;
+  display: inline;
+
+}
+
+header ul.menu li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 15px 10px;
+  display: inline-block;
+  font-size: 1.6rem;
+  -webkit-transition: all 0.3s ease 0s;
+     -moz-transition: all 0.3s ease 0s;
+       -o-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s;
+}
+
+header a {
+  color: #fff;
+}
+
+header ul.menu li a:hover {
+  color: #fff;
+  background-color: #777;
+}
+
+.masthead {
+  text-align: center;
+}
+
+.masthead img {
+
+}
+
+.masthead h1 {
+  text-align: center;
+  margin: 7rem 0;
+}
+
+.masthead .logo {
+
+}
+
+.logo {
   color: #222;
   text-decoration: none;
-  font-size: 2rem;
   font-weight: 600;
 }
 
-header .logo span {
-  color: #1EAEDB;
+.logo:hover,
+.logo:active {
+  color: #222;
 }
 
-main {
-  padding-top: 10px;
+.brand {
+  color: #1eaedb
+}
+
+.logo span {
+  color: #1eaedb;
 }
 
 main .container .content {
-  background-color: #fff;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  margin-top: -60px;
-  padding: 20px;
-  border: 1px solid #ddd;
   min-height: 600px;
 }
 
@@ -894,9 +944,11 @@ footer ul {
 }
 
 footer ul li {
+  font-size: 1.4rem;
   list-style: none;
   display: inline;
   margin-right: 15px;
+  color: #fff;
 }
 
 footer ul li a {
@@ -922,25 +974,156 @@ hr.sm {
   width: 4rem;
 }
 
-.post-summary {
-  margin-bottom: 2rem;
+.content .post .post-title {
+  margin-top: 3rem;
 }
 
-.post-summary .post-title {
+.card {
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 4rem;
+}
+
+.post .card {
+  padding-bottom: 20px;
+}
+
+.content .post-category {
+  text-transform: uppercase;
+  color: #777;
+  text-align: center;
+  font-weight: 500;
+}
+
+.content .post-title {
   margin-bottom: .5rem;
+  font-weight: 500;
+  text-align: center;
+  color: #333;
 }
 
-.post-summary p {
+.content .post-summary .post-title a {
+  text-decoration: none;
+  color: #333;
+}
+
+.content .post-summary .post-title a:hover,
+.content .post-summary .post-title a:active,
+.content .post-summary .post-meta li a:hover,
+.content .post-summary .post-meta li a:active {
+  color: #1eaedb;
+  -webkit-transition: all 0.3s ease 0s;
+     -moz-transition: all 0.3s ease 0s;
+       -o-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s;
+}
+
+.content .post-meta {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.6rem;
+  color: #999;
+}
+
+.content .post-meta li {
+  list-style: none;
+  display: inline;
+  margin-right: 2rem;
+}
+
+.content .post-meta li i {
+  margin-right: 0.3rem;
+}
+
+.content .post-meta li a {
+  color: #999;
+  text-decoration: none;
+}
+
+.content .post-summary p {
   margin-bottom: 1rem;
 }
 
-.bullet {
-  margin-left: 5px;
-  margin-right: 5px;
+.content .post-summary .post-read-more {
+  text-align: center;
 }
 
-.bullet:before {
-  content: '•';
+.content .post-summary .post-read-more a {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 2rem;
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+
+.content .post-tags {
+  padding-top: 7px;
+}
+
+.content .post-share {
+  text-align: right;
+}
+
+.content .post-share a {
+  margin-right: 0;
+  margin-left: 13px;
+  background-color: #aaa;
+}
+
+.content .post-share a:hover,
+.content .post-share a:active {
+  background-color: #1eaedb;
+  -webkit-transition: all 0.4s ease 0s;
+     -moz-transition: all 0.4s ease 0s;
+       -o-transition: all 0.4s ease 0s;
+          transition: all 0.4s ease 0s;
+}
+
+hr.dashed {
+  border-style: dashed;
+}
+
+.content .post-summary hr {
+  margin: 3rem 0;
+}
+
+.sidebar .widget h5 {
+  font-weight: 500;
+}
+
+.sidebar .widget img {
+  width: 100%;
+}
+
+.sidebar .widget.about p {
+  margin: 1rem 0;
+}
+
+.sidebar .widget.social {
+  text-align: center;
+}
+
+.social a {
+  background-color: #1eaedb;
+  border-radius: 100px;
+  color: #fff;
+  font-size: 17px;
+  height: 44px;
+  line-height: 44px;
+  margin-right: 13px;
+  width: 44px;
+  display: inline-block;
+  text-align: center;
+}
+
+.social a:hover,
+.social a:active {
+  background-color: #6fcae8;
+}
+
+.sidebar .widget.subscribe form {
+  margin-bottom: 0;
 }
 
 blockquote {
@@ -956,19 +1139,11 @@ blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {
 
 .tag {
   background-color: #1EAEDB;
-  border-radius: 3px;
   padding: 4px 8px;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   white-space: nowrap;
-}
-
-.tag .badge {
-  border-radius: 20px;
-  background-color: #fff;
-  color: #1EAEDB;
-  padding: 0 5px;
-  font-size: 1.1rem;
+  margin-right: 10px
 }
 
 table tbody tr td {
@@ -985,16 +1160,23 @@ article img {
   margin: 0 auto;
 }
 
-.profile-picture {
-  float: right; 
-  width: 150px; 
-  border-radius: 8px; 
-  margin-left: 10px;
+.popular-posts {
+  margin: 0;
 }
 
-.post h3 {
+.sidebar .popular-posts li {
+  list-style: none;
+  margin: 2rem 0;
+  border-width: 0;
   border-bottom: 1px solid #e1e1e1;
-  margin-top: 2rem;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+
+.sidebar .popular-posts li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+#disqus_thread {
+  margin-top: 3rem;
 }

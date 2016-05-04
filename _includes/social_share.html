@@ -1,0 +1,32 @@
+<div class="social">
+  <a href="https://twitter.com/intent/tweet?text={{ include.title }}&url={{ site.url }}{{ include.url }}&via={{ site.twitter }}&related={{ site.twitter }}"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id={{ site.fb_appid }}&u={{ site.url }}{{ include.url }}"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ include.url }}&title={{ include.title }}&summary={{ include.excerpt | strip_html | strip_newlines | truncate: 200 }}&source={{ site.url }}"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url={{ site.url }}{{ include.url }}"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url={{ site.url }}{{ include.url }}&description={{ include.title }}&media={{ site.url }}{% if page.thumbnail %}{{ page.thumbnail }}{% elsif post.thumbnail %}{{ post.thumbnail }}{% else %}/img/fb_banner.png{% endif %}"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>

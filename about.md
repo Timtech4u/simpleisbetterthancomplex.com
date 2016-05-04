@@ -7,8 +7,6 @@ permalink: /about/
 <h4 class="page-title">About</h4>
 <hr class="sm">
 
-
-<img src="{{ "/img/picture.jpg" | prepend: site.baseurl }}" class="profile-picture">
 My name is Vitor Freitas, I'm a software developer and researcher from Brazil. At the moment, I'm living in Oulu, Finland doing my Ph.D.
 I'm a passionate software developer, currently working with Python and Django. I also worked several years in industry with Java, C♯ and ASP/VBScript.
 
@@ -19,24 +17,24 @@ The name of this blog — if you are familiar with Python probably you already g
 If you haven't read it yet, take a moment and read it, you won't regret:
 
 > <h5>The Zen of Python, <small>by Tim Peters</small></h5>
-> Beautiful is better than ugly.  
-> Explicit is better than implicit.  
-> Simple is better than complex.  
-> Complex is better than complicated.  
-> Flat is better than nested.  
-> Sparse is better than dense.  
-> Readability counts.  
-> Special cases aren't special enough to break the rules.  
-> Although practicality beats purity.  
-> Errors should never pass silently.  
-> Unless explicitly silenced.  
-> In the face of ambiguity, refuse the temptation to guess.  
-> There should be one-- and preferably only one --obvious way to do it.  
-> Although that way may not be obvious at first unless you're Dutch.  
-> Now is better than never.  
-> Although never is often better than *right* now.  
-> If the implementation is hard to explain, it's a bad idea.  
-> If the implementation is easy to explain, it may be a good idea.  
+> Beautiful is better than ugly.
+> Explicit is better than implicit.
+> Simple is better than complex.
+> Complex is better than complicated.
+> Flat is better than nested.
+> Sparse is better than dense.
+> Readability counts.
+> Special cases aren't special enough to break the rules.
+> Although practicality beats purity.
+> Errors should never pass silently.
+> Unless explicitly silenced.
+> In the face of ambiguity, refuse the temptation to guess.
+> There should be one-- and preferably only one --obvious way to do it.
+> Although that way may not be obvious at first unless you're Dutch.
+> Now is better than never.
+> Although never is often better than *right* now.
+> If the implementation is hard to explain, it's a bad idea.
+> If the implementation is easy to explain, it may be a good idea.
 > Namespaces are one honking great idea -- let's do more of those!
 
 This tells a lot about the Python philosophy, and why I really enjoy writing code in Python. In fact, this principles can be applied to any programming language. Writing good code, clear, readable, understandable depends more on you than on the programming language you are working with. And for me, the most important principle of “The Zen of Python” is: **simple is better than complex**.
@@ -49,7 +47,7 @@ Stay humble. Be a simple person.
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/sHQ_aTjXObs" frameborder="0" allowfullscreen style="margin-bottom: 20px"></iframe>
 
---  
+--
 Vitor Freitas
 
 [the-zen-of-python]: https://www.python.org/dev/peps/pep-0020/

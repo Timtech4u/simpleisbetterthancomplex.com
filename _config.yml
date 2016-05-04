@@ -1,11 +1,11 @@
 # Site settings
 title: Simple is Better Than Complex
 email: vitor@freitas.com
-description: "This is a blog about Python, Django and Web Development. New posts every monday and thursday."
+description: "This is a blog about Python, Django and Web Development. New posts every week."
 baseurl: ""
 url: "http://simpleisbetterthancomplex.com"
 locale: en_US
-twitter: "@vitorfs"
+twitter: "vitorfs"
 
 # Build settings
 markdown: kramdown

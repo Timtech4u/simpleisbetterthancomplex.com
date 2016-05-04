@@ -1,14 +1,28 @@
 <footer>
   <div class="container">
     <ul>
-      <li><a href="{{ "/about/" | prepend: site.baseurl }}">about</a></li>
+      <li>© 2016 simple is better than complex</li>
+      <li>//</li>
       <li><a href="{{ "/cookies/" | prepend: site.baseurl }}">cookies</a></li>
-      <li><a href="https://github.com/simpleisbetterthancomplex/simpleisbetterthancomplex.github.io/issues" target="_blank">suggest a topic</a></li>
-      <li><a href="https://github.com/simpleisbetterthancomplex/" target="_blank">github</a></li>
       <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}">rss</a></li>
     </ul>
   </div>
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $(".social a").click(function () {
+      var url = $(this).attr("href");
+      var width = 600;
+      var height = 400;
+      var left = (screen.width / 2) - (width / 2);
+      var top = (screen.height / 2) - (height / 2);
+      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+      return false;
+    });
+  });
+</script>
 {% if jekyll.environment == "production" %}
   <script src="{{ "/js/ga.js" | prepend: site.baseurl }}"></script>
 {% endif %}
