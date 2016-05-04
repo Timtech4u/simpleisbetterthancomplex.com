@@ -26,15 +26,13 @@
               </li>
               {% if page.author %}
                 <li>
-                  <a href="{{ "/about/" | prepend: site.baseurl }}">
-                    <i class="fa fa-user"></i> {{ page.author }}
-                  </a>
+                  <i class="fa fa-user"></i>
+                  <a href="{{ "/about/" | prepend: site.baseurl }}">{{ page.author }}</a>
                 </li>
               {% endif %}
               <li>
-                <a href="#disqus_thread">
-                  <i class="fa fa-comments"></i> <span data-disqus-identifier="{{ page.id }}">Comments</span>
-                </a>
+                <i class="fa fa-comments"></i>
+                <a href="#disqus_thread" data-disqus-identifier="{{ page.id }}">Comments</a>
               </li>
               {% if page.meta %}
                 <li>{{ page.meta }}</li>
