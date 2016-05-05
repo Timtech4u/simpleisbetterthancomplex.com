@@ -1180,3 +1180,8 @@ article img {
 #disqus_thread {
   margin-top: 3rem;
 }
+
+pre code {
+  font-size: 1.4rem;
+  overflow-y: scroll;
+}

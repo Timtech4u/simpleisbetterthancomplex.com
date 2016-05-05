@@ -26,10 +26,17 @@ layout: home
         </a>
       </li>
     </ul>
-    {{ post.excerpt }}
-    <p class="post-read-more">
-      <a href="{{ post.url | prepend: site.baseurl }}">Read more</a>
-    </p>
+    {% if post.category == 'tips' %}
+      {{ post.content }}
+      <p class="post-read-more">
+        <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread">Discuss</a>
+      </p>
+    {% else %}
+      {{ post.excerpt }}
+      <p class="post-read-more">
+        <a href="{{ post.url | prepend: site.baseurl }}">Read more</a>
+      </p>
+    {% endif %}
     <hr class="dashed">
     <div class="row">
       <div class="five columns post-tags">
