@@ -31,7 +31,7 @@ layout: home
     {% if post.category == 'tips' %}
       {{ post.content }}
       <p class="post-read-more">
-        <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread">Discuss</a>
+        <a href="{{ post.url | prepend: site.baseurl }}#comments">Discuss</a>
       </p>
     {% else %}
       {{ post.excerpt }}
