@@ -16,13 +16,15 @@ layout: home
         <i class="fa fa-calendar"></i> {{ post.date | date: "%b %-d, %Y" }}
       </li>
       <li>
+        <i class="fa fa-user"></i>
         <a href="{{ "/about/" | prepend: site.baseurl }}">
-          <i class="fa fa-user"></i> {{ post.author }}
+          {{ post.author }}
         </a>
       </li>
       <li>
+        <i class="fa fa-comments"></i>
         <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" data-disqus-identifier="{{ post.id }}">
-          <i class="fa fa-comments"></i> Comments
+          Comments
         </a>
       </li>
     </ul>
