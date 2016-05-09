@@ -34,7 +34,7 @@ Now in the template, load the template tags:
 {% raw %}{% load humanize %}{% endraw %}
 {% endhighlight %}
 
-Using it is very straight forward, for example the `naturaltime` template filter:
+Using it is very straightforward, for example the `naturaltime` template filter:
 
 {% highlight html %}
 {% raw %}{% extends 'base.html' %}{% endraw %}
@@ -55,7 +55,7 @@ Using it is very straight forward, for example the `naturaltime` template filter
 {% raw %}{% endblock %}{% endraw %}
 {% endhighlight %}
 
-Following the avaiable template filters:
+Following the available template filters:
 
 | template filter | example |
 |-----------------|---------|
