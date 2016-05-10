@@ -44,7 +44,7 @@
             <hr class="dashed">
             <div class="row">
               <div class="six columns post-tags">
-                {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+                {% for tag in page.tags %}<a href="{{ "/tag/" | prepend: site.baseurl | append: tag | append: ".html" }}" class="tag">{{ tag }}</a>{% endfor %}
               </div>
               <div class="six columns post-share">
                 {% include social_share.html url=page.url title=page.title excerpt=page.excerpt %}

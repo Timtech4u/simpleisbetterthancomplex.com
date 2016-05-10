@@ -1139,14 +1139,33 @@ blockquote ol:last-child, blockquote p:last-child, blockquote ul:last-child {
   margin-bottom: 0;
 }
 
-.tag {
-  background-color: #1EAEDB;
+.tag, #tag-cloud a {
+  background-color: #1eaedb;
   padding: 4px 8px;
   color: #fff;
   font-size: 1.4rem;
   white-space: nowrap;
-  margin-right: 10px
+  margin-right: 10px;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease 0s;
+     -moz-transition: all 0.2s ease 0s;
+       -o-transition: all 0.2s ease 0s;
+          transition: all 0.2s ease 0s;
 }
+
+.tag:hover,
+.tag:active,
+#tag-cloud a:hover,
+#tag-cloud a:active {
+  color: #fff;
+  background-color: #036f93;
+}
+
+#tag-cloud .set-1 { font-size: 1.4rem; }
+#tag-cloud .set-2 { font-size: 1.6rem; }
+#tag-cloud .set-3 { font-size: 1.8rem; }
+#tag-cloud .set-4 { font-size: 2rem; }
+#tag-cloud .set-5 { font-size: 2.2rem; }
 
 table tbody tr td {
   vertical-align: top;

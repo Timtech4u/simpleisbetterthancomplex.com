@@ -12,3 +12,6 @@ markdown: kramdown
 
 fb_admins: http://facebook.com/vitorfs
 fb_appid: 1645747765697865
+
+tag_page_layout: tag_page
+tag_page_dir: tag
