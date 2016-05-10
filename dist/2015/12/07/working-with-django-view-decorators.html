@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Working with Django View Decorators</title>
+<meta name="description" content="View decorators can be used to restrict access to certain views. Django come with some built-in decorators, like login_required, require_POST or has_permissi...">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+</style>
+<link rel="canonical" href="http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html">
+<link rel="alternate" type="application/rss+xml" title="Simple is Better Than Complex" href="http://simpleisbetterthancomplex.com/feed.xml" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta property="og:title" content="Working with Django View Decorators">
+<meta property="og:url" content="http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html">
+<meta property="og:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+<meta property="og:description" content="View decorators can be used to restrict access to certain views. Django come with some built-in decorators, like login_required, require_POST or has_permissi...">
+<meta property="og:site_name" content="Simple is Better Than Complex">
+<meta property="og:locale" content="en_US">
+
+  <meta property="article:published_time" content="2015-12-07T14:00:00+02:00">
+  <meta property="article:author" content="http://facebook.com/vitorfs">
+
+<meta property="fb:admins" content="http://facebook.com/vitorfs">
+<meta property="fb:app_id" content="1645747765697865">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="vitorfs">
+<meta name="twitter:creator" content="vitorfs">
+<meta name="twitter:title" content="Working with Django View Decorators">
+<meta name="twitter:description" content="View decorators can be used to restrict access to certain views. Django come with some built-in decorators, like login_required, require_POST or has_permission. They are really useful, but sometime...">
+<meta name="twitter:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+  <meta property="og:type" content="article">
+  
+    <meta property="article:tag" content="python">
+  
+    <meta property="article:tag" content="django">
+  
+</head>
+<body>
+  <header>
+  <div class="container">
+    <ul class="menu">
+      <!--li>
+        <a href="/" class="logo">
+          simple<span>is</span>better<span>than</span>complex
+        </a>
+      </li-->
+      <li><a href="/" class="brand">Home</a></li>
+      <li><a href="/about/">About me</a></li>
+      <li><a href="https://github.com/simpleisbetterthancomplex/simpleisbetterthancomplex.github.io/issues" target="_blank">Suggest a topic</a></li>
+      <li><a href="http://eepurl.com/b0gR51" target="_blank">Subscribe</a></li>
+    </ul>
+  </div>
+</header>
+<div class="container masthead">
+  <h1>
+    <a href="/" class="logo">
+      simple <span>is</span> better <span>than</span> complex
+    </a>
+  </h1>
+</div>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="ten offset-by-one columns content post">
+          <div class="card">
+            
+            <h3 class="post-title">Working with Django View Decorators</h3>
+            <ul class="post-meta">
+              <li>
+                <i class="fa fa-calendar"></i> Dec 7, 2015
+              </li>
+              
+                <li>
+                  <i class="fa fa-user"></i>
+                  <a href="/about/">Vitor Freitas</a>
+                </li>
+              
+              <li>
+                <i class="fa fa-comments"></i>
+                <a href="#disqus_thread" data-disqus-identifier="/2015/12/07/working-with-django-view-decorators">Comments</a>
+              </li>
+              
+            </ul>
+            <article>
+              <p>View decorators can be used to restrict access to certain views. Django come with some built-in decorators, like <code class="highlighter-rouge">login_required</code>, <code class="highlighter-rouge">require_POST</code> or <code class="highlighter-rouge">has_permission</code>. They are really useful, but sometimes you might need to restrict the access in a different level of granularity, for example only letting the user who created an entry of the model to edit or delete it.</p>
+
+<p>A simple way to solve this problem, without adding an if statement inside each function, is to write a custom decorator.</p>
+
+<p>In this article I will take you into the basic steps of creating an app level decorator.</p>
+
+<hr />
+
+<h4 id="sample-scenario">Sample scenario</h4>
+
+<p>To ilustrate this article, let’s pretend we have an app named <code class="highlighter-rouge">blog</code>.</p>
+
+<h5 id="modelspy">models.py</h5>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># coding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">class</span> <span class="nc">Entry</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">created_by</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+    <span class="n">creation_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">'Entry'</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">'Entries'</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span></code></pre></figure>
+
+<h5 id="viewspy">views.py</h5>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># coding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+
+<span class="kn">from</span> <span class="nn">simple_decorators.apps.blog.models</span> <span class="kn">import</span> <span class="n">Entry</span>
+<span class="kn">from</span> <span class="nn">simple_decorators.apps.blog.forms</span> <span class="kn">import</span> <span class="n">EntryForm</span>
+
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">entries</span> <span class="o">=</span> <span class="n">Entry</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">created_by</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/index.html'</span><span class="p">,</span> <span class="p">{</span> <span class="s">'entries'</span><span class="p">:</span> <span class="n">entries</span> <span class="p">})</span>
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">EntryForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'Entry was successfully added!'</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'index'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">EntryForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/entry.html'</span><span class="p">,</span> <span class="p">{</span> <span class="s">'form'</span><span class="p">:</span> <span class="n">form</span> <span class="p">})</span>
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">entry_id</span><span class="p">):</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Entry</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">entry_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">EntryForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'Entry was successfully edited!'</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'index'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">EntryForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/entry.html'</span><span class="p">,</span> <span class="p">{</span> <span class="s">'form'</span><span class="p">:</span> <span class="n">form</span> <span class="p">})</span></code></pre></figure>
+
+<h5 id="urlspy">urls.py</h5>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># coding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">simple_decorators.apps.blog</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^blog/$'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'index'</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^blog/add/$'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'add'</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^blog/edit/(</span><span class="err">\</span><span class="s">d+)/$'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">edit</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'edit'</span><span class="p">),</span>
+  <span class="p">]</span></code></pre></figure>
+
+<p>At this point, we have one model named <code class="highlighter-rouge">Entry</code> that relates to a <code class="highlighter-rouge">User</code>. We also have three views, to list, add or edit an existing entry. In our index page, we only list the blog entries that were created by the logged in <code class="highlighter-rouge">User</code>. But, nothing stops the <code class="highlighter-rouge">User</code> from changing the browser url to edit an <code class="highlighter-rouge">Entry</code> that wasn’t created by him.</p>
+
+<p>We want to make sure the <code class="highlighter-rouge">User</code> only edit the <code class="highlighter-rouge">Entries</code> created by him.</p>
+
+<hr />
+
+<h4 id="create-the-decorator-module">Create the decorator module</h4>
+
+<p>The decorator module can live anywhere, but usually they are related to a specific app. I like to put it inside the app folder. In case it’s a decorator for general use, I put it in the same level as my <code class="highlighter-rouge">settings.py</code> and <code class="highlighter-rouge">urls.py</code>.</p>
+
+<p>Create a new file named <code class="highlighter-rouge">decorators.py</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>touch decorators.py</code></pre></figure>
+
+<p>The app folder structure:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">|∙∙blog/
+  |∙∙__init__.py
+  |∙∙admin.py
+  |∙∙decorators.py
+  |∙∙migrations/
+  |∙∙models.py
+  |∙∙tests.py
+  |∙∙views.py</code></pre></figure>
+
+<p>Edit the <code class="highlighter-rouge">decorators.py</code> file creating a new function named <code class="highlighter-rouge">user_is_entry_author</code>:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># coding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">PermissionDenied</span>
+<span class="kn">from</span> <span class="nn">simple_decorators.apps.models</span> <span class="kn">import</span> <span class="n">Entry</span>
+
+<span class="k">def</span> <span class="nf">user_is_entry_author</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">Entry</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s">'entry_id'</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">created_by</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PermissionDenied</span>
+    <span class="n">wrap</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">__doc__</span>
+    <span class="n">wrap</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">__name__</span>
+    <span class="k">return</span> <span class="n">wrap</span></code></pre></figure>
+
+<p>We are basically getting the current entry instance and checking if the logged in user is the owner of the entry. If it returns true, we proceed, otherwise we raise and <code class="highlighter-rouge">PermissionDenied</code> exception. We could also redirect the user to other page, like the login page for example. But as it’s not an expected behavior (it’s not meant to happen if the user follow the application flow clicking on the page and so on), it doesn’t really need to have a user friendly message or behavior.</p>
+
+<hr />
+
+<h4 id="take-the-decorator-into-use">Take the decorator into use</h4>
+
+<p>Inside your <code class="highlighter-rouge">views.py</code>, import our new decorator and add it to the edit view:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># coding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+
+<span class="kn">from</span> <span class="nn">simple_decorators.apps.blog.models</span> <span class="kn">import</span> <span class="n">Entry</span>
+<span class="kn">from</span> <span class="nn">simple_decorators.apps.blog.forms</span> <span class="kn">import</span> <span class="n">EntryForm</span>
+<span class="kn">from</span> <span class="nn">simple_decorators.apps.blog.decorators</span> <span class="kn">import</span> <span class="n">user_is_entry_author</span>
+
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="nd">@login_required</span>
+<span class="nd">@user_is_entry_author</span>
+<span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">entry_id</span><span class="p">):</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Entry</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">entry_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">EntryForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'Entry was successfully edited!'</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'index'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">EntryForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">entry</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/entry.html'</span><span class="p">,</span> <span class="p">{</span> <span class="s">'form'</span><span class="p">:</span> <span class="n">form</span> <span class="p">})</span></code></pre></figure>
+
+<p>That’s it! Now only the user who have created the entry can edit it.</p>
+
+<hr />
+
+<p>This solution can looks like an overkill in this small example. Of course if you only need to verify the ownership of the entry in the edit view, it’s better and cleaner to put the if statement inside the edit view. But, if your app starts to grow, it’s gonna be really handy. For example, consider we add this two new view functions in our <code class="highlighter-rouge">views.py</code>:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@login_required</span>
+<span class="nd">@user_is_entry_author</span>
+<span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">entry_id</span><span class="p">):</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Entry</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">entry_id</span><span class="p">)</span>
+    <span class="n">entry</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'Entry was successfully removed!'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'index'</span><span class="p">)</span>
+
+<span class="nd">@login_required</span>
+<span class="nd">@user_is_entry_author</span>
+<span class="k">def</span> <span class="nf">transfer</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">entry_id</span><span class="p">):</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Entry</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">entry_id</span><span class="p">)</span>
+    <span class="n">transfer_to</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'transfer_to'</span><span class="p">)</span>
+    <span class="n">new_owner</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">transfer_to</span><span class="p">)</span>
+    <span class="n">entry</span><span class="o">.</span><span class="n">created_by</span> <span class="o">=</span> <span class="n">new_owner</span>
+    <span class="n">entry</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'Entry was successfully transferred!'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'index'</span><span class="p">)</span></code></pre></figure>
+
+<p>Both view functions can only be accessed by the entry owner and we don’t need to add the if statement inside each of them.</p>
+
+<p>If you want to see more example of custom decorators, I have a few on my open source projects <a href="https://github.com/vitorfs/bootcamp/blob/master/bootcamp/decorators.py" target="_blank">Bootcamp</a> and <a href="https://github.com/vitorfs/parsifal/blob/master/parsifal/reviews/decorators.py" target="_blank">Parsifal</a></p>
+
+
+            </article>
+            <hr class="dashed">
+            <div class="row">
+              <div class="six columns post-tags">
+                <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a>
+              </div>
+              <div class="six columns post-share">
+                <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Working%20with%20Django%20View%20Decorators&url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html&title=Working%20with%20Django%20View%20Decorators&summary=View%20decorators%20can%20be%20used%20to%20restrict%20access%20to%20certain%20views.%20Django%20come%20with%20some%20built-in%20decorators,%20like%20login_required,%20require_POST%20or%20has_permission.%20They%20are%20really%20useful,%20but%20sometime...&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html&description=Working%20with%20Django%20View%20Decorators&media=http://simpleisbetterthancomplex.com/img/fb_banner.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+              </div>
+            </div>
+            
+          </div>
+          <div class="card">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Post bottom -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-3448661896771709"
+                 data-ad-slot="5399027276"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+          <div class="card">
+            <div class="row">
+            <h4>Popular posts</h4>
+            <ul class="popular-posts">
+  <li>
+    <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
+      Small Open-Source Django Projects to Get Started
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+      Package of the Week: Django Widget Tweaks
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/07/working-with-django-view-decorators.html">
+      Working with Django View Decorators
+    </a>
+  </li>
+</ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+  <div class="container">
+    <ul>
+      <li>© 2016 simple is better than complex</li>
+      <li>//</li>
+      <li><a href="/privacy/">privacy policy</a></li>
+      <li><a href="/cookies/">cookies</a></li>
+      <li><a href="/feed.xml">rss</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $(".post-share .social a").click(function () {
+      var url = $(this).attr("href");
+      var width = 600;
+      var height = 400;
+      var left = (screen.width / 2) - (width / 2);
+      var top = (screen.height / 2) - (height / 2);
+      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+      return false;
+    });
+  });
+</script>
+
+
+</body>
+</html>

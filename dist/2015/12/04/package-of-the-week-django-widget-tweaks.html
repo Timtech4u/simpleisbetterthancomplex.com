@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package of the Week: Django Widget Tweaks</title>
+<meta name="description" content="When it comes to build forms, Django Forms can be really handy. If your application provide ways for the end-user to input data, it’s strongly advised to do ...">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+</style>
+<link rel="canonical" href="http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+<link rel="alternate" type="application/rss+xml" title="Simple is Better Than Complex" href="http://simpleisbetterthancomplex.com/feed.xml" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta property="og:title" content="Package of the Week: Django Widget Tweaks">
+<meta property="og:url" content="http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+<meta property="og:image" content="http://simpleisbetterthancomplex.com/media/2015-12-04-package-of-the-week-django-widget-tweaks/bootstrap-form.png">
+<meta property="og:description" content="When it comes to build forms, Django Forms can be really handy. If your application provide ways for the end-user to input data, it’s strongly advised to do ...">
+<meta property="og:site_name" content="Simple is Better Than Complex">
+<meta property="og:locale" content="en_US">
+
+  <meta property="article:published_time" content="2015-12-04T14:00:00+02:00">
+  <meta property="article:author" content="http://facebook.com/vitorfs">
+
+<meta property="fb:admins" content="http://facebook.com/vitorfs">
+<meta property="fb:app_id" content="1645747765697865">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="vitorfs">
+<meta name="twitter:creator" content="vitorfs">
+<meta name="twitter:title" content="Package of the Week: Django Widget Tweaks">
+<meta name="twitter:description" content="When it comes to build forms, Django Forms can be really handy. If your application provide ways for the end-user to input data, it’s strongly advised to do so through the built-in Django Forms. It...">
+<meta name="twitter:image" content="http://simpleisbetterthancomplex.com/media/2015-12-04-package-of-the-week-django-widget-tweaks/bootstrap-form.png">
+  <meta property="og:type" content="article">
+  
+    <meta property="article:tag" content="python">
+  
+    <meta property="article:tag" content="django">
+  
+    <meta property="article:tag" content="package">
+  
+</head>
+<body>
+  <header>
+  <div class="container">
+    <ul class="menu">
+      <!--li>
+        <a href="/" class="logo">
+          simple<span>is</span>better<span>than</span>complex
+        </a>
+      </li-->
+      <li><a href="/" class="brand">Home</a></li>
+      <li><a href="/about/">About me</a></li>
+      <li><a href="https://github.com/simpleisbetterthancomplex/simpleisbetterthancomplex.github.io/issues" target="_blank">Suggest a topic</a></li>
+      <li><a href="http://eepurl.com/b0gR51" target="_blank">Subscribe</a></li>
+    </ul>
+  </div>
+</header>
+<div class="container masthead">
+  <h1>
+    <a href="/" class="logo">
+      simple <span>is</span> better <span>than</span> complex
+    </a>
+  </h1>
+</div>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="ten offset-by-one columns content post">
+          <div class="card">
+            
+            <h3 class="post-title">Package of the Week: Django Widget Tweaks</h3>
+            <ul class="post-meta">
+              <li>
+                <i class="fa fa-calendar"></i> Dec 4, 2015
+              </li>
+              
+                <li>
+                  <i class="fa fa-user"></i>
+                  <a href="/about/">Vitor Freitas</a>
+                </li>
+              
+              <li>
+                <i class="fa fa-comments"></i>
+                <a href="#disqus_thread" data-disqus-identifier="/2015/12/04/package-of-the-week-django-widget-tweaks">Comments</a>
+              </li>
+              
+            </ul>
+            <article>
+              <p>When it comes to build forms, <a href="https://docs.djangoproject.com/en/1.9/topics/forms/" target="_blank">Django Forms</a> can be really handy. If your application provide ways for the end-user to input data, it’s strongly advised to do so through the built-in Django Forms. It will automate a good amount of work as well as providing a really stable and secure functionality.</p>
+
+<p>In a nutshell, Django handles three distinct parts of the work involved in forms:</p>
+
+<ol>
+  <li>Preparing and restructuring data to make it ready for rendering;</li>
+  <li>Creating HTML forms for the data;</li>
+  <li>Receiving and processing submitted forms and data from the client.</li>
+</ol>
+
+<p>The parts 1 and 3 are usually fine for the most cases. But when it comes to the actual HTML forms rendering, sometimes it lacks some options.</p>
+
+<p>That’s where the <a href="https://pypi.python.org/pypi/django-widget-tweaks" target="_blank">Django Widget Tweaks</a> takes place. I’ve been using it on my past projects, and I find it really useful. In this brief article, I will introduce you to the basics of this package, and show some of its use cases.</p>
+
+<hr />
+
+<h4 id="the-problem">The problem</h4>
+
+<p>Before we start to talk about the Django Widget Tweaks package itself, I wanted to elaborate a little bit more about the problem I usually face that motivated me to look for this solution.</p>
+
+<p>Most of my projects I use <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> as the base for my css. In some cases I even use it out of the box. If you are familiar with Bootstrap, you probably know it needs some css classes for the forms elements to look good.</p>
+
+<p>A basic example of a form using the Bootstrap classes would be:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"id_email"</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"id_email"</span> <span class="na">name=</span><span class="s">"email"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"id_password"</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"id_password"</span> <span class="na">name=</span><span class="s">"password"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>The problem usually lives in the need to add some extra attributes to the HTML element, preserving the old ones, that would automatically generated by Django, based on your models. In this case, it would be the div element with <code class="highlighter-rouge">form-group</code> class, as well as the <code class="highlighter-rouge">form-control</code> class in the input element.</p>
+
+<p>For example, if we consider the following model:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">254</span><span class="p">)</span>
+    <span class="n">phone</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span></code></pre></figure>
+
+<p>And for this model, we create a Django Form:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">simple_forms.apps.core.models</span> <span class="kn">import</span> <span class="n">Person</span>
+
+<span class="k">class</span> <span class="nc">PersonForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Person</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">'first_name'</span><span class="p">,</span> <span class="s">'last_name'</span><span class="p">,</span> <span class="s">'email'</span><span class="p">,</span> <span class="s">'phone'</span><span class="p">,</span> <span class="s">'bio'</span><span class="p">,)</span></code></pre></figure>
+
+<p>If we render this form right away, using the following code:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+  {% csrf_token %}
+  {{ form }}
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-success"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok"</span><span class="nt">&gt;&lt;/span&gt;</span> Save
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{% url 'home' %}"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>It would look broken, like the picture below:</p>
+
+<p><img src="/media/2015-12-04-package-of-the-week-django-widget-tweaks/broken-form.png" alt="Bootstrap Form" title="Bootstrap Form" /></p>
+
+<hr />
+
+<h4 id="installation">Installation</h4>
+
+<p>You can install it with <code class="highlighter-rouge">pip</code>, or download it from <a href="https://pypi.python.org/pypi/django-widget-tweaks" target="_blank">PyPI</a> if you prefer:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>pip install django-widget-tweaks</code></pre></figure>
+
+<p>Now add <code class="highlighter-rouge">widget_tweaks</code> to your <code class="highlighter-rouge">INSTALLED_APPS</code>:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+
+    <span class="s">'widget_tweaks'</span><span class="p">,</span>
+
+    <span class="s">'simple_forms.apps.core'</span><span class="p">,</span>
+<span class="p">]</span></code></pre></figure>
+
+<hr />
+
+<h4 id="usage">Usage</h4>
+
+<p>I will show just a few of the many options the package offers. You can learn more reading the official docs.</p>
+
+<p>To start using it, you must load the template tag in the template you want to use its functions:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% load widget_tweaks %}</code></pre></figure>
+
+<p>Now expand your form by iterating through its fields, in order to expose the input tags, replacing this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{{ form }}</code></pre></figure>
+
+<p>For this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% for hidden in form.hidden_fields %}
+  {{ hidden }}
+{% endfor %}
+
+{% for field in form.visible_fields %}
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"{{ field.id_for_label }}"</span><span class="nt">&gt;</span>{{ field.label }}<span class="nt">&lt;/label&gt;</span>
+    {{ field }}
+    {% for error in field.errors %}
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"help-block"</span><span class="nt">&gt;</span>{{ error }}<span class="nt">&lt;/span&gt;</span>
+    {% endfor %}
+  <span class="nt">&lt;/div&gt;</span>
+{% endfor %}</code></pre></figure>
+
+<p>At this point we already added several Bootstrap elements, but our form still looks broken:</p>
+
+<p><img src="/media/2015-12-04-package-of-the-week-django-widget-tweaks/broken-form-2.png" alt="Bootstrap Form" title="Bootstrap Form" /></p>
+
+<p>Now to put Django Widget Tweaks in action, add an extra attribute to the <code class="highlighter-rouge">field</code> element:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{{ field|add_class:'form-control' }}</code></pre></figure>
+
+<p><img src="/media/2015-12-04-package-of-the-week-django-widget-tweaks/bootstrap-form.png" alt="Bootstrap Form" title="Bootstrap Form" /></p>
+
+<p>The final result of our template is shown below:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  <span class="nt">&lt;h2&gt;</span>Add person<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    {% csrf_token %}
+
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"{{ field.id_for_label }}"</span><span class="nt">&gt;</span>{{ field.label }}<span class="nt">&lt;/label&gt;</span>
+        {{ field|add_class:'form-control' }}
+        {% for error in field.errors %}
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"help-block"</span><span class="nt">&gt;</span>{{ error }}<span class="nt">&lt;/span&gt;</span>
+        {% endfor %}
+      <span class="nt">&lt;/div&gt;</span>
+    {% endfor %}
+    
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-success"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok"</span><span class="nt">&gt;&lt;/span&gt;</span> Save
+      <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{% url 'home' %}"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+{% endblock %}</code></pre></figure>
+
+<p>Another way to render the fields is using the <code class="highlighter-rouge">render_field</code> template tag, which gives you a flexible way to render Django fields using a HTML-like syntax:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% render_field form.first_name class="form-control" %}</code></pre></figure>
+
+<p>You can also use the template variables as attribute values:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% render_field form.first_name class="form-control" placeholder=form.first_name.label %}</code></pre></figure>
+
+<hr />
+
+<p>Personally I find this package really useful, because it let you customize your form elements in a non intrusive way, without having to add extra css class inside the form definition. Also it’s more clear this way, because afterall the css classes are related to the page layout.</p>
+
+<p>Again, there’s a lot more you can do with it, you can learn more by reading its <a href="https://pypi.python.org/pypi/django-widget-tweaks" target="_blank">documentation</a>. Also, the project I created to ilustrate this article can be found on GitHub <a href="https://github.com/simpleisbetterthancomplex/simple-django-widget-tweaks" target="_blank">simpleisbetterthancomplex/simple-django-widget-tweaks</a>.</p>
+
+
+            </article>
+            <hr class="dashed">
+            <div class="row">
+              <div class="six columns post-tags">
+                <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a><a href="/tag/package.html" class="tag">package</a>
+              </div>
+              <div class="six columns post-share">
+                <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Package%20of%20the%20Week:%20Django%20Widget%20Tweaks&url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html&title=Package%20of%20the%20Week:%20Django%20Widget%20Tweaks&summary=When%20it%20comes%20to%20build%20forms,%20Django%20Forms%20can%20be%20really%20handy.%20If%20your%20application%20provide%20ways%20for%20the%20end-user%20to%20input%20data,%20it%E2%80%99s%20strongly%20advised%20to%20do%20so%20through%20the%20built-in%20Django%20Forms.%20It...&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html&description=Package%20of%20the%20Week:%20Django%20Widget%20Tweaks&media=http://simpleisbetterthancomplex.com/media/2015-12-04-package-of-the-week-django-widget-tweaks/bootstrap-form.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+              </div>
+            </div>
+            
+          </div>
+          <div class="card">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Post bottom -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-3448661896771709"
+                 data-ad-slot="5399027276"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+          <div class="card">
+            <div class="row">
+            <h4>Popular posts</h4>
+            <ul class="popular-posts">
+  <li>
+    <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
+      Small Open-Source Django Projects to Get Started
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+      Package of the Week: Django Widget Tweaks
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/07/working-with-django-view-decorators.html">
+      Working with Django View Decorators
+    </a>
+  </li>
+</ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+  <div class="container">
+    <ul>
+      <li>© 2016 simple is better than complex</li>
+      <li>//</li>
+      <li><a href="/privacy/">privacy policy</a></li>
+      <li><a href="/cookies/">cookies</a></li>
+      <li><a href="/feed.xml">rss</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $(".post-share .social a").click(function () {
+      var url = $(this).attr("href");
+      var width = 600;
+      var height = 400;
+      var left = (screen.width / 2) - (width / 2);
+      var top = (screen.height / 2) - (height / 2);
+      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+      return false;
+    });
+  });
+</script>
+
+
+</body>
+</html>

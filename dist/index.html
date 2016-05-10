@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simple is Better Than Complex</title>
+<meta name="description" content="This is a blog about Python, Django and Web Development. New posts every week.">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+</style>
+<link rel="canonical" href="http://simpleisbetterthancomplex.com/">
+<link rel="alternate" type="application/rss+xml" title="Simple is Better Than Complex" href="http://simpleisbetterthancomplex.com/feed.xml" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta property="og:title" content="Simple is Better Than Complex">
+<meta property="og:url" content="http://simpleisbetterthancomplex.com/">
+<meta property="og:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+<meta property="og:description" content="This is a blog about Python, Django and Web Development. New posts every week.">
+<meta property="og:site_name" content="Simple is Better Than Complex">
+<meta property="og:locale" content="en_US">
+
+<meta property="fb:admins" content="http://facebook.com/vitorfs">
+<meta property="fb:app_id" content="1645747765697865">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="vitorfs">
+<meta name="twitter:creator" content="vitorfs">
+<meta name="twitter:title" content="Simple is Better Than Complex">
+<meta name="twitter:description" content="This is a blog about Python, Django and Web Development. New posts every week.">
+<meta name="twitter:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <header>
+  <div class="container">
+    <ul class="menu">
+      <!--li>
+        <a href="/" class="logo">
+          simple<span>is</span>better<span>than</span>complex
+        </a>
+      </li-->
+      <li><a href="/" class="brand">Home</a></li>
+      <li><a href="/about/">About me</a></li>
+      <li><a href="https://github.com/simpleisbetterthancomplex/simpleisbetterthancomplex.github.io/issues" target="_blank">Suggest a topic</a></li>
+      <li><a href="http://eepurl.com/b0gR51" target="_blank">Subscribe</a></li>
+    </ul>
+  </div>
+</header>
+<div class="container masthead">
+  <h1>
+    <a href="/" class="logo">
+      simple <span>is</span> better <span>than</span> complex
+    </a>
+  </h1>
+</div>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="eight columns content">
+          
+  <div class="card post-summary">
+    
+      <h5 class="post-category">tips</h5>
+      <hr class="dashed">
+    
+    <h3 class="post-title">
+      <a href="/tips/2016/05/09/django-tip-2-humanize.html">Django Tips #2 humanize</a>
+    </h3>
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i> May 9, 2016
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        <a href="/about/">
+          Vitor Freitas
+        </a>
+      </li>
+      <li>
+        <i class="fa fa-comments"></i>
+        <a href="/tips/2016/05/09/django-tip-2-humanize.html#disqus_thread" data-disqus-identifier="/tips/2016/05/09/django-tip-2-humanize">
+          Comments
+        </a>
+      </li>
+    </ul>
+    
+      <p>Django comes with a set of template filters to add a “human touch” to your data. It is used to translate numbers and
+dates into a human readable format.</p>
+
+<p>Personally, I use the template filter <code class="highlighter-rouge">naturaltime</code> a lot. It looks good in the user interface and is very easy to
+implement. Basically what it is gonna do is translate <code class="highlighter-rouge">09 May 2016 20:54:31</code> into <code class="highlighter-rouge">29 seconds ago</code> (considering when
+<strong>now</strong> is <strong>20:54:00</strong>).</p>
+
+<p>To install <strong>Django Humanize</strong>, add <code class="highlighter-rouge">django.contrib.humanize</code> to your <code class="highlighter-rouge">INSTALLED_APPS</code> setting:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+
+    <span class="s">'django.contrib.humanize'</span><span class="p">,</span>
+<span class="p">]</span></code></pre></figure>
+
+<p>Now in the template, load the template tags:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% load humanize %}</code></pre></figure>
+
+<p>Using it is very straightforward, for example the <code class="highlighter-rouge">naturaltime</code> template filter:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+  <span class="nt">&lt;ul&gt;</span>
+    {% for notification in notifications %}
+      <span class="nt">&lt;li&gt;</span>
+        {{ notification }}
+        <span class="nt">&lt;small&gt;</span>{{ notification.date|naturaltime }}<span class="nt">&lt;/small&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    {% empty %}
+      <span class="nt">&lt;li&gt;</span>You have no unread notification.<span class="nt">&lt;/li&gt;</span>
+    {% endfor %}
+  <span class="nt">&lt;/ul&gt;</span>
+{% endblock %}</code></pre></figure>
+
+<p>Following the available template filters:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>template filter</th>
+      <th>example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>apnumber</td>
+      <td><code class="highlighter-rouge">1</code> becomes <code class="highlighter-rouge">one</code></td>
+    </tr>
+    <tr>
+      <td>intcomma</td>
+      <td><code class="highlighter-rouge">4500000</code> becomes <code class="highlighter-rouge">4,500,000</code></td>
+    </tr>
+    <tr>
+      <td>intword</td>
+      <td><code class="highlighter-rouge">1200000</code> becomes <code class="highlighter-rouge">1.2 million</code></td>
+    </tr>
+    <tr>
+      <td>naturalday</td>
+      <td><code class="highlighter-rouge">08 May 2016</code> becomes <code class="highlighter-rouge">yesterday</code></td>
+    </tr>
+    <tr>
+      <td>naturaltime</td>
+      <td><code class="highlighter-rouge">09 May 2016 20:54:31</code> becomes <code class="highlighter-rouge">29 seconds ago</code></td>
+    </tr>
+    <tr>
+      <td>ordinal</td>
+      <td><code class="highlighter-rouge">3</code> becomes <code class="highlighter-rouge">3rd</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Read more on the official <a href="https://docs.djangoproject.com/en/dev/ref/contrib/humanize/" target="_blank">Django Documentation</a>.</p>
+
+
+      <p class="post-read-more">
+        <a href="/tips/2016/05/09/django-tip-2-humanize.html#comments">Discuss</a>
+      </p>
+    
+    <hr class="dashed">
+    <div class="row">
+      <div class="five columns post-tags">
+        <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a><a href="/tag/contrib.html" class="tag">contrib</a>
+      </div>
+      <div class="seven columns post-share">
+        <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Django%20Tips%20%232%20humanize&url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html&title=Django%20Tips%20%232%20humanize&summary=Django%20comes%20with%20a%20set%20of%20template%20filters%20to%20add%20a%20%E2%80%9Chuman%20touch%E2%80%9D%20to%20your%20data.%20It%20is%20used%20to%20translate%20numbers%20anddates%20into%20a%20human%20readable%20format.&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html&description=Django%20Tips%20%232%20humanize&media=http://simpleisbetterthancomplex.com/img/fb_banner.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card post-summary">
+    
+      <h5 class="post-category">tips</h5>
+      <hr class="dashed">
+    
+    <h3 class="post-title">
+      <a href="/tips/2016/05/05/django-tip-1-redirect.html">Django Tips #1 redirect</a>
+    </h3>
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i> May 5, 2016
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        <a href="/about/">
+          Vitor Freitas
+        </a>
+      </li>
+      <li>
+        <i class="fa fa-comments"></i>
+        <a href="/tips/2016/05/05/django-tip-1-redirect.html#disqus_thread" data-disqus-identifier="/tips/2016/05/05/django-tip-1-redirect">
+          Comments
+        </a>
+      </li>
+    </ul>
+    
+      <p><code class="highlighter-rouge">from django.shortcuts import redirect</code></p>
+
+<p>The function <code class="highlighter-rouge">redirect</code> will basically return an <code class="highlighter-rouge">HttpResponseRedirect</code> with the proper URL. I prefer to always use
+this shortcut so my codebase remains consistent.</p>
+
+<p>The advantages of using <code class="highlighter-rouge">redirect</code> instead of <code class="highlighter-rouge">HttpResponseRedirect</code> is that you can pass different types of arguments
+and also it will save you from importing <code class="highlighter-rouge">django.urlresolvers.reverse</code> in your project’s <code class="highlighter-rouge">views.py</code>.</p>
+
+<p>The possible arguments are:</p>
+
+<ul>
+  <li>A model instance. This will call the model’s <code class="highlighter-rouge">get_absolute_url()</code> method;</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">simple_blog.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="k">def</span> <span class="nf">post_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect(post.get_absolute_url())</span></code></pre></figure>
+
+<ul>
+  <li>A reverse url name (accept view arguments);</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">simple_blog.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="k">def</span> <span class="nf">post_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'post_details'</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect(reverse('post_details', args=(post_id, )))</span></code></pre></figure>
+
+<ul>
+  <li>An aboluste or relative URL.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+
+<span class="k">def</span> <span class="nf">relative_url_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'/posts/archive/'</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect('/posts/archive/')</span>
+
+<span class="k">def</span> <span class="nf">absolute_url_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'https://simpleblog.com/posts/archive/'</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect('https://simpleblog.com/posts/archive/')</span></code></pre></figure>
+
+<p>Read more on the official <a href="https://docs.djangoproject.com/en/dev/topics/http/shortcuts/#redirect" target="_blank">Django Documentation</a>.</p>
+
+
+      <p class="post-read-more">
+        <a href="/tips/2016/05/05/django-tip-1-redirect.html#comments">Discuss</a>
+      </p>
+    
+    <hr class="dashed">
+    <div class="row">
+      <div class="five columns post-tags">
+        <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a>
+      </div>
+      <div class="seven columns post-share">
+        <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Django%20Tips%20%231%20redirect&url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html&title=Django%20Tips%20%231%20redirect&summary=from%20django.shortcuts%20import%20redirect&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html&description=Django%20Tips%20%231%20redirect&media=http://simpleisbetterthancomplex.com/img/fb_banner.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card post-summary">
+    
+    <h3 class="post-title">
+      <a href="/2015/12/07/working-with-django-view-decorators.html">Working with Django View Decorators</a>
+    </h3>
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i> Dec 7, 2015
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        <a href="/about/">
+          Vitor Freitas
+        </a>
+      </li>
+      <li>
+        <i class="fa fa-comments"></i>
+        <a href="/2015/12/07/working-with-django-view-decorators.html#disqus_thread" data-disqus-identifier="/2015/12/07/working-with-django-view-decorators">
+          Comments
+        </a>
+      </li>
+    </ul>
+    
+      <p>View decorators can be used to restrict access to certain views. Django come with some built-in decorators, like <code class="highlighter-rouge">login_required</code>, <code class="highlighter-rouge">require_POST</code> or <code class="highlighter-rouge">has_permission</code>. They are really useful, but sometimes you might need to restrict the access in a different level of granularity, for example only letting the user who created an entry of the model to edit or delete it.</p>
+
+
+      <p class="post-read-more">
+        <a href="/2015/12/07/working-with-django-view-decorators.html">Read more</a>
+      </p>
+    
+    <hr class="dashed">
+    <div class="row">
+      <div class="five columns post-tags">
+        <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a>
+      </div>
+      <div class="seven columns post-share">
+        <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Working%20with%20Django%20View%20Decorators&url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html&title=Working%20with%20Django%20View%20Decorators&summary=View%20decorators%20can%20be%20used%20to%20restrict%20access%20to%20certain%20views.%20Django%20come%20with%20some%20built-in%20decorators,%20like%20login_required,%20require_POST%20or%20has_permission.%20They%20are%20really%20useful,%20but%20sometime...&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/2015/12/07/working-with-django-view-decorators.html&description=Working%20with%20Django%20View%20Decorators&media=http://simpleisbetterthancomplex.com/img/fb_banner.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card post-summary">
+    
+    <h3 class="post-title">
+      <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">Package of the Week: Django Widget Tweaks</a>
+    </h3>
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i> Dec 4, 2015
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        <a href="/about/">
+          Vitor Freitas
+        </a>
+      </li>
+      <li>
+        <i class="fa fa-comments"></i>
+        <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html#disqus_thread" data-disqus-identifier="/2015/12/04/package-of-the-week-django-widget-tweaks">
+          Comments
+        </a>
+      </li>
+    </ul>
+    
+      <p>When it comes to build forms, <a href="https://docs.djangoproject.com/en/1.9/topics/forms/" target="_blank">Django Forms</a> can be really handy. If your application provide ways for the end-user to input data, it’s strongly advised to do so through the built-in Django Forms. It will automate a good amount of work as well as providing a really stable and secure functionality.</p>
+
+
+      <p class="post-read-more">
+        <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">Read more</a>
+      </p>
+    
+    <hr class="dashed">
+    <div class="row">
+      <div class="five columns post-tags">
+        <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a><a href="/tag/package.html" class="tag">package</a>
+      </div>
+      <div class="seven columns post-share">
+        <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Package%20of%20the%20Week:%20Django%20Widget%20Tweaks&url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html&title=Package%20of%20the%20Week:%20Django%20Widget%20Tweaks&summary=When%20it%20comes%20to%20build%20forms,%20Django%20Forms%20can%20be%20really%20handy.%20If%20your%20application%20provide%20ways%20for%20the%20end-user%20to%20input%20data,%20it%E2%80%99s%20strongly%20advised%20to%20do%20so%20through%20the%20built-in%20Django%20Forms.%20It...&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html&description=Package%20of%20the%20Week:%20Django%20Widget%20Tweaks&media=http://simpleisbetterthancomplex.com/media/2015-12-04-package-of-the-week-django-widget-tweaks/bootstrap-form.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card post-summary">
+    
+    <h3 class="post-title">
+      <a href="/2015/11/30/starting-a-new-django-18-project.html">Starting a New Django 1.8 Project</a>
+    </h3>
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i> Nov 30, 2015
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        <a href="/about/">
+          Vitor Freitas
+        </a>
+      </li>
+      <li>
+        <i class="fa fa-comments"></i>
+        <a href="/2015/11/30/starting-a-new-django-18-project.html#disqus_thread" data-disqus-identifier="/2015/11/30/starting-a-new-django-18-project">
+          Comments
+        </a>
+      </li>
+    </ul>
+    
+      <p>In this article you will find some useful tips regarding starting a new Django project and preparing a development environment. The steps below describes what I generally do when I’m starting a new project.</p>
+
+
+      <p class="post-read-more">
+        <a href="/2015/11/30/starting-a-new-django-18-project.html">Read more</a>
+      </p>
+    
+    <hr class="dashed">
+    <div class="row">
+      <div class="five columns post-tags">
+        <a href="/tag/django.html" class="tag">django</a><a href="/tag/python.html" class="tag">python</a>
+      </div>
+      <div class="seven columns post-share">
+        <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Starting%20a%20New%20Django%201.8%20Project&url=http://simpleisbetterthancomplex.com/2015/11/30/starting-a-new-django-18-project.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/2015/11/30/starting-a-new-django-18-project.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/2015/11/30/starting-a-new-django-18-project.html&title=Starting%20a%20New%20Django%201.8%20Project&summary=In%20this%20article%20you%20will%20find%20some%20useful%20tips%20regarding%20starting%20a%20new%20Django%20project%20and%20preparing%20a%20development%20environment.%20The%20steps%20below%20describes%20what%20I%20generally%20do%20when%20I%E2%80%99m%20starting%20a%20new...&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/2015/11/30/starting-a-new-django-18-project.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/2015/11/30/starting-a-new-django-18-project.html&description=Starting%20a%20New%20Django%201.8%20Project&media=http://simpleisbetterthancomplex.com/media/2015-11-30-starting-a-new-django-18-project/virtualenv.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card post-summary">
+    
+    <h3 class="post-title">
+      <a href="/2015/11/26/package-of-the-week-python-decouple.html">Package of the Week: Python Decouple</a>
+    </h3>
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i> Nov 26, 2015
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        <a href="/about/">
+          Vitor Freitas
+        </a>
+      </li>
+      <li>
+        <i class="fa fa-comments"></i>
+        <a href="/2015/11/26/package-of-the-week-python-decouple.html#disqus_thread" data-disqus-identifier="/2015/11/26/package-of-the-week-python-decouple">
+          Comments
+        </a>
+      </li>
+    </ul>
+    
+      <p>Web applications relies on several number of parameters to run properly on different environments. To name a few from a Django app settings: database url, password, secret key, debug status, email host, allowed hosts. Most of these parameters are environment-specific. On a development environment you might want to run your application with debug mode on. Also, it’s a clever idea to keep your secret key in a safe place (not in your git repository).</p>
+
+
+      <p class="post-read-more">
+        <a href="/2015/11/26/package-of-the-week-python-decouple.html">Read more</a>
+      </p>
+    
+    <hr class="dashed">
+    <div class="row">
+      <div class="five columns post-tags">
+        <a href="/tag/python.html" class="tag">python</a><a href="/tag/package.html" class="tag">package</a>
+      </div>
+      <div class="seven columns post-share">
+        <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Package%20of%20the%20Week:%20Python%20Decouple&url=http://simpleisbetterthancomplex.com/2015/11/26/package-of-the-week-python-decouple.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/2015/11/26/package-of-the-week-python-decouple.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/2015/11/26/package-of-the-week-python-decouple.html&title=Package%20of%20the%20Week:%20Python%20Decouple&summary=Web%20applications%20relies%20on%20several%20number%20of%20parameters%20to%20run%20properly%20on%20different%20environments.%20To%20name%20a%20few%20from%20a%20Django%20app%20settings:%20database%20url,%20password,%20secret%20key,%20debug%20status,%20email%20...&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/2015/11/26/package-of-the-week-python-decouple.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/2015/11/26/package-of-the-week-python-decouple.html&description=Package%20of%20the%20Week:%20Python%20Decouple&media=http://simpleisbetterthancomplex.com/img/fb_banner.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card post-summary">
+    
+    <h3 class="post-title">
+      <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">Small Open-Source Django Projects to Get Started</a>
+    </h3>
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i> Nov 23, 2015
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        <a href="/about/">
+          Vitor Freitas
+        </a>
+      </li>
+      <li>
+        <i class="fa fa-comments"></i>
+        <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html#disqus_thread" data-disqus-identifier="/2015/11/23/small-open-source-django-projects-to-get-started">
+          Comments
+        </a>
+      </li>
+    </ul>
+    
+      <p>Learning Django and Python can be very fun. I personally love programming with Python and for the most part, work with the Django framework. But in the beginning some stuff can be confusing, especially if you are coming from a Java or C♯ background, like me.</p>
+
+
+      <p class="post-read-more">
+        <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">Read more</a>
+      </p>
+    
+    <hr class="dashed">
+    <div class="row">
+      <div class="five columns post-tags">
+        <a href="/tag/django.html" class="tag">django</a><a href="/tag/python.html" class="tag">python</a>
+      </div>
+      <div class="seven columns post-share">
+        <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Small%20Open-Source%20Django%20Projects%20to%20Get%20Started&url=http://simpleisbetterthancomplex.com/2015/11/23/small-open-source-django-projects-to-get-started.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/2015/11/23/small-open-source-django-projects-to-get-started.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/2015/11/23/small-open-source-django-projects-to-get-started.html&title=Small%20Open-Source%20Django%20Projects%20to%20Get%20Started&summary=Learning%20Django%20and%20Python%20can%20be%20very%20fun.%20I%20personally%20love%20programming%20with%20Python%20and%20for%20the%20most%20part,%20work%20with%20the%20Django%20framework.%20But%20in%20the%20beginning%20some%20stuff%20can%20be%20confusing,%20especi...&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/2015/11/23/small-open-source-django-projects-to-get-started.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/2015/11/23/small-open-source-django-projects-to-get-started.html&description=Small%20Open-Source%20Django%20Projects%20to%20Get%20Started&media=http://simpleisbetterthancomplex.com/media/2015-11-23-small-open-source-django-projects-to-get-started/bootcamp.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+        </div>
+        <div class="four columns sidebar">
+          <div class="widget card about">
+  <h4>About me</h4>
+  <img src="/img/picture.jpg" alt="Vitor Freitas">
+  <p>
+    Hey there, my name is <strong>Vitor Freitas</strong>. I’m a passionate software developer and researcher living in Oulu, Finland.
+    I write about Python, Django and Web Development.
+  </p>
+  <a href="/about/">Read more</a>
+</div>
+
+<div class="widget card social">
+  <a href="https://github.com/vitorfs/" target="_blank" title="GitHub">
+    <i class="fa fa-github-alt"></i>
+  </a>
+  <a href="https://twitter.com/vitorfs/" target="_blank" title="Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://facebook.com/vitorfs/" target="_blank" title="Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://linkedin.com/in/vitorfs" target="_blank" title="LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+</div>
+
+<div class="widget card subscribe">
+  <h4>Subscribe now</h4>
+  <p>Subscribe to our mailing list to receive weekly Django tips</p>
+  <!-- Begin MailChimp Signup Form -->
+  <div id="mc_embed_signup">
+    <form action="//simpleisbetterthancomplex.us12.list-manage.com/subscribe/post?u=98efdfc6a91e10018aaa182b0&amp;id=a31c2b72f8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <div class="mc-field-group">
+          <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+          <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+        </div>
+        <div class="mc-field-group">
+          <label for="mce-FNAME">First Name</label>
+          <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+        </div>
+        <div class="mc-field-group">
+          <label for="mce-LNAME">Last Name</label>
+          <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+        </div>
+        <p>Powered by <a href="http://eepurl.com/b0g66f" title="MailChimp - email marketing made easy and fun">MailChimp</a></p>
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_98efdfc6a91e10018aaa182b0_a31c2b72f8" tabindex="-1" value=""></div>
+        <div class="clear">
+          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+        </div>
+      </div>
+    </form>
+  </div>
+  <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+  <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+  <!--End mc_embed_signup-->
+</div>
+
+<div class="widget card">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Sidebar -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-3448661896771709"
+       data-ad-slot="7493039276"
+       data-ad-format="auto"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="widget card">
+  <h4>Popular posts</h4>
+  <ul class="popular-posts">
+  <li>
+    <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
+      Small Open-Source Django Projects to Get Started
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+      Package of the Week: Django Widget Tweaks
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/07/working-with-django-view-decorators.html">
+      Working with Django View Decorators
+    </a>
+  </li>
+</ul>
+</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+  <div class="container">
+    <ul>
+      <li>© 2016 simple is better than complex</li>
+      <li>//</li>
+      <li><a href="/privacy/">privacy policy</a></li>
+      <li><a href="/cookies/">cookies</a></li>
+      <li><a href="/feed.xml">rss</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $(".post-share .social a").click(function () {
+      var url = $(this).attr("href");
+      var width = 600;
+      var height = 400;
+      var left = (screen.width / 2) - (width / 2);
+      var top = (screen.height / 2) - (height / 2);
+      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+      return false;
+    });
+  });
+</script>
+
+
+</body>
+</html>

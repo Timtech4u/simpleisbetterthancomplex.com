@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Django Tips #1 redirect</title>
+<meta name="description" content="from django.shortcuts import redirect">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+</style>
+<link rel="canonical" href="http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html">
+<link rel="alternate" type="application/rss+xml" title="Simple is Better Than Complex" href="http://simpleisbetterthancomplex.com/feed.xml" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta property="og:title" content="Django Tips #1 redirect">
+<meta property="og:url" content="http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html">
+<meta property="og:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+<meta property="og:description" content="from django.shortcuts import redirect">
+<meta property="og:site_name" content="Simple is Better Than Complex">
+<meta property="og:locale" content="en_US">
+
+  <meta property="article:published_time" content="2016-05-05T00:00:00+03:00">
+  <meta property="article:author" content="http://facebook.com/vitorfs">
+
+<meta property="fb:admins" content="http://facebook.com/vitorfs">
+<meta property="fb:app_id" content="1645747765697865">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="vitorfs">
+<meta name="twitter:creator" content="vitorfs">
+<meta name="twitter:title" content="Django Tips #1 redirect">
+<meta name="twitter:description" content="from django.shortcuts import redirect">
+<meta name="twitter:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+  <meta property="og:type" content="article">
+  
+    <meta property="article:tag" content="python">
+  
+    <meta property="article:tag" content="django">
+  
+</head>
+<body>
+  <header>
+  <div class="container">
+    <ul class="menu">
+      <!--li>
+        <a href="/" class="logo">
+          simple<span>is</span>better<span>than</span>complex
+        </a>
+      </li-->
+      <li><a href="/" class="brand">Home</a></li>
+      <li><a href="/about/">About me</a></li>
+      <li><a href="https://github.com/simpleisbetterthancomplex/simpleisbetterthancomplex.github.io/issues" target="_blank">Suggest a topic</a></li>
+      <li><a href="http://eepurl.com/b0gR51" target="_blank">Subscribe</a></li>
+    </ul>
+  </div>
+</header>
+<div class="container masthead">
+  <h1>
+    <a href="/" class="logo">
+      simple <span>is</span> better <span>than</span> complex
+    </a>
+  </h1>
+</div>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="ten offset-by-one columns content post">
+          <div class="card">
+            
+              <h5 class="post-category">tips</h5>
+              <hr class="dashed">
+            
+            <h3 class="post-title">Django Tips #1 redirect</h3>
+            <ul class="post-meta">
+              <li>
+                <i class="fa fa-calendar"></i> May 5, 2016
+              </li>
+              
+                <li>
+                  <i class="fa fa-user"></i>
+                  <a href="/about/">Vitor Freitas</a>
+                </li>
+              
+              <li>
+                <i class="fa fa-comments"></i>
+                <a href="#disqus_thread" data-disqus-identifier="/tips/2016/05/05/django-tip-1-redirect">Comments</a>
+              </li>
+              
+            </ul>
+            <article>
+              <p><code class="highlighter-rouge">from django.shortcuts import redirect</code></p>
+
+<p>The function <code class="highlighter-rouge">redirect</code> will basically return an <code class="highlighter-rouge">HttpResponseRedirect</code> with the proper URL. I prefer to always use
+this shortcut so my codebase remains consistent.</p>
+
+<p>The advantages of using <code class="highlighter-rouge">redirect</code> instead of <code class="highlighter-rouge">HttpResponseRedirect</code> is that you can pass different types of arguments
+and also it will save you from importing <code class="highlighter-rouge">django.urlresolvers.reverse</code> in your project’s <code class="highlighter-rouge">views.py</code>.</p>
+
+<p>The possible arguments are:</p>
+
+<ul>
+  <li>A model instance. This will call the model’s <code class="highlighter-rouge">get_absolute_url()</code> method;</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">simple_blog.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="k">def</span> <span class="nf">post_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect(post.get_absolute_url())</span></code></pre></figure>
+
+<ul>
+  <li>A reverse url name (accept view arguments);</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">simple_blog.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="k">def</span> <span class="nf">post_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">post_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'post_details'</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect(reverse('post_details', args=(post_id, )))</span></code></pre></figure>
+
+<ul>
+  <li>An aboluste or relative URL.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+
+<span class="k">def</span> <span class="nf">relative_url_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'/posts/archive/'</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect('/posts/archive/')</span>
+
+<span class="k">def</span> <span class="nf">absolute_url_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">'https://simpleblog.com/posts/archive/'</span><span class="p">)</span>
+    <span class="c"># equivalent to: return HttpResponseRedirect('https://simpleblog.com/posts/archive/')</span></code></pre></figure>
+
+<p>Read more on the official <a href="https://docs.djangoproject.com/en/dev/topics/http/shortcuts/#redirect" target="_blank">Django Documentation</a>.</p>
+
+
+            </article>
+            <hr class="dashed">
+            <div class="row">
+              <div class="six columns post-tags">
+                <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a>
+              </div>
+              <div class="six columns post-share">
+                <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Django%20Tips%20%231%20redirect&url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html&title=Django%20Tips%20%231%20redirect&summary=from%20django.shortcuts%20import%20redirect&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/tips/2016/05/05/django-tip-1-redirect.html&description=Django%20Tips%20%231%20redirect&media=http://simpleisbetterthancomplex.com/img/fb_banner.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+              </div>
+            </div>
+            
+          </div>
+          <div class="card">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Post bottom -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-3448661896771709"
+                 data-ad-slot="5399027276"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+          <div class="card">
+            <div class="row">
+            <h4>Popular posts</h4>
+            <ul class="popular-posts">
+  <li>
+    <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
+      Small Open-Source Django Projects to Get Started
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+      Package of the Week: Django Widget Tweaks
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/07/working-with-django-view-decorators.html">
+      Working with Django View Decorators
+    </a>
+  </li>
+</ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+  <div class="container">
+    <ul>
+      <li>© 2016 simple is better than complex</li>
+      <li>//</li>
+      <li><a href="/privacy/">privacy policy</a></li>
+      <li><a href="/cookies/">cookies</a></li>
+      <li><a href="/feed.xml">rss</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $(".post-share .social a").click(function () {
+      var url = $(this).attr("href");
+      var width = 600;
+      var height = 400;
+      var left = (screen.width / 2) - (width / 2);
+      var top = (screen.height / 2) - (height / 2);
+      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+      return false;
+    });
+  });
+</script>
+
+
+</body>
+</html>

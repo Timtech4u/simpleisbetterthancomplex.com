@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Django Tips #2 humanize</title>
+<meta name="description" content="Django comes with a set of template filters to add a “human touch” to your data. It is used to translate numbers anddates into a human readable format.">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/syntax.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+</style>
+<link rel="canonical" href="http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html">
+<link rel="alternate" type="application/rss+xml" title="Simple is Better Than Complex" href="http://simpleisbetterthancomplex.com/feed.xml" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta property="og:title" content="Django Tips #2 humanize">
+<meta property="og:url" content="http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html">
+<meta property="og:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+<meta property="og:description" content="Django comes with a set of template filters to add a “human touch” to your data. It is used to translate numbers anddates into a human readable format.">
+<meta property="og:site_name" content="Simple is Better Than Complex">
+<meta property="og:locale" content="en_US">
+
+  <meta property="article:published_time" content="2016-05-09T00:00:00+03:00">
+  <meta property="article:author" content="http://facebook.com/vitorfs">
+
+<meta property="fb:admins" content="http://facebook.com/vitorfs">
+<meta property="fb:app_id" content="1645747765697865">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="vitorfs">
+<meta name="twitter:creator" content="vitorfs">
+<meta name="twitter:title" content="Django Tips #2 humanize">
+<meta name="twitter:description" content="Django comes with a set of template filters to add a “human touch” to your data. It is used to translate numbers anddates into a human readable format.">
+<meta name="twitter:image" content="http://simpleisbetterthancomplex.com/img/fb_banner.png">
+  <meta property="og:type" content="article">
+  
+    <meta property="article:tag" content="python">
+  
+    <meta property="article:tag" content="django">
+  
+    <meta property="article:tag" content="contrib">
+  
+</head>
+<body>
+  <header>
+  <div class="container">
+    <ul class="menu">
+      <!--li>
+        <a href="/" class="logo">
+          simple<span>is</span>better<span>than</span>complex
+        </a>
+      </li-->
+      <li><a href="/" class="brand">Home</a></li>
+      <li><a href="/about/">About me</a></li>
+      <li><a href="https://github.com/simpleisbetterthancomplex/simpleisbetterthancomplex.github.io/issues" target="_blank">Suggest a topic</a></li>
+      <li><a href="http://eepurl.com/b0gR51" target="_blank">Subscribe</a></li>
+    </ul>
+  </div>
+</header>
+<div class="container masthead">
+  <h1>
+    <a href="/" class="logo">
+      simple <span>is</span> better <span>than</span> complex
+    </a>
+  </h1>
+</div>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="ten offset-by-one columns content post">
+          <div class="card">
+            
+              <h5 class="post-category">tips</h5>
+              <hr class="dashed">
+            
+            <h3 class="post-title">Django Tips #2 humanize</h3>
+            <ul class="post-meta">
+              <li>
+                <i class="fa fa-calendar"></i> May 9, 2016
+              </li>
+              
+                <li>
+                  <i class="fa fa-user"></i>
+                  <a href="/about/">Vitor Freitas</a>
+                </li>
+              
+              <li>
+                <i class="fa fa-comments"></i>
+                <a href="#disqus_thread" data-disqus-identifier="/tips/2016/05/09/django-tip-2-humanize">Comments</a>
+              </li>
+              
+            </ul>
+            <article>
+              <p>Django comes with a set of template filters to add a “human touch” to your data. It is used to translate numbers and
+dates into a human readable format.</p>
+
+<p>Personally, I use the template filter <code class="highlighter-rouge">naturaltime</code> a lot. It looks good in the user interface and is very easy to
+implement. Basically what it is gonna do is translate <code class="highlighter-rouge">09 May 2016 20:54:31</code> into <code class="highlighter-rouge">29 seconds ago</code> (considering when
+<strong>now</strong> is <strong>20:54:00</strong>).</p>
+
+<p>To install <strong>Django Humanize</strong>, add <code class="highlighter-rouge">django.contrib.humanize</code> to your <code class="highlighter-rouge">INSTALLED_APPS</code> setting:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.contrib.auth'</span><span class="p">,</span>
+    <span class="s">'django.contrib.contenttypes'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages'</span><span class="p">,</span>
+    <span class="s">'django.contrib.staticfiles'</span><span class="p">,</span>
+
+    <span class="s">'django.contrib.humanize'</span><span class="p">,</span>
+<span class="p">]</span></code></pre></figure>
+
+<p>Now in the template, load the template tags:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% load humanize %}</code></pre></figure>
+
+<p>Using it is very straightforward, for example the <code class="highlighter-rouge">naturaltime</code> template filter:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+  <span class="nt">&lt;ul&gt;</span>
+    {% for notification in notifications %}
+      <span class="nt">&lt;li&gt;</span>
+        {{ notification }}
+        <span class="nt">&lt;small&gt;</span>{{ notification.date|naturaltime }}<span class="nt">&lt;/small&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    {% empty %}
+      <span class="nt">&lt;li&gt;</span>You have no unread notification.<span class="nt">&lt;/li&gt;</span>
+    {% endfor %}
+  <span class="nt">&lt;/ul&gt;</span>
+{% endblock %}</code></pre></figure>
+
+<p>Following the available template filters:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>template filter</th>
+      <th>example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>apnumber</td>
+      <td><code class="highlighter-rouge">1</code> becomes <code class="highlighter-rouge">one</code></td>
+    </tr>
+    <tr>
+      <td>intcomma</td>
+      <td><code class="highlighter-rouge">4500000</code> becomes <code class="highlighter-rouge">4,500,000</code></td>
+    </tr>
+    <tr>
+      <td>intword</td>
+      <td><code class="highlighter-rouge">1200000</code> becomes <code class="highlighter-rouge">1.2 million</code></td>
+    </tr>
+    <tr>
+      <td>naturalday</td>
+      <td><code class="highlighter-rouge">08 May 2016</code> becomes <code class="highlighter-rouge">yesterday</code></td>
+    </tr>
+    <tr>
+      <td>naturaltime</td>
+      <td><code class="highlighter-rouge">09 May 2016 20:54:31</code> becomes <code class="highlighter-rouge">29 seconds ago</code></td>
+    </tr>
+    <tr>
+      <td>ordinal</td>
+      <td><code class="highlighter-rouge">3</code> becomes <code class="highlighter-rouge">3rd</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Read more on the official <a href="https://docs.djangoproject.com/en/dev/ref/contrib/humanize/" target="_blank">Django Documentation</a>.</p>
+
+
+            </article>
+            <hr class="dashed">
+            <div class="row">
+              <div class="six columns post-tags">
+                <a href="/tag/python.html" class="tag">python</a><a href="/tag/django.html" class="tag">django</a><a href="/tag/contrib.html" class="tag">contrib</a>
+              </div>
+              <div class="six columns post-share">
+                <div class="social">
+  <a href="https://twitter.com/intent/tweet?text=Django%20Tips%20%232%20humanize&url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html&via=vitorfs&related=vitorfs"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&u=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html&title=Django%20Tips%20%232%20humanize&summary=Django%20comes%20with%20a%20set%20of%20template%20filters%20to%20add%20a%20%E2%80%9Chuman%20touch%E2%80%9D%20to%20your%20data.%20It%20is%20used%20to%20translate%20numbers%20anddates%20into%20a%20human%20readable%20format.&source=http://simpleisbetterthancomplex.com"
+     rel="nofollow"
+     target="_blank"
+     title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  <a href="https://plus.google.com/share?url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Google+">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  <a href="http://pinterest.com/pin/create/button/?url=http://simpleisbetterthancomplex.com/tips/2016/05/09/django-tip-2-humanize.html&description=Django%20Tips%20%232%20humanize&media=http://simpleisbetterthancomplex.com/img/fb_banner.png"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Pinterest">
+    <i class="fa fa-pinterest-p"></i>
+  </a>
+</div>
+
+              </div>
+            </div>
+            
+          </div>
+          <div class="card">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Post bottom -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-3448661896771709"
+                 data-ad-slot="5399027276"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+          <div class="card">
+            <div class="row">
+            <h4>Popular posts</h4>
+            <ul class="popular-posts">
+  <li>
+    <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
+      Small Open-Source Django Projects to Get Started
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+      Package of the Week: Django Widget Tweaks
+    </a>
+  </li>
+  <li>
+    <a href="/2015/12/07/working-with-django-view-decorators.html">
+      Working with Django View Decorators
+    </a>
+  </li>
+</ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+  <div class="container">
+    <ul>
+      <li>© 2016 simple is better than complex</li>
+      <li>//</li>
+      <li><a href="/privacy/">privacy policy</a></li>
+      <li><a href="/cookies/">cookies</a></li>
+      <li><a href="/feed.xml">rss</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $(".post-share .social a").click(function () {
+      var url = $(this).attr("href");
+      var width = 600;
+      var height = 400;
+      var left = (screen.width / 2) - (width / 2);
+      var top = (screen.height / 2) - (height / 2);
+      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+      return false;
+    });
+  });
+</script>
+
+
+</body>
+</html>
