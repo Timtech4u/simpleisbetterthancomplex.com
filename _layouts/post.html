@@ -38,6 +38,12 @@
                 <li>{{ page.meta }}</li>
               {% endif %}
             </ul>
+            <div class="post-featured-image">
+              <img src="{{ page.featured_image | prepend: site.baseurl }}" alt="{{ page.title }}" class="featured-image">
+              {% if page.featured_image_source %}
+                <small>(Picture: <a href="{{ page.featured_image_source }}" target="_blank">{{ page.featured_image_source }}</a>)</small>
+              {% endif %}
+            </div>
             <article>
               {{ content }}
             </article>
@@ -70,15 +76,17 @@
               </div>
             {% endif %}
           </div>
-          <div class="card">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Post bottom -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-3448661896771709"
-                 data-ad-slot="5399027276"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          </div>
+          {% if jekyll.environment == "production" %}
+            <div class="card">
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <!-- Post bottom -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:728px;height:90px"
+                   data-ad-client="ca-pub-3448661896771709"
+                   data-ad-slot="5399027276"></ins>
+              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+          {% endif %}
           <div class="card">
             <div class="row">
             <h4>Popular posts</h4>

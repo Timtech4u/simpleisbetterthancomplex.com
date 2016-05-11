@@ -1206,3 +1206,21 @@ pre code {
   font-size: 1.4rem;
   overflow-y: scroll;
 }
+
+.featured-image {
+  width: 100%;
+}
+
+.post-summary .featured-image,
+.post-featured-image {
+  margin-bottom: 2rem;
+}
+
+.tip {
+  background-color: #fcf8e3;
+  border: 1px solid #faebcc;
+  color: #8a6d3b;
+  padding: 10px 15px;
+  font-size: 14px;
+  margin-bottom: 2.5rem;
+}

@@ -28,6 +28,11 @@ layout: home
         </a>
       </li>
     </ul>
+    {% if post.featured_image %}
+      <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">
+        <img src="{{ post.featured_image | prepend: site.baseurl }}" alt="{{ post.title }}" class="featured-image">
+      </a>
+    {% endif %}
     {% if post.category == 'tips' %}
       {{ post.content }}
       <p class="post-read-more">
