@@ -38,12 +38,14 @@
                 <li>{{ page.meta }}</li>
               {% endif %}
             </ul>
-            <div class="post-featured-image">
-              <img src="{{ page.featured_image | prepend: site.baseurl }}" alt="{{ page.title }}" class="featured-image">
-              {% if page.featured_image_source %}
-                <small>(Picture: <a href="{{ page.featured_image_source }}" target="_blank">{{ page.featured_image_source }}</a>)</small>
-              {% endif %}
-            </div>
+            {% if page.featured_image %}
+              <div class="post-featured-image">
+                <img src="{{ page.featured_image | prepend: site.baseurl }}" alt="{{ page.title }}" class="featured-image">
+                {% if page.featured_image_source %}
+                  <small>(Picture: <a href="{{ page.featured_image_source }}" target="_blank">{{ page.featured_image_source }}</a>)</small>
+                {% endif %}
+              </div>
+            {% endif %}
             <article>
               {{ content }}
             </article>
