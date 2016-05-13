@@ -1198,6 +1198,20 @@ article img {
   margin-bottom: 0;
 }
 
+.sidebar .search form {
+  margin-bottom: 0;
+}
+
+.sidebar .search form input {
+  margin-bottom: 0;
+  font-size: 1.6rem;
+}
+
+.sidebar .search form button {
+  margin-bottom: 0;
+  font-size: 1.8rem;
+}
+
 #disqus_thread {
   margin-top: 3rem;
 }
@@ -1223,4 +1237,51 @@ pre code {
   padding: 10px 15px;
   font-size: 14px;
   margin-bottom: 2.5rem;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9000;
+  display: none;
+}
+
+#search_results {
+  padding: 15px;
+  width: 600px;
+  min-height: 200px;
+  background-color: #fff;
+  z-index: 9001;
+  top: 100px;
+  left: 50%;
+  margin-left: -300px;
+  position: fixed;
+  display: none;
+  border: 15px solid rgba(0, 0, 0, 0.1);
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+}
+
+#search_header {
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 15px;
+}
+
+#search_header h5 {
+  margin-bottom: 10px;
+}
+
+#search_header a {
+  float: right;
+  color: #555;
+  margin-top: 5px;
+}
+
+#search_header a:hover,
+#search_header a:active {
+  color: #000;
 }

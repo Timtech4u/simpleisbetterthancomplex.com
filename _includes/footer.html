@@ -9,7 +9,19 @@
     </ul>
   </div>
 </footer>
+<div class="overlay"></div>
+<div id="search_results">
+  <div id="search_header">
+    <a href="#">
+      <span class="fa fa-close"></span>
+    </a>
+    <h5>Search results</h5>
+  </div>
+  <ul></ul>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="{{ "/js/lunr.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/search.js" | prepend: site.baseurl }}"></script>
 <script type="text/javascript">
   $(function () {
     $(".post-share .social a").click(function () {
