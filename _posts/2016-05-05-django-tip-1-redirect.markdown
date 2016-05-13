@@ -5,6 +5,9 @@ date: 2016-05-05
 author: Vitor Freitas
 tags: python django
 category: tips
+thumbnail: "/media/2016-05-05-django-tip-1-redirect/featured-post-image.jpg"
+featured_image: "/media/2016-05-05-django-tip-1-redirect/featured-post-image.jpg"
+featured_image_source: "https://www.pexels.com/photo/mountains-nature-arrow-guide-66100/"
 ---
 
 `from django.shortcuts import redirect`
