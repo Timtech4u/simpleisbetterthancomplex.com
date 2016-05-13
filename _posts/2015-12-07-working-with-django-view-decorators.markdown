@@ -4,6 +4,9 @@ title:  "Working with Django View Decorators"
 date:   2015-12-07 12:00:00
 author: Vitor Freitas
 tags: python django
+thumbnail: "/media/2015-12-07-working-with-django-view-decorators/featured-post-image.jpg"
+featured_image: "/media/2015-12-07-working-with-django-view-decorators/featured-post-image.jpg"
+featured_image_source: "https://unsplash.com/photos/ecQDQb8lWDU"
 ---
 
 View decorators can be used to restrict access to certain views. Django come with some built-in decorators, like `login_required`, `require_POST` or `has_permission`. They are really useful, but sometimes you might need to restrict the access in a different level of granularity, for example only letting the user who created an entry of the model to edit or delete it.

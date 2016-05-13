@@ -4,12 +4,14 @@ title:  "Small Open-Source Django Projects to Get Started"
 date:   2015-11-23 12:00:00
 author: Vitor Freitas
 tags: django python
-thumbnail: "/media/2015-11-23-small-open-source-django-projects-to-get-started/bootcamp.png"
+thumbnail: "/media/2015-11-23-small-open-source-django-projects-to-get-started/featured-post-image.jpg"
+featured_image: "/media/2015-11-23-small-open-source-django-projects-to-get-started/featured-post-image.jpg"
+featured_image_source: "https://unsplash.com/photos/gcsNOsPEXfs"
 ---
 
 Learning Django and Python can be very fun. I personally love programming with Python and for the most part, work with the Django framework. But in the beginning some stuff can be confusing, especially if you are coming from a Java or C♯ background, like me.
 
-The biggest challenges for me was to get familiar with the initial Django setup, understand the URL routing, and get to know how to organize the project files and apps. I've not being around for that long, it's been only three years now since I started to mess around with Django. 
+The biggest challenges for me was to get familiar with the initial Django setup, understand the URL routing, and get to know how to organize the project files and apps. I've not being around for that long, it's been only three years now since I started to mess around with Django.
 
 Regarding those challenges, now I can say I'm really comfortable with the Django setup (you will eventually get there after creating a few projects), I fully understand how Django routes URLs but I'm always googling around to find a suitable regex for my needs, and finally, I'm always trying new ways to organize my Django projects.
 
@@ -23,7 +25,7 @@ In this post I will present you some of my open-source Django projects, which ca
 
 ![Bootcamp]({{ "/media/2015-11-23-small-open-source-django-projects-to-get-started/bootcamp.png" | prepend: site.baseurl }} "Bootcamp: An enterprise social network")
 
-Bootcamp is a simple concept of a enterprise social network. I've developed it to encourage the developers of a company I worked in the past to collaborate and share experiences. It's meant to be closed and to run inside a company. 
+Bootcamp is a simple concept of a enterprise social network. I've developed it to encourage the developers of a company I worked in the past to collaborate and share experiences. It's meant to be closed and to run inside a company.
 
 The whole idea was to have a simple feed app in the front page, like Twitter so we could share links and post some of our thoughts and keep track of what everyone was doing. Also we wanted a space that all developers could share some more elaborate content, hence the Articles app. And finally, we wanted a Q&A app, like StackOverflow, for questions related to our business and the softwares and projects we developed for our customers — which couldn't be shared openly.
 
@@ -47,7 +49,7 @@ A few things you can find within the Bootcamp project:
 
 You can grab the source code on GitHub and try the live demo on:
 
-**Source Code**: [github.com/vitorfs/bootcamp][bootcamp-source]{:target="_blank"}  
+**Source Code**: [github.com/vitorfs/bootcamp][bootcamp-source]{:target="_blank"}
 **Live Demo**: [trybootcamp.vitorfs.com][bootcamp-demo]{:target="_blank"}
 
 
@@ -71,7 +73,7 @@ It's a fairly simple Django project, but if you are curious about how to do some
 
 You can grab the source code on GitHub and see the actual site on:
 
-**Source Code:** [github.com/vitorfs/woid][woid-source]{:target="_blank"}  
+**Source Code:** [github.com/vitorfs/woid][woid-source]{:target="_blank"}
 **Website:** [woid.io][woid-site]{:target="_blank"}
 
 
@@ -96,7 +98,7 @@ There isn't much to see regarding to the Django part, it's more about an interfa
 
 You can grab the source code on GitHub and see the actual site on:
 
-**Source Code:** [github.com/vitorfs/bloodhound][bloodhound-source]{:target="_blank"}  
+**Source Code:** [github.com/vitorfs/bloodhound][bloodhound-source]{:target="_blank"}
 **Website:** [bloodhound.me][bloodhound-site]{:target="_blank"}
 
 
@@ -124,7 +126,7 @@ There is still some old code there, but the app is pretty stable. It was one of 
 
 You can grab the source code on GitHub and see the actual site on:
 
-**Source Code:** [github.com/vitorfs/parsifal][parsifal-source]{:target="_blank"}  
+**Source Code:** [github.com/vitorfs/parsifal][parsifal-source]{:target="_blank"}
 **Website:** [parsif.al][parsifal-site]{:target="_blank"}
 
 

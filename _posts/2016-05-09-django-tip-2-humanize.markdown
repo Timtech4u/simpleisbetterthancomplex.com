@@ -5,6 +5,9 @@ date: 2016-05-09
 author: Vitor Freitas
 tags: python django contrib
 category: tips
+thumbnail: "/media/2016-05-09-django-tip-2-humanize/featured-post-image.jpg"
+featured_image: "/media/2016-05-09-django-tip-2-humanize/featured-post-image.jpg"
+featured_image_source: "https://unsplash.com/photos/oMpAz-DN-9I"
 ---
 
 Django comes with a set of template filters to add a "human touch" to your data. It is used to translate numbers and

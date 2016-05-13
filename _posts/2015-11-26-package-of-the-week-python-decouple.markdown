@@ -4,6 +4,9 @@ title:  "Package of the Week: Python Decouple"
 date:   2015-11-26 12:00:00
 author: Vitor Freitas
 tags: python package
+thumbnail: "/media/2015-11-26-package-of-the-week-python-decouple/featured-post-image.jpg"
+featured_image: "/media/2015-11-26-package-of-the-week-python-decouple/featured-post-image.jpg"
+featured_image_source: "https://www.pexels.com/photo/lego-walpaper-computer-59628/"
 ---
 
 Web applications relies on several number of parameters to run properly on different environments. To name a few from a Django app settings: database url, password, secret key, debug status, email host, allowed hosts. Most of these parameters are environment-specific. On a development environment you might want to run your application with debug mode on. Also, it's a clever idea to keep your secret key in a safe place (not in your git repository).

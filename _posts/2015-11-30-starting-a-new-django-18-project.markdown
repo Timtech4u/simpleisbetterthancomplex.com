@@ -4,16 +4,18 @@ title: "Starting a New Django 1.8 Project"
 date: 2015-11-30 12:00:00
 author: Vitor Freitas
 tags: django python
-thumbnail: "/media/2015-11-30-starting-a-new-django-18-project/virtualenv.png"
+thumbnail: "/media/2015-11-30-starting-a-new-django-18-project/featured-post-image.jpg"
+featured_image: "/media/2015-11-30-starting-a-new-django-18-project/featured-post-image.jpg"
+featured_image_source: "https://stock.tookapic.com/photos/7003"
 ---
 
-In this article you will find some useful tips regarding starting a new Django project and preparing a development environment. The steps below describes what I generally do when I'm starting a new project. 
+In this article you will find some useful tips regarding starting a new Django project and preparing a development environment. The steps below describes what I generally do when I'm starting a new project.
 
 ***
 
 #### Step 1: Python Virtual Environment
 
-If you have to maintain more than one Django project, at some point you will end up having problems with its dependencies, or with the Django version itself. The solution is to use [virtualenv][virtualenv]{:target="_blank"}, which is a tool to create isolated Python environments. 
+If you have to maintain more than one Django project, at some point you will end up having problems with its dependencies, or with the Django version itself. The solution is to use [virtualenv][virtualenv]{:target="_blank"}, which is a tool to create isolated Python environments.
 
 It's great because each of your Django project can live inside its own Python environment.
 

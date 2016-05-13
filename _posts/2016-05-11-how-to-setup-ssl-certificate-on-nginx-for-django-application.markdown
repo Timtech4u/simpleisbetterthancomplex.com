@@ -212,7 +212,7 @@ sudo service nginx restart
 
 And it is already working, serving all requests with HTTPS only:
 
-![Simple Academy HTTPS]({{ "/media/2016-05-11-how-to-setup-ssl-certificate-on-nginx-for-django-application/simple_academy_https.png" | prepend: site.baseurl }} "Simple Academy HTTPS")
+![Simple Academy HTTPS]({{ "/media/2016-05-11-how-to-setup-ssl-certificate-on-nginx-for-django-application/simple-academy-https.png" | prepend: site.baseurl }} "Simple Academy HTTPS")
 
 Finally, add a few extra configurations to your `settings.py`:
 
