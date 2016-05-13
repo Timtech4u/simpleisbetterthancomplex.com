@@ -38,7 +38,8 @@ jQuery(function() {
     $("body").css("overflow", "auto");
   }
 
-  $(".overlay, #search_header a").click(function () {
+  $(".overlay, #search_header a").click(function (event) {
+    event.preventDefault();
     close_search();
   });
 
