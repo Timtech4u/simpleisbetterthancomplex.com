@@ -23,32 +23,10 @@ jQuery(function() {
   // Event when the form is submitted
   $("#site_search").submit(function(event){
       event.preventDefault();
-      $(".overlay").show();
-      $("#search_results").show();
-      $("body").css("overflow", "hidden");
+      $("#search_results").openModal();
       var query = $("#search_box").val(); // Get the value for the text field
       var results = window.idx.search(query); // Get lunr to perform a search
       display_search_results(results); // Hand the results off to be displayed
-  });
-
-  function close_search() {
-    $(".overlay").hide();
-    $("#search_results").hide();
-    $("#search_results ul").empty()
-    $("body").css("overflow", "auto");
-  }
-
-  $(".overlay, #search_header a").click(function (event) {
-    event.preventDefault();
-    close_search();
-  });
-
-  var ESCAPE_KEY = 27;
-  $("body").on("keydown", function (event) {
-    var key = event.which || event.keyCode;
-    if (key == ESCAPE_KEY && $("#search_results").is(":visible")) {
-      close_search();
-    }
   });
 
   function display_search_results(results) {

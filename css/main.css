@@ -1250,10 +1250,9 @@ pre code {
   display: none;
 }
 
-#search_results {
+.modal {
   padding: 15px;
   width: 600px;
-  min-height: 200px;
   background-color: #fff;
   z-index: 9001;
   top: 100px;
@@ -1266,22 +1265,26 @@ pre code {
           background-clip: padding-box;
 }
 
-#search_header {
+.modal .modal-header {
   border-bottom: 1px solid #e1e1e1;
   margin-bottom: 15px;
 }
 
-#search_header h5 {
+.modal .modal-header h5 {
   margin-bottom: 10px;
 }
 
-#search_header a {
+.modal .modal-header a {
   float: right;
   color: #555;
   margin-top: 5px;
 }
 
-#search_header a:hover,
-#search_header a:active {
+.modal .modal-header a:hover,
+.modal .modal-header a:active {
   color: #000;
+}
+
+#contact_form textarea {
+  min-height: 100px;
 }

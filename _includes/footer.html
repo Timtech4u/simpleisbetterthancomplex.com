@@ -10,8 +10,8 @@
   </div>
 </footer>
 <div class="overlay"></div>
-<div id="search_results">
-  <div id="search_header">
+<div id="search_results" class="modal">
+  <div id="search_header" class="modal-header">
     <a href="#">
       <span class="fa fa-close"></span>
     </a>
@@ -22,8 +22,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="{{ "/js/lunr.min.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/search.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/contact.js" | prepend: site.baseurl }}"></script>
 <script type="text/javascript">
+
+  $.fn.closeModal = function () {
+    $(".overlay").hide();
+    $(this).hide();
+    $("body").css("overflow", "auto");
+  };
+
+  $.fn.openModal = function () {
+    $(".overlay").show();
+    $(this).show();
+    $("body").css("overflow", "hidden");
+  }
+
   $(function () {
+    // Social Share
     $(".post-share .social a").click(function () {
       var url = $(this).attr("href");
       var width = 600;
@@ -34,6 +49,21 @@
       var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
       return false;
     });
+
+    // Modal
+    $(".overlay, .modal .modal-header a").click(function (event) {
+      event.preventDefault();
+      $(".modal:visible").closeModal();
+    });
+
+    $("body").on("keydown", function (event) {
+      var ESCAPE_KEY = 27;
+      var key = event.which || event.keyCode;
+      if (key == ESCAPE_KEY && $(".modal").is(":visible")) {
+        $(".modal:visible").closeModal();
+      }
+    });
+
   });
 </script>
 {% if jekyll.environment == "production" %}
