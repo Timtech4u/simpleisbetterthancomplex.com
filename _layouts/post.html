@@ -78,6 +78,23 @@
               </div>
             {% endif %}
           </div>
+          <div class="card subscribe">
+            <form action="//simpleisbetterthancomplex.us12.list-manage.com/subscribe/post?u=98efdfc6a91e10018aaa182b0&amp;id=a31c2b72f8" method="post">
+              <h4>Subscribe to our vip list to receive exclusive Django tips every week!</h4>
+              <div class="row">
+                <div class="four columns">
+                  <input class="u-full-width" placeholder="First name (optional)" type="text" name="FNAME">
+                </div>
+                <div class="five columns">
+                  <input class="u-full-width" placeholder="Your email address" type="email" name="EMAIL">
+                </div>
+                <div class="three columns">
+                  <button type="submit" class="u-full-width">Subscribe</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          {% comment %}
           {% if jekyll.environment == "production" %}
             <div class="card">
               <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -89,6 +106,7 @@
               <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
           {% endif %}
+          {% endcomment %}
           <div class="card">
             <div class="row">
             <h4>Popular posts</h4>

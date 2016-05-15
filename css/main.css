@@ -1288,3 +1288,32 @@ pre code {
 #contact_form textarea {
   min-height: 100px;
 }
+
+.post .card.subscribe {
+  background-color: #1eaedb;
+}
+
+.post .card.subscribe form {
+  margin-bottom: 0;
+}
+
+.post .card.subscribe h4 {
+  color: #fff;
+}
+
+.post .card.subscribe button {
+  background-color: #444;
+  color: #fff;
+  border-color: #333;
+  -webkit-transition: all 0.3s ease 0s;
+     -moz-transition: all 0.3s ease 0s;
+       -o-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s;
+}
+
+.post .card.subscribe button:hover,
+.post .card.subscribe button:active {
+  background-color: #222;
+  color: #fff;
+  border-color: #000;
+}
