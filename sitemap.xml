@@ -33,4 +33,7 @@
   <url>
     <loc>http://simpleisbetterthancomplex.com/tutorial/2016/05/11/how-to-setup-ssl-certificate-on-nginx-for-django-application.html</loc>
   </url>
+  <url>
+    <loc>http://simpleisbetterthancomplex.com/tips/2016/05/16/django-tip-3-optimize-database-queries.html</loc>
+  </url>
 </urlset>
