@@ -1,16 +1,3 @@
-<div class="widget card search">
-  <form action="get" id="site_search">
-    <div class="row">
-      <div class="eight columns">
-        <input type="text" id="search_box" class="u-full-width" placeholder="Search…">
-      </div>
-      <div class="four columns">
-        <button type="submit" class="button-primary u-full-width"><span class="fa fa-search"></span></button>
-      </div>
-    </div>
-  </form>
-</div>
-
 <div class="widget card about">
   <h4>About me</h4>
   <img src="{{ "/img/picture.jpg" | prepend: site.baseurl }}" alt="Vitor Freitas">
@@ -71,6 +58,19 @@
   <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
   <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
   <!--End mc_embed_signup-->
+</div>
+
+<div class="widget card search">
+  <form action="get" id="site_search">
+    <div class="row">
+      <div class="eight columns">
+        <input type="text" id="search_box" class="u-full-width" placeholder="Search…">
+      </div>
+      <div class="four columns">
+        <button type="submit" class="button-primary u-full-width"><span class="fa fa-search"></span></button>
+      </div>
+    </div>
+  </form>
 </div>
 
 {% comment %}
