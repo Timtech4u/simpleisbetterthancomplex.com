@@ -20,7 +20,7 @@ invoices = Invoice.objects.all()
 unpaid_invoices = invoices.filter(status='UNPAID')
 {% endhighlight %}
 
-At this point, the Django ORM didn't touch the database yet, meaning no query was executed. It will hit touch the
+At this point, the Django ORM didn't touch the database yet, meaning no query was executed. It will hit the
 database when we *evaluate* the QuerySet. Usually it happens when we start to iterate through the QuerySet, in a view
 or in the template, like in the following example:
 
