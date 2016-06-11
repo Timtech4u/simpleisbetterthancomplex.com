@@ -1321,3 +1321,31 @@ pre code {
 .subscribe h4 + p {
   margin-bottom: 0;
 }
+
+.pagination {
+  margin-bottom: 4rem;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: .5rem;
+}
+
+.pagination li a {
+  text-decoration: none;
+}
+
+.pagination li a,
+.pagination li span {
+  display: inline-block;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  padding: 10px 18px;
+  font-weight: 500;
+}
+
+.pagination li.active span {
+  background-color: #1eaedb;
+  color: #fff;
+}

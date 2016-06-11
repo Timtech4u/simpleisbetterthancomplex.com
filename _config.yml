@@ -15,3 +15,7 @@ fb_appid: 1645747765697865
 
 tag_page_layout: tag_page
 tag_page_dir: tag
+
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "page:num"
