@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Django Tips #3 Optimize Database Queries"
+date: 2016-05-16
 author: Vitor Freitas
 tags: django database optimization
 category: tips

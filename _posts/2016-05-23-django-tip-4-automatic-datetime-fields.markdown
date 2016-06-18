@@ -3,7 +3,7 @@ layout: post
 title: "Django Tips #4 Automatic DateTime Fields"
 date: 2016-05-23
 author: Vitor Freitas
-tags: django django-models
+tags: django models
 category: tips
 thumbnail: "/media/2016-05-23-django-tip-4-automatic-datetime-fields/featured-post-image.jpg"
 featured_image: "/media/2016-05-23-django-tip-4-automatic-datetime-fields/featured-post-image.jpg"
