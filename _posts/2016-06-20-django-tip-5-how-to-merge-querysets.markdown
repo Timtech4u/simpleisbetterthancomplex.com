@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Django Tips #6 How to Merge QuerySets"
+title: "Django Tips #5 How to Merge QuerySets"
 author: Vitor Freitas
 tags: django models queryset
 category: tips
