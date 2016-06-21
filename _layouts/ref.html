@@ -24,7 +24,13 @@
                 {% endif %}
               </div>
             {% endif %}
-            {{ content }}
+            <article>
+              {{ content }}
+            </article>
+            <hr class="dashed">
+            <div class="post-share">
+              {% include social_share.html url=page.url title=page.title excerpt=page.excerpt %}
+            </div>
             {% if jekyll.environment == "production" %}
               <div id="comments">
                 <div id="disqus_thread"></div>
