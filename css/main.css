@@ -1090,8 +1090,9 @@ hr.dashed {
   margin: 3rem 0;
 }
 
-.sidebar .widget h5 {
+.sidebar .widget h4 {
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 .sidebar .widget img {
@@ -1181,7 +1182,7 @@ article img {
   margin: 0 auto;
 }
 
-.popular-posts {
+ul.popular-posts {
   margin: 0;
 }
 
@@ -1348,4 +1349,8 @@ pre code {
 .pagination li.active span {
   background-color: #1eaedb;
   color: #fff;
+}
+
+.post .popular-posts img {
+  width: 100%;
 }

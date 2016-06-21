@@ -91,25 +91,31 @@
               </div>
             </form>
           </div>
-          {% comment %}
-          {% if jekyll.environment == "production" %}
-            <div class="card">
-              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-              <!-- Post bottom -->
-              <ins class="adsbygoogle"
-                   style="display:inline-block;width:728px;height:90px"
-                   data-ad-client="ca-pub-3448661896771709"
-                   data-ad-slot="5399027276"></ins>
-              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-          {% endif %}
-          {% endcomment %}
-          <div class="card">
-            <div class="row">
+
+          <div class="card popular-posts">
             <h4>Popular posts</h4>
-            {% include popular_posts.html %}
+            <div class="row">
+              <div class="four columns">
+                <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+                  <img src="/media/2015-12-04-package-of-the-week-django-widget-tweaks/featured-post-image.jpg">
+                  Package of the Week: Django Widget Tweaks
+                </a>
+              </div>
+              <div class="four columns">
+                <a href="/2015/11/26/package-of-the-week-python-decouple.html">
+                  <img src="/media/2015-11-26-package-of-the-week-python-decouple/featured-post-image.jpg">
+                  Package of the Week: Python Decouple
+                </a>
+              </div>
+              <div class="four columns">
+                <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
+                  <img src="/media/2015-11-23-small-open-source-django-projects-to-get-started/featured-post-image.jpg">
+                  Small Open-Source Django Projects to Get Started
+                </a>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
