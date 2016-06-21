@@ -45,4 +45,10 @@
   <url>
     <loc>http://simpleisbetterthancomplex.com/tips/2016/06/20/django-tip-5-how-to-merge-querysets.html</loc>
   </url>
+  <url>
+    <loc>http://simpleisbetterthancomplex.com/ref/</loc>
+  </url>
+  <url>
+    <loc>http://simpleisbetterthancomplex.com/ref/date/</loc>
+  </url>
 </urlset>
