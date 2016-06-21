@@ -218,9 +218,9 @@ You can also use the template variables as attribute values:
 
 Personally I find this package really useful, because it let you customize your form elements in a non intrusive way, without having to add extra css class inside the form definition. Also it's more clear this way, because afterall the css classes are related to the page layout.
 
-Again, there's a lot more you can do with it, you can learn more by reading its [documentation][django-widget-tweaks]{:target="_blank"}. Also, the project I created to ilustrate this article can be found on GitHub [simpleisbetterthancomplex/simple-django-widget-tweaks][simple-django-widget-tweaks]{:target="_blank"}.
+Again, there's a lot more you can do with it, you can learn more by reading its [documentation][django-widget-tweaks]{:target="_blank"}. Also, the project I created to ilustrate this article can be found on GitHub [sibtc/simple-django-widget-tweaks][simple-django-widget-tweaks]{:target="_blank"}.
 
 [django-forms]: https://docs.djangoproject.com/en/1.9/topics/forms/
 [django-widget-tweaks]: https://pypi.python.org/pypi/django-widget-tweaks
 [bootstrap]: http://getbootstrap.com/
-[simple-django-widget-tweaks]: https://github.com/simpleisbetterthancomplex/simple-django-widget-tweaks
+[simple-django-widget-tweaks]: https://github.com/sibtc/simple-django-widget-tweaks

@@ -54,7 +54,7 @@ I prefer to create the remote repository first on GitHub, and then clone it into
 Inside the `simple_django_skeleton` folder, clone your recently created repository:
 
 {% highlight bash %}
-git clone git@github.com:simpleisbetterthancomplex/simple-django-skeleton.git
+git clone git@github.com:sibtc/simple-django-skeleton.git
 {% endhighlight %}
 
 Your folder structure should look like this:
@@ -387,4 +387,4 @@ If you want to see the source code of this sample project, you can grab the sour
 [github]: https://github.com/
 [python-decouple]: http://simpleisbetterthancomplex.com/2015/11/26/package-of-the-week-python-decouple.html
 [python-gitignore]: https://github.com/github/gitignore/blob/master/Python.gitignore
-[github-simple-skeleton]: https://github.com/simpleisbetterthancomplex/simple-django-skeleton
+[github-simple-skeleton]: https://github.com/sibtc/simple-django-skeleton
