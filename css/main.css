@@ -898,19 +898,11 @@ header ul.menu li a:hover {
 
 .masthead {
   text-align: center;
+  padding: 7rem 0 6rem;
 }
 
-.masthead img {
-
-}
-
-.masthead h1 {
-  text-align: center;
-  margin: 7rem 0;
-}
-
-.masthead .logo {
-
+.masthead h5 {
+  color: #777;
 }
 
 .logo {
