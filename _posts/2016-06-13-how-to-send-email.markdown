@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Send Email in a Django App"
-date: 2016-05-23
+date: 2016-06-13
 author: Vitor Freitas
 tags: django email sendgrid
 category: tutorial
