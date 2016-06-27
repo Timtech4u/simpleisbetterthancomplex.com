@@ -1,0 +1,28 @@
+---
+layout: page
+title: Page not found
+permalink: /404.html
+---
+
+<h4 class="page-title">404 - Page Not Found</h4>
+<hr class="sm">
+
+<h5>The page you are looking for was not found in our servers.</h5>
+
+<p>You can try to search for a revelant article below:</p>
+
+<form action="get" id="site_search">
+  <div class="row">
+    <div class="nine columns">
+      <input type="text" id="search_box" class="u-full-width" placeholder="Search for articles…">
+    </div>
+    <div class="three columns">
+      <button type="submit" class="button-primary u-full-width"><span class="fa fa-search"></span></button>
+    </div>
+  </div>
+</form>
+
+<ul id="results"></ul>
+
+<script src="{{ "/js/lunr.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/search.js" | prepend: site.baseurl }}"></script>

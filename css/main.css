@@ -852,7 +852,7 @@ there.
 
 body {
   background-color: #f9f9f9;
-  padding-top: 4rem;
+  padding-top: 100px;
 }
 
 header {
@@ -887,6 +887,15 @@ header ul.menu li a {
           transition: all 0.3s ease 0s;
 }
 
+header ul.menu.menu-right {
+  float: right;
+}
+
+header ul.menu.menu-right li a {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 header a {
   color: #fff;
 }
@@ -898,7 +907,7 @@ header ul.menu li a:hover {
 
 .masthead {
   text-align: center;
-  padding: 7rem 0 6rem;
+  padding: 4rem 0 6rem;
 }
 
 .masthead h5 {
@@ -1292,6 +1301,12 @@ pre code {
 
 .post .card.subscribe h4 {
   color: #fff;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.post .card.subscribe h5 {
+  color: #fff;
 }
 
 .post .card.subscribe button {
@@ -1345,4 +1360,11 @@ pre code {
 
 .post .popular-posts img {
   width: 100%;
+}
+
+#mc_embed_signup #mc_embed_signup_scroll div.mce_inline_error {
+  background-color: #fff;
+  font-weight: 500;
+  color: #d9534f;
+  padding: 0;
 }

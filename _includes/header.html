@@ -1,22 +1,51 @@
 <header>
   <div class="container">
+    <ul class="menu menu-right">
+      <li>
+        <a href="{{ "/search/" | prepend: site.baseurl }}">
+          <span class="fa fa-search"></span>
+        </a>
+      </li>
+    </ul>
     <ul class="menu">
       <li>
         <a href="{{ site.baseurl }}/" style="font-weight: 900">simple<span class="brand">is</span>better<span class="brand">than</span>complex</a>
       </li>
-      <li><a href="{{ site.baseurl }}/">Home</a></li>
-      <li><a href="{{ "/about/" | prepend: site.baseurl }}">About</a></li>
-      <li><a href="{{ "/contact/" | prepend: site.baseurl }}">Contact</a></li>
-      <li><a href="{{ "/ref/" | prepend: site.baseurl }}">Reference Guides</a></li>
-      <li><a href="http://eepurl.com/b0gR51" class="brand" target="_blank">Subscribe</a></li>
+      <li>
+        <a href="{{ site.baseurl }}/">
+          <span class="fa fa-home" style="margin-right: 3px"></span>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="{{ "/about/" | prepend: site.baseurl }}">
+          <span class="fa fa-info-circle" style="margin-right: 3px"></span>
+          About
+        </a>
+      </li>
+      <li>
+        <a href="{{ "/contact/" | prepend: site.baseurl }}">
+          <span class="fa fa-envelope" style="margin-right: 3px"></span>
+          Contact
+        </a>
+      </li>
+      <li>
+        <a href="{{ "/articles/" | prepend: site.baseurl }}">
+          <span class="fa fa-book" style="margin-right: 3px"></span>
+          Articles
+        </a>
+      </li>
+      <li>
+        <a href="{{ "/ref/" | prepend: site.baseurl }}">
+          <span class="fa fa-bookmark" style="margin-right: 3px"></span>
+          Reference Guides
+        </a>
+      </li>
+      <li>
+        <a href="http://eepurl.com/b0gR51" class="brand" target="_blank">
+          <span class="fa fa-send" style="margin-right: 3px"></span> Subscribe
+        </a>
+      </li>
     </ul>
   </div>
 </header>
-<div class="container masthead">
-  <h1>
-    <a href="{{ site.baseurl }}/" class="logo">
-      simple <span>is</span> better <span>than</span> complex
-    </a>
-  </h1>
-  <h5>Stories about Python, Django and Web Development</h5>
-</div>

@@ -1,0 +1,44 @@
+---
+layout: page
+title: Contact — Simple is Better Than Complex
+permalink: /articles/
+---
+
+<h4 class="page-title">Articles</h4>
+<hr class="sm">
+
+<h5>Tips</h5>
+<ul>
+  {% for post in site.categories.tips %}
+    {% if post.url %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <small>({{ post.date | date: "%b %-d, %Y" }})</small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h5>Tutorials</h5>
+<ul>
+  {% for post in site.categories.tutorial %}
+    {% if post.url %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <small>({{ post.date | date: "%b %-d, %Y" }})</small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h5>Other Posts</h5>
+<ul>
+  {% for post in site.posts %}
+    {% if post.category == null %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <small>({{ post.date | date: "%b %-d, %Y" }})</small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
