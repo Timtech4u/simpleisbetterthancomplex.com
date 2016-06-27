@@ -3,7 +3,7 @@ layout: post
 title: "How to Use Django's Built-in Login System"
 date: 2016-06-27
 author: Vitor Freitas
-tags: django contrib auth django-1.9
+tags: django contrib auth
 category: tutorial
 thumbnail: "/media/2016-06-27-how-to-use-djangos-built-in-login-system/featured-post-image.jpg"
 featured_image: "/media/2016-06-27-how-to-use-djangos-built-in-login-system/featured-post-image.jpg"
