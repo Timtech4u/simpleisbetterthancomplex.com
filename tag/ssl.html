@@ -10,17 +10,13 @@
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/syntax.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-
-</style>
 <link rel="canonical" href="http://simpleisbetterthancomplex.com/tag/ssl.html">
 <link rel="alternate" type="application/rss+xml" title="Simple is Better Than Complex" href="http://simpleisbetterthancomplex.com/feed.xml" />
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="/js/social.js"></script>
+<script src="/js/modal.js"></script>
 
   <meta property="og:title" content="Simple is Better Than Complex">
 <meta property="og:url" content="http://simpleisbetterthancomplex.com/tag/ssl.html">
@@ -43,21 +39,55 @@
 <body>
   <header>
   <div class="container">
+    <ul class="menu menu-right">
+      <li>
+        <a href="/search/">
+          <span class="fa fa-search"></span>
+        </a>
+      </li>
+    </ul>
     <ul class="menu">
-      <li><a href="/" class="brand">Home</a></li>
-      <li><a href="/about/">About me</a></li>
-      <li><a href="/contact/">Contact</a></li>
-      <li><a href="http://eepurl.com/b0gR51" class="brand" target="_blank">Subscribe</a></li>
+      <li>
+        <a href="/" style="font-weight: 900">simple<span class="brand">is</span>better<span class="brand">than</span>complex</a>
+      </li>
+      <li>
+        <a href="/">
+          <span class="fa fa-home" style="margin-right: 3px"></span>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about/">
+          <span class="fa fa-info-circle" style="margin-right: 3px"></span>
+          About
+        </a>
+      </li>
+      <li>
+        <a href="/contact/">
+          <span class="fa fa-envelope" style="margin-right: 3px"></span>
+          Contact
+        </a>
+      </li>
+      <li>
+        <a href="/articles/">
+          <span class="fa fa-book" style="margin-right: 3px"></span>
+          Articles
+        </a>
+      </li>
+      <li>
+        <a href="/ref/">
+          <span class="fa fa-bookmark" style="margin-right: 3px"></span>
+          Reference Guides
+        </a>
+      </li>
+      <li>
+        <a href="http://eepurl.com/b0gR51" class="brand" target="_blank">
+          <span class="fa fa-send" style="margin-right: 3px"></span> Subscribe
+        </a>
+      </li>
     </ul>
   </div>
 </header>
-<div class="container masthead">
-  <h1>
-    <a href="/" class="logo">
-      simple <span>is</span> better <span>than</span> complex
-    </a>
-  </h1>
-</div>
   <main>
     <div class="container">
       <div class="row">
@@ -75,7 +105,7 @@
 </ul>
 
 <div id="tag-cloud">
-  <a href="/tag/contrib.html" class="set-1">contrib</a> <a href="/tag/database.html" class="set-1">database</a> <a href="/tag/django.html" class="set-5">django</a> <a href="/tag/email.html" class="set-1">email</a> <a href="/tag/models.html" class="set-1">models</a> <a href="/tag/nginx.html" class="set-1">nginx</a> <a href="/tag/optimization.html" class="set-1">optimization</a> <a href="/tag/package.html" class="set-1">package</a> <a href="/tag/python.html" class="set-4">python</a> <a href="/tag/queryset.html" class="set-1">queryset</a> <a href="/tag/sendgrid.html" class="set-1">sendgrid</a> <a href="/tag/ssl.html" class="set-1">ssl</a> <a href="/tag/ubuntu.html" class="set-1">ubuntu</a>
+  <a href="/tag/auth.html" class="set-1">auth</a> <a href="/tag/contrib.html" class="set-1">contrib</a> <a href="/tag/database.html" class="set-1">database</a> <a href="/tag/django.html" class="set-5">django</a> <a href="/tag/django-1.9.html" class="set-1">django-1.9</a> <a href="/tag/email.html" class="set-1">email</a> <a href="/tag/models.html" class="set-1">models</a> <a href="/tag/nginx.html" class="set-1">nginx</a> <a href="/tag/optimization.html" class="set-1">optimization</a> <a href="/tag/package.html" class="set-1">package</a> <a href="/tag/python.html" class="set-3">python</a> <a href="/tag/queryset.html" class="set-1">queryset</a> <a href="/tag/sendgrid.html" class="set-1">sendgrid</a> <a href="/tag/ssl.html" class="set-1">ssl</a> <a href="/tag/ubuntu.html" class="set-1">ubuntu</a>
 </div>
 
           </div>
@@ -83,25 +113,24 @@
         <div class="four columns sidebar">
           <div class="widget card subscribe">
   <h4>Subscribe now</h4>
-  <p>Subscribe to our mailing list to receive weekly Django tips</p>
+  <h6>Subscribe to our mailing list to receive weekly Django tips</h6>
   <!-- Begin MailChimp Signup Form -->
   <div id="mc_embed_signup">
     <form action="//simpleisbetterthancomplex.us12.list-manage.com/subscribe/post?u=98efdfc6a91e10018aaa182b0&amp;id=a31c2b72f8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
       <div id="mc_embed_signup_scroll">
         <div class="mc-field-group">
-          <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-          <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+          <label for="mce-EMAIL">Email Address</label>
+          <input type="email" value="" name="EMAIL" class="u-full-width required email" id="mce-EMAIL" placeholder="your@email.com">
         </div>
         <div id="mce-responses" class="clear">
-          <div class="response" id="mce-error-response" style="display:none"></div>
-          <div class="response" id="mce-success-response" style="display:none"></div>
+          <h6 class="response" id="mce-error-response" style="display:none;color:#d9534f;font-weight:500;"></h6>
+          <h6 class="response" id="mce-success-response" style="display:none;color:#5cb85c;font-weight:500;"></h6>
         </div>
         <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_98efdfc6a91e10018aaa182b0_a31c2b72f8" tabindex="-1" value=""></div>
         <div class="clear">
-          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button-primary">
         </div>
       </div>
-      <small>Powered by <a href="http://eepurl.com/b0g66f" title="MailChimp - email marketing made easy and fun">MailChimp</a></small>
     </form>
   </div>
   <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
@@ -134,37 +163,23 @@
   </a>
 </div>
 
-<div class="widget card search">
-  <form action="get" id="site_search">
-    <div class="row">
-      <div class="eight columns">
-        <input type="text" id="search_box" class="u-full-width" placeholder="Search…">
-      </div>
-      <div class="four columns">
-        <button type="submit" class="button-primary u-full-width"><span class="fa fa-search"></span></button>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-
 <div class="widget card">
   <h4>Popular posts</h4>
   <ul class="popular-posts">
   <li>
-    <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
-      Small Open-Source Django Projects to Get Started
-    </a>
-  </li>
-  <li>
     <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
+      <img src="/media/2015-12-04-package-of-the-week-django-widget-tweaks/featured-post-image.jpg">
       Package of the Week: Django Widget Tweaks
     </a>
-  </li>
-  <li>
-    <a href="/2015/12/07/working-with-django-view-decorators.html">
-      Working with Django View Decorators
+  </li><li>
+    <a href="/2015/11/26/package-of-the-week-python-decouple.html">
+      <img src="/media/2015-11-26-package-of-the-week-python-decouple/featured-post-image.jpg">
+      Package of the Week: Python Decouple
+    </a>
+  </li><li>
+    <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
+      <img src="/media/2015-11-23-small-open-source-django-projects-to-get-started/featured-post-image.jpg">
+      Small Open-Source Django Projects to Get Started
     </a>
   </li>
 </ul>
@@ -185,63 +200,6 @@
   </div>
 </footer>
 <div class="overlay"></div>
-<div id="search_results" class="modal">
-  <div id="search_header" class="modal-header">
-    <a href="#">
-      <span class="fa fa-close"></span>
-    </a>
-    <h5>Search results</h5>
-  </div>
-  <ul></ul>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="/js/lunr.min.js"></script>
-<script src="/js/search.js"></script>
-<script src="/js/contact.js"></script>
-<script type="text/javascript">
-
-  $.fn.closeModal = function () {
-    $(".overlay").hide();
-    $(this).hide();
-    $("body").css("overflow", "auto");
-  };
-
-  $.fn.openModal = function () {
-    $(".overlay").show();
-    $(this).show();
-    $("body").css("overflow", "hidden");
-  }
-
-  $(function () {
-    // Social Share
-    $(".post-share .social a").click(function () {
-      var url = $(this).attr("href");
-      var width = 600;
-      var height = 400;
-      var left = (screen.width / 2) - (width / 2);
-      var top = (screen.height / 2) - (height / 2);
-      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
-      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
-      return false;
-    });
-
-    // Modal
-    $(".overlay, .modal .modal-header a").click(function (event) {
-      event.preventDefault();
-      $(".modal:visible").closeModal();
-    });
-
-    $("body").on("keydown", function (event) {
-      var ESCAPE_KEY = 27;
-      var key = event.which || event.keyCode;
-      if (key == ESCAPE_KEY && $(".modal").is(":visible")) {
-        $(".modal:visible").closeModal();
-      }
-    });
-
-  });
-</script>
-
 
 </body>
 </html>
