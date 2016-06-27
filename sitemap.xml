@@ -10,6 +10,12 @@
     <loc>http://simpleisbetterthancomplex.com/cookies/</loc>
   </url>
   <url>
+    <loc>http://simpleisbetterthancomplex.com/contact/</loc>
+  </url>
+  <url>
+    <loc>http://simpleisbetterthancomplex.com/articles/</loc>
+  </url>
+  <url>
     <loc>http://simpleisbetterthancomplex.com/2015/11/23/small-open-source-django-projects-to-get-started.html</loc>
   </url>
   <url>
@@ -40,10 +46,13 @@
     <loc>http://simpleisbetterthancomplex.com/tips/2016/05/23/django-tip-4-automatic-datetime-fields.html</loc>
   </url>
   <url>
-    <loc>http://simpleisbetterthancomplex.com/tutorial/2016/05/23/how-to-send-email.html</loc>
+    <loc>http://simpleisbetterthancomplex.com/tutorial/2016/06/13/how-to-send-email.html</loc>
   </url>
   <url>
     <loc>http://simpleisbetterthancomplex.com/tips/2016/06/20/django-tip-5-how-to-merge-querysets.html</loc>
+  </url>
+  <url>
+    <loc>http://simpleisbetterthancomplex.com/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html</loc>
   </url>
   <url>
     <loc>http://simpleisbetterthancomplex.com/ref/</loc>
