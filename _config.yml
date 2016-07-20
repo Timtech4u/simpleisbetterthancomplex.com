@@ -13,6 +13,8 @@ markdown: kramdown
 fb_admins: http://facebook.com/vitorfs
 fb_appid: 1645747765697865
 
-gems: [jekyll-paginate]
+gems:
+  - jekyll-paginate
+  - jekyll-sitemap
 paginate: 5
 paginate_path: "page:num"
