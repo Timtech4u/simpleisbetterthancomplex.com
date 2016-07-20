@@ -5,7 +5,7 @@ date: 2016-07-20
 author: Vitor Freitas
 tags: django template
 category: tips
-thumbnail: "/media/2016-07-20-django-tip-7-how-to-get-the-current-url-within-a-django-template/featured-post-image.jpg"
+thumbnail: "/media/2016-07-20-django-tip-7-how-to-get-the-current-url-within-a-django-template/featured-facebook.jpg"
 featured_image: "/media/2016-07-20-django-tip-7-how-to-get-the-current-url-within-a-django-template/featured-post-image.jpg"
 ---
 
