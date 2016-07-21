@@ -3,17 +3,20 @@ layout: home
 ---
 
 {% for post in paginator.posts %}
-  <div class="card post-summary">
+  <div class="card post-summary" itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
     {% if post.category %}
       <h5 class="post-category">{{ post.category }}</h5>
       <hr class="dashed">
     {% endif %}
     <h3 class="post-title">
-      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+        <span itemprop="name">{{ post.title }}</span>
+      </a>
     </h3>
     <ul class="post-meta">
       <li>
-        <i class="fa fa-calendar"></i> {{ post.date | date: "%b %-d, %Y" }}
+        <i class="fa fa-calendar"></i>
+        <time itemprop="datePublished" content="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
       </li>
       <li>
         <i class="fa fa-user"></i>
@@ -34,19 +37,19 @@ layout: home
       </a>
     {% endif %}
     {% if post.category == 'tips' %}
-      {{ post.content }}
+      <div itemprop="description">{{ post.content }}</div>
       <p class="post-read-more">
         <a href="{{ post.url | prepend: site.baseurl }}#comments">Discuss</a>
       </p>
     {% else %}
-      {{ post.excerpt }}
+      <div itemprop="description">{{ post.excerpt }}</div>
       <p class="post-read-more">
         <a href="{{ post.url | prepend: site.baseurl }}">Read more</a>
       </p>
     {% endif %}
     <hr class="dashed">
     <div class="row">
-      <div class="five columns post-tags">
+      <div class="five columns post-tags" itemprop="keywords">
         {% for tag in post.tags %}
           <span class="tag">{{ tag }}</span>
         {% endfor %}

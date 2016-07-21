@@ -114,5 +114,34 @@
     </div>
   </main>
   {% include footer.html %}
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title }}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ page.featured_image | prepend: site.url }}",
+      "height": 960,
+      "width": 370
+    },
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ page.author }}"
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "{{ site.title }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/img/avatar.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    "description": "{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}"
+  }
+  </script>
 </body>
 </html>
