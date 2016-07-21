@@ -96,31 +96,19 @@
               </div>
             </form>
           </div>
-
           <div class="card popular-posts">
             <h4>Popular posts</h4>
             <div class="row">
-              <div class="four columns">
-                <a href="/2015/12/04/package-of-the-week-django-widget-tweaks.html">
-                  <img src="/media/2015-12-04-package-of-the-week-django-widget-tweaks/featured-post-image.jpg">
-                  Package of the Week: Django Widget Tweaks
-                </a>
-              </div>
-              <div class="four columns">
-                <a href="/2015/11/26/package-of-the-week-python-decouple.html">
-                  <img src="/media/2015-11-26-package-of-the-week-python-decouple/featured-post-image.jpg">
-                  Package of the Week: Python Decouple
-                </a>
-              </div>
-              <div class="four columns">
-                <a href="/2015/11/23/small-open-source-django-projects-to-get-started.html">
-                  <img src="/media/2015-11-23-small-open-source-django-projects-to-get-started/featured-post-image.jpg">
-                  Small Open-Source Django Projects to Get Started
-                </a>
-              </div>
+              {% for popular_post in site.data.popular_posts %}
+                <div class="four columns">
+                  <a href="{{ popular_post.url }}">
+                    <img src="{{ popular_post.image }}" alt="{{ popular_post.title }}" title="{{ popular_post.title }}">
+                    {{ popular_post.title }}
+                  </a>
+                </div>
+              {% endfor %}
             </div>
           </div>
-
         </div>
       </div>
     </div>

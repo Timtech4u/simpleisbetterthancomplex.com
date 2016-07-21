@@ -52,5 +52,14 @@
 
 <div class="widget card">
   <h4>Popular posts</h4>
-  {% include popular_posts.html %}
+  <ul class="popular-posts">
+    {% for popular_post in site.data.popular_posts %}
+      <li>
+        <a href="{{ popular_post.url }}">
+          <img src="{{ popular_post.image }}" alt="{{ popular_post.title }}" title="{{ popular_post.title }}">
+          {{ popular_post.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
