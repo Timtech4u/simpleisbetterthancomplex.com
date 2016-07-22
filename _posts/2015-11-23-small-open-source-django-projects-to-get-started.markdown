@@ -99,7 +99,6 @@ There isn't much to see regarding to the Django part, it's more about an interfa
 You can grab the source code on GitHub and see the actual site on:
 
 **Source Code:** [github.com/vitorfs/bloodhound][bloodhound-source]{:target="_blank"}
-**Website:** [bloodhound.me][bloodhound-site]{:target="_blank"}
 
 
 ***
@@ -157,7 +156,6 @@ That's it for now. I hope those projects can help you learning a little bit more
 [bloodhound-sniffer]: https://github.com/vitorfs/bloodhound/tree/master/bloodhound/sniffer
 [bloodhound-scripts]: https://github.com/vitorfs/bloodhound/tree/master/scripts
 [bloodhound-source]: https://github.com/vitorfs/bloodhound/
-[bloodhound-site]: https://bloodhound.me
 
 [parsifal-auth]: https://github.com/vitorfs/parsifal/tree/master/parsifal/authentication
 [parsifal-blog]: https://github.com/vitorfs/parsifal/tree/master/parsifal/blog
