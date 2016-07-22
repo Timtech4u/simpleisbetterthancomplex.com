@@ -96,7 +96,7 @@ There isn't much to see regarding to the Django part, it's more about an interfa
   * Index product script
   * Update prices script
 
-You can grab the source code on GitHub and see the actual site on:
+You can grab the source code on GitHub:
 
 **Source Code:** [github.com/vitorfs/bloodhound][bloodhound-source]{:target="_blank"}
 
