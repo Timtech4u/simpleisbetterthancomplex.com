@@ -4,7 +4,7 @@
 <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}?v=1">
 <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
@@ -12,8 +12,7 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="{{ "/js/social.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/modal.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/site.js" | prepend: site.baseurl }}"></script>
 {% if jekyll.environment == "production" %}
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
