@@ -32,7 +32,7 @@ So, if you want a string-based model field to be "nullable", prefer doing that:
 class Person(models.Model):
     name = models.CharField(max_length=255)  # Mandatory
     bio = models.TextField(max_length=500, blank=True)  # Optional (don't put null=True)
-    bith_date = models.DateField(null=True, blank=True) # Optional (here you may add null=True)
+    birth_date = models.DateField(null=True, blank=True) # Optional (here you may add null=True)
 {% endhighlight %}
 
 The default values of `null` and `blank` are **False**.
