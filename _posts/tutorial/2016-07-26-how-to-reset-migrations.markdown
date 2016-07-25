@@ -17,8 +17,6 @@ migrations (although there is no built-in option for that at the moment).
 
 Anyway, if you want to perform a clean-up, I will present a few options in this tutorial.
 
-`./manage.py migrate --fake <app-name> zero`
-
 ***
 
 #### Scenario 1:
