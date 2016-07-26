@@ -1116,6 +1116,20 @@ hr.sm {
           transition: all 0.4s ease 0s;
 }
 
+@media (max-width: 750px) {
+  .content .post-tags {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .content .post-share {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+
 hr.dashed {
   border-style: dashed;
 }
