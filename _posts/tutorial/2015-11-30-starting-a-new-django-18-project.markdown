@@ -4,9 +4,11 @@ title: "Starting a New Django 1.8 Project"
 date: 2015-11-30 12:00:00
 author: Vitor Freitas
 tags: django python
+category: tutorial
 thumbnail: "/media/2015-11-30-starting-a-new-django-18-project/featured-post-image.jpg"
 featured_image: "/media/2015-11-30-starting-a-new-django-18-project/featured-post-image.jpg"
 featured_image_source: "https://stock.tookapic.com/photos/7003"
+permalink: "/:year/:month/:day/:title.html"
 ---
 
 In this article you will find some useful tips regarding starting a new Django project and preparing a development environment. The steps below describes what I generally do when I'm starting a new project.

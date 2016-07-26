@@ -2,7 +2,7 @@
 layout: post
 title: "How to Reset Migrations"
 author: Vitor Freitas
-date: 2016-07-26
+date: 2016-07-26 00:00:00
 tags: django models migration
 category: tutorial
 thumbnail: "/media/2016-07-26-how-to-reset-migrations/featured-facebook.jpg"

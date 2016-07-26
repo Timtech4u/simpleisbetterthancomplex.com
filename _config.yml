@@ -5,6 +5,7 @@ description: "This is a blog about Python, Django and Web Development. New posts
 baseurl: ""
 url: "http://simpleisbetterthancomplex.com"
 locale: en_US
+timezone: "Europe/Helsinki"
 twitter: "vitorfs"
 
 # Build settings
@@ -18,3 +19,11 @@ gems:
   - jekyll-sitemap
 paginate: 5
 paginate_path: "page:num"
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Vitor Freitas"
