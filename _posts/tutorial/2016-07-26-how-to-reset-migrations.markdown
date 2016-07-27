@@ -50,7 +50,7 @@ And you are good to go.
 
 #### Scenario 2:
 
-You want to clear all the migration history be you want to keep the existing database.
+You want to clear all the migration history but you want to keep the existing database.
 
 ##### 1. Make sure your models fits the current database schema
 

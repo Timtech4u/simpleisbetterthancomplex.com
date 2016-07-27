@@ -3,7 +3,7 @@ layout: post
 title: "How to Extend Django User Model"
 date: 2016-07-22
 author: Vitor Freitas
-tags: django models
+tags: django models auth
 category: tutorial
 thumbnail: "/media/2016-07-22-how-to-extend-django-user-model/featured-facebook.jpg"
 featured_image: "/media/2016-07-22-how-to-extend-django-user-model/featured-post-image.jpg"
