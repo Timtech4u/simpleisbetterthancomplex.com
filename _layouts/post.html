@@ -122,10 +122,11 @@
     "image": {
       "@type": "ImageObject",
       "url": "{{ page.featured_image | prepend: site.url }}",
-      "height": 960,
-      "width": 370
+      "height": 370,
+      "width": 960
     },
     "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": {% if page.date_modified %}"{{ page.date_modified | date_to_xmlschema }}"{% else %}"{{ page.date | date_to_xmlschema }}"{% endif %},
     "author": {
       "@type": "Person",
       "name": "{{ page.author }}"
