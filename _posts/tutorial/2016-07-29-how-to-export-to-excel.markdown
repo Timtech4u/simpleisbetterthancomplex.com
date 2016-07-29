@@ -3,7 +3,7 @@ title: "How to Export to Excel"
 date: 2016-07-29 20:46:00 +0300
 category: tutorial
 tags: django models export xls
-thumbnail: "/media/2016-07-29-how-to-export-to-excel/featured-post-image.jpg"
+thumbnail: "/media/2016-07-29-how-to-export-to-excel/featured-facebook.jpg"
 featured_image: "/media/2016-07-29-how-to-export-to-excel/featured-post-image.jpg"
 ---
 
