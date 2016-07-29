@@ -37,8 +37,8 @@ Before we move forward, know _when you should use it_:
 
 #### How it works?
 
-If you are familiar the **Observer Design Pattern**, this is somewhat how Django implements it. Or at least serves for
-the same purpose.
+If you are familiar with the **Observer Design Pattern**, this is somewhat how Django implements it. Or at least serves
+for the same purpose.
 
 There are two key elements in the signals machinary: the _senders_ and the _receivers_. As the name suggests, the
 _sender_ is the one responsible to dispatch a signal, and the _receiver_ is the one who will receive this signal and
