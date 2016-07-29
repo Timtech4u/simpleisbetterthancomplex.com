@@ -118,6 +118,10 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://simpleisbetterthancomplex.com"
+    },
     "headline": "{{ page.title }}",
     "image": {
       "@type": "ImageObject",
@@ -137,8 +141,8 @@
       "logo": {
         "@type": "ImageObject",
         "url": "{{ site.url }}/img/avatar.png",
-        "width": 512,
-        "height": 512
+        "height": 512,
+        "width": 512
       }
     },
     "description": "{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}"
