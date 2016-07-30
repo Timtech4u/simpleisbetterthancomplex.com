@@ -62,7 +62,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout simpleacademy.key -out simpleac
 
 After hitting enter you should see something like that:
 
-{% highlight console %}
+{% highlight bash %}
 .............+++
 ....................................+++
 writing new private key to 'simpleacademy.key'
@@ -79,7 +79,7 @@ Country Name (2 letter code) [AU]:
 
 You will be prompted a few questions:
 
-{% highlight console %}
+{% highlight bash %}
 Country Name (2 letter code) [AU]:FI
 State or Province Name (full name) [Some-State]:Oulu
 Locality Name (eg, city) []:Oulu
@@ -96,7 +96,7 @@ An optional company name []:Simple is Better Than Complex
 
 After answering all the questions, check if the files was created correctly:
 
-{% highlight console %}
+{% highlight bash %}
 ubuntu@simpleacademy:~$ ls -l
 total 8
 -rw-rw-r-- 1 ubuntu ubuntu 1196 May 11 14:26 simpleacademy.csr
@@ -141,12 +141,12 @@ It comes usually in a .zip archive containing the files:
 
 Concatenate the two files:
 
-{% highlight console %}
+{% highlight bash %}
 cat simple_academy.crt simple_academy.ca-bundle >> simple_academy_cert_chain.crt
 {% endhighlight %}
 
 Upload those files to your server using `scp`:
-{% highlight console %}
+{% highlight bash %}
 scp simple_academy_cert_chain.crt ubuntu@52.26.32.151:/home/ubuntu
 {% endhighlight %}
 
@@ -157,7 +157,7 @@ Now you will need two files:
 
 Copy both files to `/etc/ssl/`:
 
-{% highlight console %}
+{% highlight bash %}
 sudo cp simpleacademy_cert_chain.crt /etc/ssl/
 sudo cp simpleacademy.key /etc/ssl/
 {% endhighlight %}
@@ -206,7 +206,7 @@ server {
 
 Restart the nginx:
 
-{% highlight console %}
+{% highlight bash %}
 sudo service nginx restart
 {% endhighlight %}
 
