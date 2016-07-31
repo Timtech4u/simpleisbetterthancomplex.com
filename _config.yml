@@ -3,7 +3,7 @@ title: Simple is Better Than Complex
 email: vitor@freitas.com
 description: "This is a blog about Python, Django and Web Development. New posts every week."
 baseurl: ""
-url: "http://simpleisbetterthancomplex.com"
+url: "https://simpleisbetterthancomplex.com"
 locale: en_US
 timezone: "Europe/Helsinki"
 twitter: "vitorfs"
@@ -11,7 +11,7 @@ twitter: "vitorfs"
 # Build settings
 markdown: kramdown
 
-fb_admins: http://facebook.com/vitorfs
+fb_admins: https://facebook.com/vitorfs
 fb_appid: 1645747765697865
 
 gems:
