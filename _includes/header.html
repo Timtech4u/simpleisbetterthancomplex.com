@@ -1,7 +1,7 @@
 <header>
   <div class="container">
     <ul class="menu menu-right">
-      <li>
+      <li class="menu-item">
         <a href="{{ "/search/" | prepend: site.baseurl }}">
           <span class="fa fa-search"></span>
         </a>
@@ -55,6 +55,11 @@
       <li class="menu-item">
         <a href="http://eepurl.com/b0gR51" class="brand" target="_blank">
           <span class="fa fa-send" style="margin-right: 3px"></span> Subscribe
+        </a>
+      </li>
+      <li class="menu-item hidden-mobile">
+        <a href="{{ "/search/" | prepend: site.baseurl }}">
+          <span class="fa fa-search"></span> Search
         </a>
       </li>
     </ul>

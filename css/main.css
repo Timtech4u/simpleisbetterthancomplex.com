@@ -900,6 +900,10 @@ header ul.menu.menu-right li.toggle-menu {
   display: none;
 }
 
+header ul.menu li.hidden-mobile {
+  display: none;
+}
+
 @media (max-width: 750px) {
   body {
     padding-top: 0;
@@ -925,6 +929,9 @@ header ul.menu.menu-right li.toggle-menu {
   }
   pre code {
     font-size: 1.2rem;
+  }
+  .container {
+    padding: 0;
   }
 }
 
@@ -1022,6 +1029,13 @@ hr.sm {
 
 .post .card {
   padding-bottom: 20px;
+}
+
+@media (max-width: 750px) {
+  .card {
+    padding: 30px 15px;
+    margin-bottom: 2rem;
+  }
 }
 
 .content .post-category {
