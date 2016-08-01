@@ -6,6 +6,7 @@ date: 2016-08-01 12:05:00 +0300
 date_modified: 2016-08-01 15:42:00 +0300
 thumbnail: "/media/2016-08-01-how-to-upload-files-with-django/featured.jpg"
 featured_image: "/media/2016-08-01-how-to-upload-files-with-django/featured.jpg"
+excerpt: In this tutorial you will learn the concepts behind Django file upload and how to handle file upload using model forms. In the end of this post you will find the source code of the examples I used so you can try and explore.
 ---
 
 <div class="info">
