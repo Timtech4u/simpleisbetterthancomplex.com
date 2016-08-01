@@ -1283,6 +1283,15 @@ pre code {
   margin-bottom: 2.5rem;
 }
 
+.info {
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  color: #31708f;
+  padding: 10px 15px;
+  font-size: 14px;
+  margin-bottom: 2.5rem;
+}
+
 .overlay {
   height: 100%;
   width: 100%;

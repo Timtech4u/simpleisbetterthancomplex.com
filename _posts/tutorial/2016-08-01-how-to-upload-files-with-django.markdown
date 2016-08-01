@@ -3,9 +3,16 @@ title: "How to Upload Files With Django"
 category: tutorial
 tags: django forms media upload
 date: 2016-08-01 12:05:00 +0300
+date_modified: 2016-08-01 15:42:00 +0300
 thumbnail: "/media/2016-08-01-how-to-upload-files-with-django/featured.jpg"
 featured_image: "/media/2016-08-01-how-to-upload-files-with-django/featured.jpg"
 ---
+
+<div class="info">
+    <strong><i class="fa fa-info-circle"></i> Updated at {{ page.date_modified | date: "%b %-d, %Y" }}:</strong>
+    As suggested by <a href="https://twitter.com/fapolloner/status/760075954874150912" target="_blank">@fapolloner</a>, I've removed the manual
+    file handling. Updated the example using FileSystemStorage instead. Thanks!
+</div>
 
 In this tutorial you will learn the concepts behind Django file upload and how to handle file upload using model forms.
 In the end of this post you will find the source code of the examples I used so you can try and explore.
@@ -33,7 +40,7 @@ but only the reference to the file.
 
 The `request.FILES` is a dictionary-like object. Each key in `request.FILES` is the name from the `<input type="file" name="" />`.
 
-Each value in `request.FILES` is an `UploadedFile` instance. I will talk more about it later on.
+Each value in `request.FILES` is an `UploadedFile` instance.
 
 You will need to set `MEDIA_URL` and `MEDIA_ROOT` in your project's **settings.py**.
 
@@ -64,7 +71,8 @@ To access the `MEDIA_URL` in template you must add `django.template.context_proc
 
 #### Simple File Upload
 
-Following is a minimal file upload example. Use it just to learn about the flow of the process.
+Following is a minimal file upload example using `FileSystemStorage`. Use it just to learn about the flow of the
+process.
 
 **simple_upload.html**
 
@@ -93,33 +101,19 @@ Following is a minimal file upload example. Use it just to learn about the flow 
 {% highlight python %}
 from django.shortcuts import render
 from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 def simple_upload(request):
-    if request.method == 'POST':
-        if request.FILES['myfile']:
-            myfile = request.FILES['myfile']
-
-            path = u'{0}/{1}'.format(settings.MEDIA_ROOT, myfile.name)
-            with open(path, 'wb+') as destination:
-                for chunk in myfile.chunks():
-                    destination.write(chunk)
-
-            uploaded_file_url = u'{0}{1}'.format(settings.MEDIA_URL, myfile.name)
-            return render(request, 'core/simple_upload.html', {
-                'uploaded_file_url': uploaded_file_url
-            })
-
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(myfile.name)
+        return render(request, 'core/simple_upload.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
     return render(request, 'core/simple_upload.html')
 {% endhighlight %}
-
-Note I'm using the `MEDIA_ROOT` and `MEDIA_URL` to build the `path` and `uploaded_file_url` respectively.
-
-* **myfile.name**: example.txt
-* **path**: /Users/vitorfs/Development/simple-file-upload/media/example.txt
-* **uploaded_file_url**: /media/example.txt
-
-So, `path` is where I'm actually saving the actual file in the filesystem. And `uploaded_file_url` is the URL I will
-use to serve this file in my Django application.
 
 
 ***
