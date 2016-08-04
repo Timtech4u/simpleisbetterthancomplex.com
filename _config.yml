@@ -20,6 +20,14 @@ gems:
 paginate: 5
 paginate_path: "page:num"
 
+collections:
+  snippets:
+    output: true
+    permalink: /snippets/:title/
+  packages:
+    output: true
+    permalink: /packages/:title/
+
 defaults:
   - scope:
       path: ""
@@ -27,3 +35,10 @@ defaults:
     values:
       layout: "post"
       author: "Vitor Freitas"
+  - scope:
+      path: ""
+      type: "snippets"
+    values:
+      layout: "snippets_details"
+      author: "Vitor Freitas"
+      gist_username: "vitorfs"

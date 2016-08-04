@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+  {% include open_graph.html %}
+  <meta property="og:type" content="website">
+</head>
+<body>
+  {% include header.html %}
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="eight columns content">
+          <div class="page card">
+            <h4 class="page-title">Django Snippets</h4>
+            <hr class="sm">
+            {{ content }}
+          </div>
+        </div>
+        <div class="four columns sidebar">
+          <div class="widget card">
+            <h4>Index</h4>
+            <ul>
+              <li><a href="/snippets/">Home</a></li>
+            </ul>
+            <h5>Templates</h5>
+            {% assign templates_snippets = site.snippets | where:'category', 'templates' %}
+            <ul>
+              {% for snippet in templates_snippets %}
+                <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
+              {% endfor %}
+            </ul>
+            <h5>Template Tags</h5>
+            {% assign template_tags_snippets = site.snippets | where:'category', 'templatetags' %}
+            <ul>
+              {% for snippet in template_tags_snippets %}
+                <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
+              {% endfor %}
+            </ul>
+            <h5>Views</h5>
+            {% assign views_snippets = site.snippets | where:'category', 'views' %}
+            <ul>
+              {% for snippet in views_snippets %}
+                <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% include footer.html %}
+</body>
+</html>
