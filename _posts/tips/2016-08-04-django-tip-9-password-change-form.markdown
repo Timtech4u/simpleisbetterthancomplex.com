@@ -36,7 +36,9 @@ def change_password(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'accounts/change_password.html', { 'form': form })
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+    })
 {% endhighlight %}
 
 The `messages.success()` and `messages.error()` are optional, but it is a good idea to keep your user aware about what
