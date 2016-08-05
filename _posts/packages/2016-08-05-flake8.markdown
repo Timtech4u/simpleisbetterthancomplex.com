@@ -1,0 +1,162 @@
+---
+layout: post
+title:  "Package of the Week: Flake8"
+date:   2016-08-05 12:09:00 +0300
+author: Vitor Freitas
+tags: python flake8
+category: packages
+thumbnail: "/media/2016-08-05-flake8/featured.jpg"
+featured_image: "/media/2016-08-05-flake8/featured.jpg"
+---
+
+Flake8 is a Python library that wraps **PyFlakes**, **pycodestyle** and **Ned Batchelder's McCabe script**. It is a
+great toolkit for checking your code base against coding style (PEP8), programming errors (like "library imported but
+unused" and "Undefined name") and to check cyclomatic complexity.
+
+If you are not familiar with the term **cyclomatic complexity**, it is a software metric created by Thomas J. McCabe
+to measure the number of independent paths through the source code. Generally speaking, the higher number of **ifs**
+inside a function, the higher number of paths it will have, thus a higher **cyclomatic complexity**. Of course there
+are other control flow operations that impact the calculus of the cyclomatic complexity. It is also referred as McCabe
+complexity.
+
+Speaking about coding style, I also like to follow the [Django Coding Style][django-coding-style] on the Django
+projects I develop. This style standard is only enforced when writing code for inclusion in Django.
+
+
+***
+
+#### Installation
+
+Easiest way to get started is installing it using pip:
+
+{% highlight bash %}
+pip install flake8
+{% endhighlight %}
+
+***
+
+#### Usage
+
+Inside the Django project dir, run the command:
+
+{% highlight bash %}
+flake8
+{% endhighlight %}
+
+Or you can pass the path to a file/dir:
+
+{% highlight bash %}
+flake8 bootcamp/feeds/
+{% endhighlight %}
+
+The output will be something like that:
+
+{% highlight bash %}
+./bootcamp/settings.py:96:80: E501 line too long (91 > 79 characters)
+./bootcamp/settings.py:99:80: E501 line too long (81 > 79 characters)
+./bootcamp/settings.py:102:80: E501 line too long (82 > 79 characters)
+./bootcamp/settings.py:105:80: E501 line too long (83 > 79 characters)
+./bootcamp/settings.py:156:80: E501 line too long (94 > 79 characters)
+./bootcamp/settings.py:165:5: F403 'from local_settings import *' used; unable to detect undefined names
+./bootcamp/urls.py:5:1: F401 'django.contrib.auth.views as auth_views' imported but unused
+./bootcamp/urls.py:6:1: F401 'django.core.urlresolvers.reverse' imported but unused
+./bootcamp/urls.py:16:80: E501 line too long (88 > 79 characters)
+./bootcamp/urls.py:17:80: E501 line too long (84 > 79 characters)
+./bootcamp/urls.py:18:80: E501 line too long (87 > 79 characters)
+./bootcamp/urls.py:22:80: E501 line too long (80 > 79 characters)
+./bootcamp/members/forms.py:5:1: F401 'django.forms.extras.SelectDateWidget' imported but unused
+...
+{% endhighlight %}
+
+The output is formatted as:
+
+`file path` : `line number` : `column number` : `error code` : `short description`
+
+Error code prefix:
+
+* **E\*\*\*/W\*\*\*:** pep8 errors and warnings
+* **F\*\*\*:** PyFlakes codes (see below)
+* **C9\*\*:** McCabe complexity plugin mccabe
+* **N8\*\*:** Naming Conventions plugin pep8-naming
+
+You can see the full list of error codes in the links below:
+
+* [PEP8 error codes][pep8-error-codes]{:target="_blank"}.
+* [PyFlakes error codes][pyflakes-error-codes]{:target="_blank"}.
+* [PEP8 Naming error codes][pep8-naming-error-codes]{:target="_blank"}.
+
+***
+
+#### Configuring
+
+You can pass some project-based configuration parameters using a `setup.cfg` file. If you already have one, just edit
+it. If that is not the case, create a file named `setup.cfg` in the project root.
+
+{% highlight bash %}
+[flake8]
+exclude = .git,*migrations*
+max-line-length = 119
+{% endhighlight %}
+
+Those are the basic configurations I use in every project. The **exclude** parameter is used to ignore file/dirs.
+The default line-length is 79. I find it too small and sometimes makes the code look worse. So, following the
+Django code style guidelines, I stick with 119.
+
+
+See the [full list of options][flake8-full-list]{:target="_blank"}.
+
+***
+
+#### In-Line Ignoring Errors
+
+Just add `# noqa` in the end of the line.
+
+{% highlight python %}
+class ProfilesConfig(AppConfig):
+    name = 'cmdbox.profiles'
+    verbose_name = _('profiles')
+
+    def ready(self):
+        import cmdbox.profiles.signals.handlers  # noqa
+{% endhighlight %}
+
+Or you can pass the specific error code you want to ignore:
+
+{% highlight python %}
+import cmdbox.profiles.signals.handlers  # noqa: F401
+{% endhighlight %}
+
+***
+
+#### Running flake8 on Travis CI
+
+The example below is a **.travis.yml** file from a project of mine. You can run **flake8** checks very easily just by
+adding the commands inside the **script** list.
+
+**.travis.yml**
+
+{% highlight yaml %}
+language: python
+python:
+  - "2.7"
+install: "pip install -r requirements.txt"
+before_script:
+  - cp .env.example .env
+  - python manage.py migrate
+script:
+  - flake8 cmdbox
+  - coverage run manage.py test --settings=cmdbox.tests_settings
+after_success:
+  - coveralls
+{% endhighlight %}
+
+***
+
+That's it! As you can see, it is really easy to start making your Django project PEP8 complaint with flake8.
+
+
+[django-coding-style]: https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/
+[pep8-error-codes]: http://pep8.readthedocs.io/en/latest/intro.html#error-codes
+[pyflakes-error-codes]: https://flake8.readthedocs.io/en/2.0/warnings.html
+[pep8-naming-error-codes]: https://github.com/PyCQA/pep8-naming
+[flake8-full-list]: http://flake8.pycqa.org/en/latest/user/options.html
