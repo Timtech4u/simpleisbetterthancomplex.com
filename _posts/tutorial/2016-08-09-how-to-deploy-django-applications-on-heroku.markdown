@@ -15,7 +15,7 @@ free plan, which is quite limited, but it is great to get started and to host de
 
 #### Install Heroku Toolbelt
 
-Actually, first thing -- [sign up Heroku][heroku-signup]{:target="_blank"}. Then install the
+Actually, first thing -- [sign up to Heroku][heroku-signup]{:target="_blank"}. Then install the
 [Heroku Toolbelt][heroku-toolbelt]{:target="_blank"}. It is a command line tool to manage your Heroku apps.
 
 After installing the Heroku Toolbelt, open a terminal and login to your account:
