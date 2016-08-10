@@ -7,7 +7,7 @@ thumbnail: "/media/2016-08-09-how-to-deploy-django-applications-on-heroku/featur
 featured_image: "/media/2016-08-09-how-to-deploy-django-applications-on-heroku/featured.jpg"
 ---
 
-Heroku is a cloud application platform, basically a Platform-as-a-Service (PaaS) platform. They support several
+Heroku is a cloud application platform, it is basically a Platform-as-a-Service (PaaS). They support several
 programming languages, including Python. It is very easy to deploy Django applications on Heroku. They also offer a
 free plan, which is quite limited, but it is great to get started and to host demos of Django applications.
 
