@@ -54,7 +54,7 @@ get_random_string(12, '0123456789')
 
 ***
 
-#### Date
+#### Dates
 
 Module: `django.utils.dates`
 
