@@ -81,6 +81,9 @@ class ConfirmPasswordView(UpdateView):
         return self.request.get_full_path()
 {% endhighlight %}
 
+Since we kept the same URL, simply return the current path on `get_success_url()` to reload the page and let the user
+move on.
+
 **confirm_password.html**
 
 {% highlight html %}
