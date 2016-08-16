@@ -16,7 +16,7 @@ To illustrate a little bit more what we want to achieve, take the picture below 
 
 ![Github Example]({{ "/media/2016-08-15-how-to-create-a-password-confirmation-view/github.png" | prepend: site.baseurl }} "Github Example")
 
-No redirects, we want to keep the current URL. Make it lasts for a few hours.
+No redirects, we want to keep the current URL. Make it last for a few hours.
 
 ***
 
