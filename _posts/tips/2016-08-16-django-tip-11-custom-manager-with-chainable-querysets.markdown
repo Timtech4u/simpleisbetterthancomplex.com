@@ -8,6 +8,7 @@ tags: django db queryset models
 category: tips
 thumbnail: "/media/2016-08-16-django-tip-11-custom-manager-with-chainable-querysets/featured.jpg"
 featured_image: "/media/2016-08-16-django-tip-11-custom-manager-with-chainable-querysets/featured.jpg"
+excerpt: "In a Django model, the Manager is the interface that interacts with the database. By default the manager is available through the Model.objects property. The default manager every Django model gets out of the box is the django.db.models.Manager. It is very straightforward to extend it and change the default manager."
 ---
 
 <div class="info">
