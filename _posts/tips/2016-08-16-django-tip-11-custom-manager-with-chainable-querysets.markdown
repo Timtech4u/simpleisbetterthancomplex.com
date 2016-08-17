@@ -3,11 +3,18 @@ layout: post
 title: "Django Tips #11 Custom Manager With Chainable QuerySets"
 author: Vitor Freitas
 date: 2016-08-16 21:28:00 +0300
+date_modified: 2016-08-17 10:17:00 +0300
 tags: django db queryset models
 category: tips
 thumbnail: "/media/2016-08-16-django-tip-11-custom-manager-with-chainable-querysets/featured.jpg"
 featured_image: "/media/2016-08-16-django-tip-11-custom-manager-with-chainable-querysets/featured.jpg"
 ---
+
+<div class="info">
+    <strong><i class="fa fa-info-circle"></i> Updated at {{ page.date_modified | date: "%b %-d, %Y" }}:</strong>
+    I've updated the article mentioning the <strong>DocumentQuerySet.as_manager()</strong> option. Thanks to
+    <strong>Darryl</strong> and <strong>Mark</strong> for suggesting in the comments below!
+</div>
 
 In a Django model, the **Manager** is the interface that interacts with the database. By default the manager is
 available through the `Model.objects` property. The default manager every Django model gets out of the box is the
@@ -85,6 +92,25 @@ Now you can use it just like any other **QuerySet** method:
 
 {% highlight python %}
 Document.objects.pdfs().smaller_than(1000).exclude(name='Article').order_by('name')
+{% endhighlight %}
+
+If you are only defining custom QuerySets in the Manager, you can simply extend the `models.QuerySet` and in the model
+set the manager as `objects = DocumentQuerySet.as_manager()`:
+
+{% highlight python %}
+class DocumentQuerySet(models.QuerySet):
+    def pdfs(self):
+        return self.filter(file_type='pdf')
+
+    def smaller_than(self, size):
+        return self.filter(size__lt=size)
+
+class Document(models.Model):
+    name = models.CharField(max_length=30)
+    size = models.PositiveIntegerField(default=0)
+    file_type = models.CharField(max_length=10, blank=True)
+
+    objects = DocumentQuerySet.as_manager()
 {% endhighlight %}
 
 You can keep the code inside the **models.py**. But as the code base grow, I prefer to keep the Managers and QuerySets
