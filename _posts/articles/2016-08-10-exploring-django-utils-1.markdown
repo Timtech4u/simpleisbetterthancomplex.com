@@ -227,4 +227,10 @@ urlize('Visit the new Snippets section https://simpleisbetterthancomplex.com/sni
 
 That's it for now. I hope you may find some of those useful. I will cover more modules in a future article.
 
+Keep reading:
+
+* [Exploring Django Utils #2][part2]
+
+[part2]: /article/2016/08/17/exploring-django-utils-2.html
+
 [date-ref-guide]: /ref/date/
