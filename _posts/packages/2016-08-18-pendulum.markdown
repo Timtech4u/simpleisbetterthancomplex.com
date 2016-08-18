@@ -1,0 +1,158 @@
+---
+layout: post
+title: "Package of the Week: Pendulum"
+date: 2016-08-18 22:19:00 +0300
+author: Vitor Freitas
+tags: python date time
+category: packages
+thumbnail: "/media/2016-08-18-pendulum/featured.jpg"
+featured_image: "/media/2016-08-18-pendulum/featured.jpg"
+---
+
+Pendulum is a Python library to make your life easier when it comes down to work with date/time.
+
+***
+
+#### Installation
+
+{% highlight bash %}
+pip install pendulum
+{% endhighlight %}
+
+A few dependencies will be installed: **pytz**, **tzlocal** and **python-dateutil**. Just the python-dateutil
+itself is already great -- but pendulum offers a few more tweaks.
+
+***
+
+#### Usage
+
+{% highlight python %}
+import pendulum
+
+now = pendulum.now()  # '2016-08-18 20:24:52'
+{% endhighlight %}
+
+Let's keep the `now` variable for the next examples.
+
+##### add
+
+{% highlight python %}
+now.add(days=1)  # '2016-08-19 20:24:52'
+{% endhighlight %}
+
+Accepts days, months, years, hours, minutes, seconds, microseconds, weeks.
+
+{% highlight python %}
+now.add(weeks=1, hours=2)  # '2016-08-25 22:24:52'
+{% endhighlight %}
+
+##### subtract
+
+{% highlight python %}
+now.subtract(weeks=1)  # '2016-08-11 20:24:52'
+{% endhighlight %}
+
+##### age
+
+{% highlight python %}
+birthday = pendulum.create(1988, 10, 22)
+birthday.age  # 27
+{% endhighlight %}
+
+##### diff
+
+{% highlight python %}
+now = pendulum.now('Europe/Helsinki')
+future = now.add(hours=12)
+past = now.subtract(years=50, days=12)
+
+future.diff()             # '<Period [11 hours 59 minutes 41 seconds]>'
+future.diff_for_humans()  # '11 hours from now'
+past.diff_for_humans()    # '50 years ago'
+{% endhighlight %}
+
+##### delta
+
+{% highlight python %}
+delta = now - last_week
+
+delta.start  # <Pendulum [2016-08-05T00:28:26.207225+03:00]>
+delta.end    # <Pendulum [2016-08-12T00:28:26.207225+03:00]>
+
+delta.in_days()      # 7
+delta.in_hours()     # 168
+delta.in_weekdays()  # 6
+delta.in_words()     # '1 week'
+{% endhighlight %}
+
+##### interval
+
+{% highlight python %}
+it = pendulum.interval(days=15)
+
+it.weeks       # 2
+it.days        # 15
+it.in_hours()  # 360
+it.in_words()  # '2 weeks 1 day'
+{% endhighlight %}
+
+##### is_
+
+{% highlight python %}
+now.is_birthday()
+now.is_future()
+now.is_past()
+
+now.is_monday()
+now.is_tuesday()
+now.is_wednesday()
+now.is_thursday()
+now.is_friday()
+now.is_saturday()
+now.is_sunday()
+
+now.is_today()
+now.is_yesterday()
+now.is_tomorrow()
+
+now.is_leap_year()
+now.is_long_year()
+
+now.is_same_day()
+now.is_weekday()
+now.is_weekend()
+{% endhighlight %}
+
+
+{% highlight python %}
+now = pendulum.now()          # 2016-08-18 20:24:52
+next_year = now.add(years=1)  # 2017-08-18 20:24:52
+
+now.is_birthday(next_year)    # True
+now.is_same_day(next_year)    # False
+{% endhighlight %}
+
+
+##### class methods
+
+{% highlight python %}
+date = datetime.datetime(2016, 1, 1) # datetime.datetime(2016, 1, 1, 0, 0)
+pendulum.instance(date)              # <Pendulum [2016-01-01T00:00:00+00:00]>
+
+pendulum.now()                       # <Pendulum [2016-08-18T21:12:27.684083+03:00]>
+pendulum.utcnow()                    # <Pendulum [2016-08-18T21:12:56.711154+00:00]>
+
+pendulum.today()                     # <Pendulum [2016-08-18T00:00:00+03:00]>
+pendulum.tomorrow()                  # <Pendulum [2016-08-19T00:00:00+03:00]>
+pendulum.yesterday()                 # <Pendulum [2016-08-17T00:00:00+03:00]>
+
+pendulum.create(2017, 6, 1)          # <Pendulum [2017-06-01T21:17:11.868599+00:00]>
+
+pendulum.parse('2016-08-18')         # <Pendulum [2016-08-18T00:00:00+00:00]>
+{% endhighlight %}
+
+***
+
+There is much more to explore. See the official documentation at [https://pendulum.eustace.io/][pendulum].
+
+[pendulum]: https://pendulum.eustace.io/
