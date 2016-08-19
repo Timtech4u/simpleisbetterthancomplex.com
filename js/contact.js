@@ -3,7 +3,6 @@ $(function () {
     event.preventDefault();
 
     var from_email = $("#id_email").val();
-    var subject = $("#id_subject").val();
     var message = $("#id_message").val();
 
     var errors = '';
@@ -40,7 +39,7 @@ $(function () {
                 'Reply-To': from_email
             },
             'autotext': 'true',
-            'subject': subject,
+            'subject': 'New message',
             'html': message
           }
         },
