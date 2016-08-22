@@ -4,7 +4,7 @@ title:  "Small Open-Source Django Projects to Get Started"
 date:   2015-11-23 12:00:00
 author: Vitor Freitas
 tags: django python
-category: articles
+category: article
 thumbnail: "/media/2015-11-23-small-open-source-django-projects-to-get-started/featured-post-image.jpg"
 featured_image: "/media/2015-11-23-small-open-source-django-projects-to-get-started/featured-post-image.jpg"
 featured_image_source: "https://unsplash.com/photos/gcsNOsPEXfs"
