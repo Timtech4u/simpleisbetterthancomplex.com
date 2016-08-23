@@ -8,7 +8,7 @@ featured_image: "/media/2016/08/featured-dealing-with-querystring-parameters.jpg
 ---
 
 It is kinda tough to describe what the problem really is. But, do you know when you are creating an interface where
-you provide pagination, filters and ordering, and you are making it controlling it via URL Get parameters?
+you provide pagination, filters and ordering, and you are keeping the state via URL Get parameters?
 
 For instance if you have different options for ordering, you might think of something like that:
 
