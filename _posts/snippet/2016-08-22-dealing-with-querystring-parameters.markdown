@@ -41,10 +41,10 @@ def products_list(request):
     })
 {% endhighlight %}
 
-_PS: This is a minimalist example, if you pass an invalid parameter directly in the querystring you will make queryset
-break. I will avoid adding extra validations so we can focus on the objective of this article._
+_PS: This is a minimalist example, if you pass an invalid parameter directly in the querystring you will make the
+queryset break. I will avoid adding extra validations so we can focus on the objective of this article._
 
-So far so good. But the problem starts to appear when you add new control, also via **GET** parameter. Lets say a
+So far so good. But the problem starts to appear when you add a new control, also via **GET** parameter. Lets say a
 pagination:
 
 {% highlight html %}
@@ -102,7 +102,7 @@ And then:
 {% endraw %}
 {% endhighlight %}
 
-The bigger the number of parameters, the bigger is the mess in the template.
+The bigger the number of parameters, the bigger the mess in the template.
 
 ***
 
@@ -111,7 +111,7 @@ The bigger the number of parameters, the bigger is the mess in the template.
 Last week while working on a project I faced this problem again, and I put some time to think of a better/reusable
 solution.
 
-So, I came up with this template tag, and I thought about sharing with you guys. Maybe it can be useful for your as
+So, I came up with this template tag, and I thought about sharing with you guys. Maybe it can be useful for you as
 well. Basically you will need the `django.template.context_processors.request` in your project's `context_processors`.
 
 **templatetags/templatehelpers.py**
