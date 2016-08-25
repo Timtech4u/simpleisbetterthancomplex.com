@@ -65,6 +65,8 @@ compromised, it would be impossible to reproduce the hash value.
 So, basically you will need an information that will change after using the link. The simplest approach would be:
 
 
+**tokens.py**
+
 {% highlight python %}
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils import six
@@ -97,6 +99,8 @@ url(r'^activate_account/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-
 from django.contrib.auth import login
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
+
+from .tokens import account_activation_token
 
 class ActivateAccountView(View):
     def get(self, request, uidb64, token):
