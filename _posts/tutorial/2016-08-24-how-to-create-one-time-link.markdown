@@ -10,7 +10,7 @@ featured_image: "/media/2016/08/featured-one-time-link.jpg"
 Django uses a very interesting approach to generate the Password reset tokens. I'm not really a security expert,
 neither I'm very familiar with cryptography algorithms, but it is very safe and reliable.
 
-Before I elaborate a little be more on the one-time-link generation, I wanted to discuss about the Django's
+Before I elaborate a little bit more on the one-time-link generation, I wanted to discuss about the Django's
 `PasswordResetTokenGenerator` implementation. Because what we will be doing is actually extending this particular
 class to fit our needs.
 
