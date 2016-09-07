@@ -14,36 +14,63 @@
           <div class="page card">
             <h4 class="page-title">Django Snippets</h4>
             <hr class="sm">
-            {{ content }}
+            <article>
+              <h5>{{ page.title }}</h5>
+              <p><small>Updated at {{ page.date | date: "%b %-d, %Y" }} by {{ page.author }}</small></p>
+              {{ content }}
+              <script src="https://gist.github.com/{{ page.gist_username }}/{{ page.gist }}.js"></script>
+              {% if page.related_articles %}
+                <hr>
+                <h5>Related Articles</h5>
+                <ul>
+                  {% for post in site.posts %}
+                    {% for article in page.related_articles %}
+                      {% if article == post.id %}
+                        <li>
+                          <a href="{{ post.url }}">{{ post.title }}</a>
+                          <small>({{ post.date | date: "%b %-d, %Y" }})</small>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </article>
+            <hr class="dashed">
+            <div class="row">
+              <div class="six columns post-tags">
+                {% for tag in page.tags %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              <div class="six columns post-share">
+                {% include social_share.html url=page.url title=page.title excerpt=page.excerpt %}
+              </div>
+            </div>
+            {% if jekyll.environment == "production" %}
+              <div id="comments">
+                <div id="disqus_thread"></div>
+                <script>
+                  var disqus_config = function () {
+                    this.page.url = '{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}';
+                    this.page.identifier = '{{ page.id }}';
+                  };
+                  (function() {
+                  var d = document, s = d.createElement('script');
+                  s.src = '//simpleisbetterthancomplex.disqus.com/embed.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+                  })();
+                </script>
+                <script id="dsq-count-scr" src="//simpleisbetterthancomplex.disqus.com/count.js" async></script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+              </div>
+            {% endif %}
           </div>
         </div>
         <div class="four columns sidebar">
           <div class="widget card">
-            <h4>Index</h4>
-            <ul>
-              <li><a href="/snippets/">Home</a></li>
-            </ul>
-            <h5>Templates</h5>
-            {% assign templates_snippets = site.snippets | where:'category', 'templates' %}
-            <ul>
-              {% for snippet in templates_snippets %}
-                <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
-              {% endfor %}
-            </ul>
-            <h5>Template Tags</h5>
-            {% assign template_tags_snippets = site.snippets | where:'category', 'templatetags' %}
-            <ul>
-              {% for snippet in template_tags_snippets %}
-                <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
-              {% endfor %}
-            </ul>
-            <h5>Views</h5>
-            {% assign views_snippets = site.snippets | where:'category', 'views' %}
-            <ul>
-              {% for snippet in views_snippets %}
-                <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
-              {% endfor %}
-            </ul>
+            {% include snippets_table_contents.html %}
           </div>
         </div>
       </div>

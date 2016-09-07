@@ -39,6 +39,6 @@ defaults:
       path: ""
       type: "snippets"
     values:
-      layout: "snippets_details"
+      layout: "snippets"
       author: "Vitor Freitas"
       gist_username: "vitorfs"

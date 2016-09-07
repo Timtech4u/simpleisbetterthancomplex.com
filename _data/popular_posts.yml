@@ -2,9 +2,9 @@
   url: "/tutorial/2016/07/22/how-to-extend-django-user-model.html"
   image: "/media/2016-07-22-how-to-extend-django-user-model/featured-post-image.jpg"
 
-- title: "How to Create a Custom Django Middleware"
-  url: "/tutorial/2016/07/18/how-to-create-a-custom-django-middleware.html"
-  image: "/media/2016-07-18-how-to-create-a-custom-django-middleware/featured-post-image.jpg"
+- title: "Package of the Week: Flake8"
+  url: "/packages/2016/08/05/flake8.html"
+  image: "/media/2016-08-05-flake8/featured.jpg"
 
 - title: "How to Create Django Signals"
   url: "/tutorial/2016/07/28/how-to-create-django-signals.html"

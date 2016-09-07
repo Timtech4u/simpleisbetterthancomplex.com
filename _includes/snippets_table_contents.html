@@ -1,0 +1,22 @@
+<h4>Table of Contents</h4>
+<h5>Templates</h5>
+{% assign templates_snippets = site.snippets | where:'category', 'templates' %}
+<ul>
+  {% for snippet in templates_snippets %}
+    <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
+  {% endfor %}
+</ul>
+<h5>Template Tags</h5>
+{% assign template_tags_snippets = site.snippets | where:'category', 'templatetags' %}
+<ul>
+  {% for snippet in template_tags_snippets %}
+    <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
+  {% endfor %}
+</ul>
+<h5>Views</h5>
+{% assign views_snippets = site.snippets | where:'category', 'views' %}
+<ul>
+  {% for snippet in views_snippets %}
+    <li><a href="{{ snippet.url }}">{{ snippet.title }}</a></li>
+  {% endfor %}
+</ul>
