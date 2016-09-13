@@ -2,6 +2,7 @@
 layout: post
 title: "How to Send Email in a Django App"
 date: 2016-06-13
+date_modified: 2016-09-13 11:10:00 +0300
 author: Vitor Freitas
 tags: django email sendgrid
 category: tutorial
@@ -121,10 +122,10 @@ We are now all set up to start sending emails:
 To configure you Django App, add the following parameters to your `settings.py`:
 
 {% highlight python %}
-EMAIL_HOST = smtp.sendgrid.net
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = parsifal_app
-EMAIL_HOST_PASSWORD = mys3cr3tp4ssw0rd
+EMAIL_HOST_USER = 'parsifal_app'
+EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
 EMAIL_USE_TLS = True
 {% endhighlight %}
 
