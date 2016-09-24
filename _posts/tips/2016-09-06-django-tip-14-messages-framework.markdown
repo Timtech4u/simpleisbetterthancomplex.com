@@ -160,7 +160,7 @@ messages.add_message(request, CRITICAL, 'A very serious error ocurred.')
 {% highlight html %}
 {% raw %}
 {% for message in messages %}
-  <div class="alert {% message.tags %} alert-dismissible" role="alert">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
