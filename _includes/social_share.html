@@ -29,10 +29,18 @@
      title="Share on Google+">
     <i class="fa fa-google-plus"></i>
   </a>
+  {% comment %}
+  <a href="//www.reddit.com/submit?url={{ site.url }}{{ include.url }}"
+     rel="nofollow"
+     target="_blank"
+     title="Share on Reddit">
+    <i class="fa fa-reddit-alien"></i>
+  </a>
   <a href="http://pinterest.com/pin/create/button/?url={{ site.url }}{{ include.url }}&description={{ include.title | uri_escape }}&media={{ site.url }}{% if page.thumbnail %}{{ page.thumbnail }}{% elsif post.thumbnail %}{{ post.thumbnail }}{% else %}/img/fb_banner.png{% endif %}"
      rel="nofollow"
      target="_blank"
      title="Share on Pinterest">
     <i class="fa fa-pinterest-p"></i>
   </a>
+  {% endcomment %}
 </div>

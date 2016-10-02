@@ -50,7 +50,15 @@
               {{ content }}
             </article>
             <div class="row">
-              <div class="six columns post-tags" style="padding-top: 0">
+              <div class="twelve columns post-tags" style="padding-top: 0">
+                {% for tag in page.tags %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <hr class="dashed">
+            <div class="row">
+              <div class="four columns post-tags" style="padding-top: 4px">
                 {% if jekyll.environment == "production" %}
                   <div id="fb-root"></div>
                   <script>(function(d, s, id) {
@@ -68,20 +76,11 @@
                   <script type="text/javascript">
                     VK.Widgets.Like("vk_like", {type: "mini", height: 20});
                   </script>
+                {% else %}
+                  &nbsp;
                 {% endif %}
               </div>
-              <div class="six columns post-share">
-                {% for tag in page.tags %}
-                  <span class="tag">{{ tag }}</span>
-                {% endfor %}
-              </div>
-            </div>
-            <hr class="dashed">
-            <div class="row">
-              <div class="six columns post-tags" style="padding-top: 0">
-                <h4 style="margin-bottom: 0">Share this post</h4>
-              </div>
-              <div class="six columns post-share">
+              <div class="eight columns post-share">
                 {% include social_share.html url=page.url title=page.title excerpt=page.excerpt %}
               </div>
             </div>
