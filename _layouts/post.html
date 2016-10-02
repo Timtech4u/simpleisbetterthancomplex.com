@@ -51,11 +51,6 @@
             </article>
             <div class="row">
               <div class="six columns post-tags">
-                {% for tag in page.tags %}
-                  <span class="tag">{{ tag }}</span>
-                {% endfor %}
-              </div>
-              <div class="six columns post-share">
                 {% if jekyll.environment == "production" %}
                   <div id="fb-root"></div>
                   <script>(function(d, s, id) {
@@ -72,6 +67,11 @@
                   <div id="vk_like" style="display: inline-block; vertical-align: bottom;"></div>
                   <script type="text/javascript">VK.Widgets.Like("vk_like", {type: "mini"});</script>
                 {% endif %}
+              </div>
+              <div class="six columns post-share">
+                {% for tag in page.tags %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
               </div>
             </div>
             <hr class="dashed">
