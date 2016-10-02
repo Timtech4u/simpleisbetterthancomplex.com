@@ -2,10 +2,10 @@
   url: "/tutorial/2016/07/22/how-to-extend-django-user-model.html"
   image: "/media/2016-07-22-how-to-extend-django-user-model/featured-post-image.jpg"
 
-- title: "Package of the Week: Flake8"
-  url: "/packages/2016/08/05/flake8.html"
-  image: "/media/2016-08-05-flake8/featured.jpg"
+- title: "How to Use Django's Built-in Login System"
+  url: "/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html"
+  image: "/media/2016-06-27-how-to-use-djangos-built-in-login-system/featured-post-image.jpg"
 
-- title: "How to Create Django Signals"
-  url: "/tutorial/2016/07/28/how-to-create-django-signals.html"
-  image: "/media/2016-07-28-how-to-create-django-signals/featured-post-image.jpg"
+- title: "How to Work With AJAX Request With Django"
+  url: "/tutorial/2016/08/29/how-to-work-with-ajax-request-with-django.html"
+  image: "/media/2016/08/featured-ajax.jpg"

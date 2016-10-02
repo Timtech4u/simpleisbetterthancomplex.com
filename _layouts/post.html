@@ -9,6 +9,19 @@
   {% endfor %}
 </head>
 <body>
+  {% if jekyll.environment == "production" %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1645747765697865";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?130"></script>
+    <script type="text/javascript">VK.init({apiId: 5651718, onlyWidgets: true});</script>
+  {% endif %}
+
   {% include header.html %}
   <main>
     <div class="container">
@@ -60,17 +73,6 @@
             <div class="row">
               <div class="four columns post-tags" style="padding-top: 4px">
                 {% if jekyll.environment == "production" %}
-                  <div id="fb-root"></div>
-                  <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1645747765697865";
-                    fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'facebook-jssdk'));</script>
-                  <script type="text/javascript" src="//vk.com/js/api/openapi.js?130"></script>
-                  <script type="text/javascript">VK.init({apiId: 5651718, onlyWidgets: true});</script>
-
                   <div class="fb-like" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
                   <div id="vk_like" style="display: inline-block; vertical-align: bottom;"></div>
                   <script type="text/javascript">
