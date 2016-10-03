@@ -1,6 +1,6 @@
 ---
 title: "Estimating the Effort of Development of a Django Application"
-date: 2016-10-03 12:00:00 +0300
+date: 2016-10-03 10:44:00 +0300
 category: article
 tags: django effort estimation
 thumbnail: "/media/2016/10/featured-estimation.jpg"
@@ -15,13 +15,21 @@ How to precisely (as possible) estimate the effort of development of a Web appli
 People in the academia have being conducting research on that topic for at least the past 40 years, and yet we fail
 to get it right.
 
+I wanted to write a little bit on that subject to try to highlight the challenges of making an accurate estimation and
+perhaps share some of my experience about it.
+
 [![Estimation](http://imgs.xkcd.com/comics/estimation.png)](http://xkcd.com/612/){:target="_blank"}
 
 ***
 
-#### Why Estimation is Different From Reality
+#### The Chaos Report 2015
 
-Check this numbers from the [Chaos Report 2015](/media/2016/10/chaos-report.pdf) from the Standish Group:
+Every year the [Standish Group](https://www.standishgroup.com/){:target="_blank"} conducts a survey to investigate the
+cause of failure of software projects. In 2015, out of the 8,380 investigated projects, 16.2% (success) was delivered
+on-time and on-budget, 52.7% (challenged) faced challenges and was delivered over-budget and over the time estimate.
+The other 31.1% (impaired) was cancelled at some point during the development cycle.
+
+Check this numbers in relation to the time overruns of the original estimates, from the [Chaos Report 2015](/media/2016/10/chaos-report.pdf):
 
 > **Time Overruns**<br>
 > For the same combined challenged and impaired projects, over one-third also experienced time overruns of 200 to 300%.
@@ -52,8 +60,9 @@ We can't help ourselves, we are not very good on forecasting things we don't kno
 #### How Uncertainty Behaves
 
 There is an important aspect on how the uncertainty behaves. And this can help us a lot when estimating the effort.
-Let's get back to the Chaos Report's numbers. Out of the 8,380 applications analyzed by the Standish Group, 13.9% of
-them took less effort than expected, while 86.1% required more effort than expected.
+Let's get back to the Chaos Report's numbers. Out of the 8,380 applications analyzed by the Standish Group, 16.2% of
+them was delivered on time (possibly some of them took less effort than expected), while 83.8% required more effort
+than expected (when some of them wasn't even concluded).
 
 To illustrate that phenomena, I will quote the article [How Uncertainty Works](https://www.cprime.com/2010/02/how-uncertainty-works-by-kevin-thompson-phd-pmp-csp/)
 published by Kevin Thompson:
@@ -158,8 +167,6 @@ uncertainty, and (2) produces a set of things to estimate that is small enough t
 
 ##### The Changing Requirements
 
-Actually, saying "Changing Requirements" is sort of a redundancy.
-
 It is what it is. That's what requirements do. They change. All the time. If they don't change during the development,
 they will during the usage.
 
@@ -181,14 +188,14 @@ small chunk of the whole problem, and you will also be learning faster about the
 ![Minimal Viable Product](/media/2016/10/minimal-viable-product-henrik-kniberg.png)
 
 I know I'm deviating a little bit from the original subject of this article, but the point is: it is easier to give a
-better estimation when the scope is small.
+better estimate when the scope is small.
 
 Your client will always need an overall estimation. After all, he needs to plan the schedule and the budget. Besides,
 there are many factors to take into account when planning a release: the time-to-market, the return on investment, the
 end-user needs, etc.
 
 You can always give an overall estimation. But agree with the client that it's an imperfect and error-prone estimation.
-Decompose the requirements into several small and *valuable deliverables*. Smaller scope means better estimation. After
+Decompose the requirements into several small and *valuable deliverables*. Smaller scope means better estimate. After
 each interaction, each delivery, review the requirements with the client and update the overall estimation.
 
 Without mentioning it will improve the client's understanding of the software needs. Also, he will eventually get to
@@ -199,7 +206,7 @@ accurate -- that will be you, after the estimation fails:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IsDarR-3Pm0?rel=0" frameborder="0" allowfullscreen></iframe>
 
-Lol, what!!
+Lol, I can't stop laughing
 
 Anyway, this dude is you -- the developer who under estimated the project.
 
@@ -228,8 +235,8 @@ After reducing the level of uncertainty to a minimum practical level, it's time 
 If it is a project with a real fixed scope, the client deeply understands what he wants to be done, ideally you
 already have some proof of concepts and prototypes -- what you want to do is to add a buffer time to the schedule.
 
-How much is enough depends. Depends on how big, what's the complexity of the project, your experience (or the
-developer's experience), how familiar you are with the domain.
+How much is enough depends. Depends on how big, what's the complexity of the project, your experience, how familiar you
+are with the domain.
 
 
 > Ask developers about the time they will take to implement the features (T). Multiply it by 2.5. If it is a very complex algorithmic type project multiply it by 3.0.<br><br>
@@ -352,6 +359,13 @@ certainly reduce the implementation time:
 Actually when I'm developing a new Django application, I use my old projects all the time. I reuse lots of work I've
 done in the past. Actually I have a repository of easy-to-reuse snippets, like pagination controls HTMLs, some reusable
 template filters, etc. From time to time I share them in the blog.
+
+More than reusing existing resource, compare the new requirements to things you have built in the past. This will give
+you insights of how long each tasks takes to be implemented. Measure everything that's possible. After the project is
+delivered, review your initial estimates. Update it with the actual time.
+
+Even if you are working on a personal project, estimate first the effort. It is a good exercise, and it will help you
+in future estimates.
 
 ***
 
