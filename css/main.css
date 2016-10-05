@@ -1296,6 +1296,88 @@ pre code {
   margin-bottom: 2.5rem;
 }
 
+.success {
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+  color: #3c763d;
+  padding: 10px 15px;
+  font-size: 14px;
+  margin-bottom: 2.5rem;
+}
+
+.danger {
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  color: #a94442;
+  padding: 10px 15px;
+  font-size: 14px;
+  margin-bottom: 2.5rem;
+}
+
+.panel {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  margin: 1rem 4rem 2.5rem;
+}
+
+@media (max-width: 750px) {
+  .panel {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.panel figure,
+.panel figure pre {
+  margin: 0;
+}
+
+.panel figure pre code {
+  border-radius: 0;
+  border: 0 none;
+  margin: 0;
+}
+
+.panel .panel-header {
+  font-weight: 700;
+  font-size: 1.6rem!important;
+  padding: 5px 10px;
+}
+
+.panel .panel-header:before {
+  font-family: "FontAwesome";
+  padding-right: .8rem;
+}
+
+.panel.panel-success {
+  border: 1px solid #d6e9c6;
+}
+
+.panel.panel-success .panel-header {
+  background-color: #dff0d8;
+  border-bottom: 1px solid #d6e9c6;
+  color: #3c763d;
+  font-size: 14px;
+}
+
+.panel.panel-success .panel-header:before {
+  content: "\f00c";
+}
+
+.panel.panel-danger {
+  border: 1px solid #ebccd1;
+}
+
+.panel.panel-danger .panel-header {
+  background-color: #f2dede;
+  border-bottom: 1px solid #ebccd1;
+  color: #a94442;
+  font-size: 14px;
+}
+
+.panel.panel-danger .panel-header:before {
+  content: "\f00d︎";
+}
+
 .overlay {
   height: 100%;
   width: 100%;
