@@ -1,0 +1,113 @@
+---
+layout: post
+title: "Package of the Week: isort"
+date: 2016-10-08 12:42:00 +0300
+author: Vitor Freitas
+tags: python coding-style isort
+category: packages
+thumbnail: "/media/2016/10/featured-isort.jpg"
+featured_image: "/media/2016/10/featured-isort.jpg"
+---
+
+isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections. It's
+very useful in Django projects, specially in views where we usually deal with a great amount of imports.
+
+Organizing the imports in sections is easy, but to keep them in alphabetical order is very tedious. I don't know about
+you, but sometimes I have to run all the letters in my head to make sure 😂.
+
+***
+
+#### Installation
+
+Install it via **pip** or grab the code from [GitHub](https://github.com/timothycrosley/isort){:target="_blank"}:
+
+{% highlight bash %}
+pip install isort
+{% endhighlight %}
+
+***
+
+#### Usage
+
+You can already start using it without any configuration:
+
+{% highlight bash %}
+# sort multiple files
+isort views.py urls.py
+
+# show a diff before applying any change
+isort views.py --diff
+
+# just check for errors
+isort urls.py --check-only
+{% endhighlight %}
+
+You can also apply the changes or check for errors recursively:
+
+{% highlight bash %}
+# check which files will be sorted
+isort --recursive --check-only
+
+# sort the whole project
+isort --recursive .
+{% endhighlight %}
+
+***
+
+#### Django
+
+This is how I like to organize my imports in a Django project:
+
+* Future imports
+* Python Standard Libraries
+* Django core
+* Third party libraries (related or not to Django)
+* First party libraries (that is, our project's imports)
+* Local imports
+
+You can achieve this by adding a configuration file in the project root. Either add a **setup.cfg** or a file named
+**.isort.cfg** in the project root.
+
+**setup.cfg**
+
+{% highlight bash %}
+[isort]
+default_section = THIRDPARTY
+known_first_party = myproject  # change it for the name of your django project
+known_django = django
+sections = FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
+{% endhighlight %}
+
+This is an example of the final result:
+
+{% highlight python %}
+from __future__ import unicode_literals
+
+import json
+import time
+
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.forms.formsets import formset_factory
+from django.forms.models import inlineformset_factory
+from django.views.decorators.http import require_POST
+
+from bibtexparser.bparser import BibTexParser
+from bibtexparser.customization import convert_to_unicode
+
+from parsifal.reviews.decorators import author_required, main_author_required
+from parsifal.reviews.models import Review
+
+from .forms import KeywordForm, SynonymForm
+{% endhighlight %}
+
+If you need to have imports out of order, to avoid circular import for example, you can use the `isort:skip` comment:
+
+{% highlight python %}
+import module  # isort:skip
+{% endhighlight %}
+
+***
+
+You can find out more about the isort library visiting its
+[GitHub Page](https://github.com/timothycrosley/isort#readme){:target="_blank"}.
