@@ -1,17 +1,15 @@
 ---
-layout: ref
 title: Date Template Filter
-author: Vitor Freitas
-date: 2016-06-21
-excerpt: List of the most used Django date template filters to format date according to a given format, semantically ordered.
-thumbnail: "/media/ref/date.jpg"
-featured_image: "/media/ref/date.jpg"
-permalink: /ref/date/
+date: 2016-06-21 12:00:00 +0300
+category: references
+tags: django templatefilter
+thumbnail: "/media/2016/06/featured-date.jpg"
+featured_image: "/media/2016/06/featured-date.jpg"
 ---
 
-<p>List of the most used Django date template filters to format date according to a given format, semantically ordered.</p>
+List of the most used Django date template filters to format date according to a given format, semantically ordered.
 
-<table>
+<table style="width: 100%">
   <thead>
     <tr>
       <th>Format character</th>
@@ -166,4 +164,4 @@ permalink: /ref/date/
   </tbody>
 </table>
 
-<p>Reference: <a href="https://docs.djangoproject.com/en/1.9/ref/templates/builtins/#date">Built-in template tags and filters: date</a></p>
+Reference: [Built-in template tags and filters: date](https://docs.djangoproject.com/en/1.9/ref/templates/builtins/#date){:target="_blank"}

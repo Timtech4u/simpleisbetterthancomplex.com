@@ -7,9 +7,9 @@ permalink: /articles/
 <h4 class="page-title">Articles</h4>
 <hr class="sm">
 
-<h5>Tutorials</h5>
+<h5 id="articles">Articles</h5>
 <ul>
-  {% for post in site.categories.tutorial %}
+  {% for post in site.categories.article %}
     {% if post.url %}
       <li>
         <a href="{{ post.url }}">{{ post.title }}</a>
@@ -19,19 +19,7 @@ permalink: /articles/
   {% endfor %}
 </ul>
 
-<h5>Tips</h5>
-<ul>
-  {% for post in site.categories.tips %}
-    {% if post.url %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        <small>({{ post.date | date: "%b %-d, %Y" }})</small>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
-
-<h5>Packages</h5>
+<h5 id="packages">Packages</h5>
 <ul>
   {% for post in site.categories.packages %}
     {% if post.url %}
@@ -43,7 +31,7 @@ permalink: /articles/
   {% endfor %}
 </ul>
 
-<h5>Snippets</h5>
+<h5 id="snippets">Snippets</h5>
 <ul>
   {% for post in site.categories.snippet %}
     {% if post.url %}
@@ -55,9 +43,33 @@ permalink: /articles/
   {% endfor %}
 </ul>
 
-<h5>Articles</h5>
+<h5 id="references">References</h5>
 <ul>
-  {% for post in site.categories.article %}
+  {% for post in site.categories.references %}
+    {% if post.url %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <small>({{ post.date | date: "%b %-d, %Y" }})</small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h5 id="tips">Tips</h5>
+<ul>
+  {% for post in site.categories.tips %}
+    {% if post.url %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <small>({{ post.date | date: "%b %-d, %Y" }})</small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h5 id="tutorials">Tutorials</h5>
+<ul>
+  {% for post in site.categories.tutorial %}
     {% if post.url %}
       <li>
         <a href="{{ post.url }}">{{ post.title }}</a>

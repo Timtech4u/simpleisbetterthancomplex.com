@@ -1378,6 +1378,25 @@ pre code {
   content: "\f00d︎";
 }
 
+.panel ul {
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.panel ul li {
+  margin: 5px 0;
+}
+
+.panel table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.panel table th,
+.panel table td {
+  padding: 5px 10px;
+}
+
 .overlay {
   height: 100%;
   width: 100%;
