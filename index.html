@@ -14,11 +14,11 @@ layout: home
       </a>
     </h3>
     <ul class="post-meta">
-      <li>
+      <li class="post-meta-date">
         <i class="fa fa-calendar"></i>
         <time itemprop="datePublished" content="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
       </li>
-      <li>
+      <li class="post-meta-author">
         <i class="fa fa-user"></i>
         <a href="{{ "/about/" | prepend: site.baseurl }}">
           {{ post.author }}

@@ -26,13 +26,24 @@ $(function () {
 
   // Social Share
   $(".post-share .social a").click(function () {
-    var url = $(this).attr("href");
-    var width = 600;
-    var height = 400;
-    var left = (screen.width / 2) - (width / 2);
-    var top = (screen.height / 2) - (height / 2);
-    var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
-    var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+    if ($(this).hasClass("js-send-email")) {
+      var container = $(this).closest(".card");
+      $("#email_this_thumbnail").attr("src", $(".featured-image", container).attr("src"));
+      $("#email_this_category").text($(".post-category", container).text());
+      $("#email_this_title").text($(".post-title", container).text());
+      $("#email_this_date").text($(".post-meta-date", container).text());
+      $("#email_this_author").text($(".post-meta-author", container).text());
+      $("#email_this_modal").openModal();
+    }
+    else {
+      var url = $(this).attr("href");
+      var width = 600;
+      var height = 400;
+      var left = (screen.width / 2) - (width / 2);
+      var top = (screen.height / 2) - (height / 2);
+      var strWindowFeatures = "height=" + height + ", width=" + width + ", left=" + left + ", top=" + top + ", menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";
+      var windowObjectReference = window.open(url, "SocialShareWindow", strWindowFeatures);
+    }
     return false;
   });
 

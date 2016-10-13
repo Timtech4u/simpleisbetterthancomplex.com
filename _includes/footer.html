@@ -8,3 +8,42 @@
   </div>
 </footer>
 <div class="overlay"></div>
+<div id="email_this_modal" class="modal">
+  <div class="modal-header">
+    <a href="#">
+      <span class="fa fa-close"></span>
+    </a>
+    <h5>Email This Article</h5>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="four columns">
+        <img src="" id="email_this_thumbnail" style="width:100%">
+      </div>
+      <div class="eight columns">
+        <p style="margin-bottom: 0">
+          <small id="email_this_category" style="text-transform:uppercase"></small>
+        </p>
+        <p style="margin-bottom: 0">
+          <strong id="email_this_title"></strong>
+        </p>
+        <p style="margin-bottom: 0">
+          <small>
+            Published on <span style="text-transform:uppercase" id="email_this_date"></span>
+            By <span style="text-transform:uppercase" id="email_this_author"></span>
+          </small>
+        </p>
+      </div>
+    </div>
+    <hr>
+
+    <form id="contact_form">
+      <label for="id_email">Recipient email</label>
+      <input class="u-full-width" placeholder="recipient@email.com" id="id_email" type="email">
+      <label for="id_message">Message (optional)</label>
+      <textarea class="u-full-width" id="id_message"></textarea>
+      <button class="button-primary" type="submit" id="id_send">Send</button>
+    </form>
+
+  </div>
+</div>
