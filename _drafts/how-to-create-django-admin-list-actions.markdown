@@ -1,6 +1,5 @@
 ---
 title: "How to Create Django Admin List Actions"
-date: 2016-10-28 11:19:00 +0300
 category: tutorial
 tags:
   - django
