@@ -106,7 +106,7 @@ def export_users_xls(request):
 
     columns = ['Username', 'First name', 'Last name', 'Email address', ]
 
-    for col_num in xrange(len(columns)):
+    for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
 
     # Sheet body, remaining rows
@@ -115,7 +115,7 @@ def export_users_xls(request):
     rows = User.objects.all().values_list('username', 'first_name', 'last_name', 'email')
     for row in rows:
         row_num += 1
-        for col_num in xrange(len(row)):
+        for col_num in range(len(row)):
             ws.write(row_num, col_num, row[col_num], font_style)
 
     wb.save(response)
