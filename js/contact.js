@@ -13,6 +13,10 @@ $(function () {
     if (message === '') {
       errors += '<p>Message is a required field.</p>'
     }
+    else {
+      subject = message.substring(0, 30) + "...";
+      message = message.split("\n").join("<br>");
+    }
 
     if (errors.length > 0) {
       $("#contact_modal .modal-header h5").text("Error");
@@ -30,7 +34,7 @@ $(function () {
             'from_email': 'contact@simpleisbetterthancomplex.com',
             'to': [
                 {
-                  'email': 'vitor@freitas.com',
+                  'email': 'vitor@simpleisbetterthancomplex.com',
                   'name': 'Vitor Freitas',
                   'type': 'to'
                 }
@@ -39,7 +43,7 @@ $(function () {
                 'Reply-To': from_email
             },
             'autotext': 'true',
-            'subject': 'New message',
+            'subject': subject,
             'html': message
           }
         },
