@@ -56,17 +56,13 @@ layout: home
 
 <ul class="pagination">
   {% if paginator.previous_page %}
-    <li><a href="{{ paginator.previous_page_path }}">&laquo;</a></li>
+    <li><a href="{{ paginator.previous_page_path }}" class="previous">← Previous</a></li>
+    <li><a href="/">First page</a></li>
   {% endif %}
-  {% for i in (1...paginator.total_pages) %}
-    {% if paginator.page == i %}
-      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-    {% else %}
-      <li><a href="{% if i == 1 %}/{% else %}/page{{ i }}{% endif %}">{{ i }}</a></li>
-    {% endif %}
-  {% endfor %}
+  <li><span class="page_number ">Page {{ paginator.page }} of {{ paginator.total_pages }}</span></li>
   {% if paginator.next_page %}
-    <li><a href="{{ paginator.next_page_path }}">&raquo;</a></li>
+    <li><a href="/page{{ paginator.total_pages }}">Last page</a></li>
+    <li><a href="{{ paginator.next_page_path }}" class="next">Next →</a></li>
   {% endif %}
 </ul>
 
