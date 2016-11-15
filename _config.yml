@@ -1,4 +1,3 @@
-# Site settings
 title: Simple is Better Than Complex
 email: vitor@freitas.com
 description: "This is a blog about Python, Django and Web Development. New posts every week."
@@ -8,7 +7,6 @@ locale: en_US
 timezone: "Europe/Helsinki"
 twitter: "vitorfs"
 
-# Build settings
 markdown: kramdown
 highlighter: rouge
 
