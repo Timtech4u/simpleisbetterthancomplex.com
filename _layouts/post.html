@@ -45,7 +45,11 @@
               {% endif %}
               <li>
                 <i class="fa fa-comments"></i>
-                <a href="#disqus_thread" data-disqus-identifier="{{ page.id }}">Comments</a>
+                <a href="#disqus_thread" data-disqus-identifier="{{ page.id }}">comments</a>
+              </li>
+              <li>
+                <i class="fa fa-clock-o"></i>
+                {{ content | reading_time_as_i }} read
               </li>
               {% if page.meta %}
                 <li>{{ page.meta }}</li>

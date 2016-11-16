@@ -16,6 +16,7 @@ fb_appid: 1645747765697865
 gems:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-time-to-read
 paginate: 5
 paginate_path: "page:num"
 

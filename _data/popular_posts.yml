@@ -6,6 +6,6 @@
   url: "/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html"
   image: "/media/2016-06-27-how-to-use-djangos-built-in-login-system/featured-post-image.jpg"
 
-- title: "How to Work With AJAX Request With Django"
-  url: "/tutorial/2016/08/29/how-to-work-with-ajax-request-with-django.html"
-  image: "/media/2016/08/featured-ajax.jpg"
+- title: "How to Upload Files With Django"
+  url: "/tutorial/2016/08/01/how-to-upload-files-with-django.html"
+  image: "/media/2016-08-01-how-to-upload-files-with-django/featured.jpg"
