@@ -140,7 +140,7 @@ That's it for now. I hope those projects can help you learning a little bit more
 [bootcamp-articles]: https://github.com/vitorfs/bootcamp/tree/master/bootcamp/articles
 [bootcamp-qa]: https://github.com/vitorfs/bootcamp/tree/master/bootcamp/questions
 [bootcamp-notification]: https://github.com/vitorfs/bootcamp/tree/master/bootcamp/activities
-[bootcamp-messages]: https://github.com/vitorfs/bootcamp/tree/master/bootcamp/messages
+[bootcamp-messages]: https://github.com/vitorfs/bootcamp/tree/master/bootcamp/messenger
 [bootcamp-search]: https://github.com/vitorfs/bootcamp/tree/master/bootcamp/search
 [bootcamp-source]: https://github.com/vitorfs/bootcamp/
 [bootcamp-demo]: http://trybootcamp.vitorfs.com/
