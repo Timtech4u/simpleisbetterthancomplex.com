@@ -17,6 +17,8 @@ In case you are not familiar with the term CRUD, it stand for **C**reate **R**ea
 Those are the basic operations we perform in the application entities. For the most part the Django Admin is all about
 CRUD.
 
+This tutorial is compatible with Python 2.7 and 3.5, using Django 1.8, 1.9 or 1.10.
+
 ***
 
 #### Table of Contents
@@ -270,7 +272,7 @@ def book_create(request):
     context = {'form': form}
     html_form = render_to_string('books/includes/partial_book_create.html',
         context,
-        request,
+        request=request,
     )
     return JsonResponse({'html_form': html_form})
 {% endhighlight %}
@@ -470,7 +472,7 @@ def book_create(request):
     context = {'form': form}
     data['html_form'] = render_to_string('books/includes/partial_book_create.html',
         context,
-        request
+        request=request
     )
     return JsonResponse(data)
 {% endhighlight %}
@@ -698,7 +700,7 @@ def book_create(request):
     context = {'form': form}
     data['html_form'] = render_to_string('books/includes/partial_book_create.html',
         context,
-        request
+        request=request
     )
     return JsonResponse(data)
 {% endhighlight %}
@@ -778,7 +780,7 @@ def save_book_form(request, form, template_name):
         else:
             data['form_is_valid'] = False
     context = {'form': form}
-    data['html_form'] = render_to_string(template_name, context, request)
+    data['html_form'] = render_to_string(template_name, context, request=request)
     return JsonResponse(data)
 
 
@@ -1062,7 +1064,7 @@ def book_delete(request, pk):
         context = {'book': book}
         data['html_form'] = render_to_string('books/includes/partial_book_delete.html',
             context,
-            request,
+            request=request,
         )
     return JsonResponse(data)
 {% endhighlight %}
