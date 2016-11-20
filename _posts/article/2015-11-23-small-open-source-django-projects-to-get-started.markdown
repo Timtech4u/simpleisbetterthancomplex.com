@@ -153,7 +153,7 @@ That's it for now. I hope those projects can help you learning a little bit more
 [woid-source]: https://github.com/vitorfs/woid/
 [woid-site]: http://woid.io/
 
-[bloodhound-verkkokauppa]: http://www.verkkokauppa.com/
+[bloodhound-verkkokauppa]: https://www.verkkokauppa.com/
 [bloodhound-core]: https://github.com/vitorfs/bloodhound/tree/master/bloodhound/core
 [bloodhound-sniffer]: https://github.com/vitorfs/bloodhound/tree/master/bloodhound/sniffer
 [bloodhound-scripts]: https://github.com/vitorfs/bloodhound/tree/master/scripts
