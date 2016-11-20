@@ -1024,6 +1024,35 @@ hr.sm {
   margin-top: 3rem;
 }
 
+.post .post-author img {
+  width: 100%;
+  border-radius: 100px;
+  max-width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.post .post-author.card {
+  padding: 30px;
+}
+
+.post .post-author p {
+  margin-bottom: .8rem;
+}
+
+.post .post-author p.bio {
+  color: #aaa;
+  font-size: 1.6rem;
+}
+
+.post .post-author p.contact {
+  margin-bottom: 0;
+}
+
+.post .post-author p.contact a {
+  margin-right: .5rem;
+}
+
 .card {
   background-color: #fff;
   padding: 30px;
