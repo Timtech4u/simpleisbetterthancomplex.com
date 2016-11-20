@@ -86,7 +86,7 @@ You can grab the source code on GitHub and see the actual site on:
 
 ![Bloodhound]({{ "/media/2015-11-23-small-open-source-django-projects-to-get-started/bloodhound.png" | prepend: site.baseurl }} "Bloodhound")
 
-Bloodhound is also a simple web crawler that runs the whole day indexing and tracking price changes on a Finnish retail store named [Verkkokauppa][bloodhound-verkkokauppa]{:target="_blank"}. The idea was to store all the price changes for every product in their website, so before I buy something, I could check if I'm paying the best price.
+Bloodhound is also a simple web crawler that runs the whole day indexing and tracking price changes on a Finnish retail store named **Verkkokauppa**. The idea was to store all the price changes for every product in their website, so before I buy something, I could check if I'm paying the best price.
 
 There isn't much to see regarding to the Django part, it's more about an interface to display the collected data.
 
@@ -153,7 +153,6 @@ That's it for now. I hope those projects can help you learning a little bit more
 [woid-source]: https://github.com/vitorfs/woid/
 [woid-site]: http://woid.io/
 
-[bloodhound-verkkokauppa]: https://www.verkkokauppa.com/
 [bloodhound-core]: https://github.com/vitorfs/bloodhound/tree/master/bloodhound/core
 [bloodhound-sniffer]: https://github.com/vitorfs/bloodhound/tree/master/bloodhound/sniffer
 [bloodhound-scripts]: https://github.com/vitorfs/bloodhound/tree/master/scripts
