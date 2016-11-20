@@ -1024,14 +1024,6 @@ hr.sm {
   margin-top: 3rem;
 }
 
-.post .post-author img {
-  width: 100%;
-  border-radius: 100px;
-  max-width: 150px;
-  display: block;
-  margin: 0 auto;
-}
-
 .post .post-author.card {
   padding: 30px;
 }
@@ -1043,6 +1035,40 @@ hr.sm {
 .post .post-author p.bio {
   color: #999;
   font-size: 1.6rem;
+}
+
+.post .post-author .author-picture {
+  width: 120px;
+  float: left;
+}
+
+.post .post-author .author-picture img {
+  width: 100%;
+  border-radius: 100px;
+}
+
+.post .post-author .author-info {
+  margin-left: 150px;
+}
+
+@media (max-width: 750px) {
+  .post .post-author p.bio {
+    font-size: 1.4rem;
+  }
+
+  .post .post-author .author-picture {
+    width: 100px;
+    float: left;
+  }
+
+  .post .post-author .author-picture img {
+    width: 100%;
+    border-radius: 100px;
+  }
+
+  .post .post-author .author-info {
+    margin-left: 130px;
+  }
 }
 
 .post .post-author p.contact {
