@@ -25,14 +25,18 @@ layout: home
         </a>
       </li>
       <li>
+        <i class="fa fa-clock-o"></i>
+        {{ post.content | reading_time_as_i }} read
+      </li>
+      <li>
         <i class="fa fa-comments"></i>
         <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" data-disqus-identifier="{{ post.id }}">
-          Comments
+          comments
         </a>
       </li>
       <li>
-        <i class="fa fa-clock-o"></i>
-        {{ post.content | reading_time_as_i }} read
+        <i class="fa fa-eye"></i>
+        <span class="ga-page-views" data-ga-identifier="{{ post.url }}"></span> views
       </li>
     </ul>
     {% if post.featured_image %}
@@ -72,4 +76,5 @@ layout: home
 
 {% if jekyll.environment == "production" %}
   <script id="dsq-count-scr" src="//simpleisbetterthancomplex.disqus.com/count.js" async></script>
+  <script src="/js/page-views.js" async></script>
 {% endif %}
