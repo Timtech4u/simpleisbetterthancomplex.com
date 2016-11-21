@@ -3,7 +3,6 @@ $(function () {
     url: '/api/latest-comments/',
     type: 'get',
     dataType: 'json',
-    cache: false,
     success: function (data) {
       $("#latest-comments").html(data.html);
     },
