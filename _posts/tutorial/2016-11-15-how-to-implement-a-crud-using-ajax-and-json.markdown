@@ -9,8 +9,8 @@ featured_image_source: "https://www.pexels.com/photo/macbook-laptop-smartphone-a
 ---
 
 Using Ajax to create asynchronous request to manipulate Django models is a very common use case. It can be used to
-provide an inline edit in a table, or create a new model instance without going back and forth in the website.
-It also bring some challanges, such as keeping the state of the objects consistent.
+provide an in line edit in a table, or create a new model instance without going back and forth in the website.
+It also bring some challenges, such as keeping the state of the objects consistent.
 
 In case you are not familiar with the term CRUD, it stand for **C**reate **R**ead **U**pdate **D**elete.
 
@@ -42,7 +42,7 @@ Grab a copy of jQuery, either download it or refer to one of the many CDN option
 
 [jquery.com/download/](http://jquery.com/download/){:target="_blank"}
 
-I usually like to have a local copy, because sometimes I have to work offline. Place the jQuery in the bottom of your
+I usually like to have a local copy, because sometimes I have to work off-line. Place the jQuery in the bottom of your
 base template:
 
 **base.html**
@@ -601,7 +601,7 @@ Let's fix the **publication date** value and submit the form again:
 
 ![New Book](/media/2016/11/books6.png)
 
-There we go, the **alert** tells us that the form was succesfully processed and hopefully it was created in the
+There we go, the **alert** tells us that the form was successfully processed and hopefully it was created in the
 database.
 
 {% highlight javascript %}
@@ -802,7 +802,7 @@ def book_update(request, pk):
 {% endhighlight %}
 
 Basically the view functions **book_create** and **book_update** are responsible for receiving the request, preparing
-the form instance and passing it to the **save_book_form**, along with the name of the template to use in the redering
+the form instance and passing it to the **save_book_form**, along with the name of the template to use in the rendering
 process.
 
 Next step is to create the **partial_book_update.html** template. Similar to what we did with the view functions, we
@@ -907,7 +907,7 @@ The class **js-update-book** will be used to start the edit process. Now note th
 named **data-url**. This is the URL that will be used to create the ajax request dynamically.
 
 Take the time and refactor the **js-create-book** button to also use the **data-url** strategy, so we can extract
-the hardcoded url from the Ajax request.
+the hard-coded URL from the Ajax request.
 
 **book_list.html**
 

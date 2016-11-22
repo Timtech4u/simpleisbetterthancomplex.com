@@ -63,7 +63,7 @@ in the bottom of the page:
 
 Alright! Everything is in a good shape for now.
 
-PS: You won't be able to test it localhost, the Payload URL must be accessible externaly. Meaning your application will
+PS: You won't be able to test it localhost, the Payload URL must be accessible externally. Meaning your application will
 need to be deployed somewhere.
 
 ***
@@ -97,7 +97,7 @@ The GitHub API provide an endpoint to check in real time their services IP addre
 
 ![GitHub API Meta](/media/2016/10/webhooks4.png)
 
-The IPs (actually it's just one, but anyway) inside **hooks** are the ones we need to whitelist. Now let's importe our
+The IPs (actually it's just one, but anyway) inside **hooks** are the ones we need to whitelist. Now let's import our
 handler:
 
 **views.py**
