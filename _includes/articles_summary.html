@@ -1,0 +1,15 @@
+<ul>
+  {% for post in include.posts %}
+    {% if post.url %}
+      <li style="line-height: 1.2">
+        <a href="{{ post.url }}">{{ post.title }}</a><br>
+        <small style="color: #999;padding-left: 1.5rem">
+          <span style="margin-right: 5px">{{ post.date | date: "%b %-d, %Y" }}</span> •
+          <span style="margin: 0 5px">{{ post.content | reading_time_as_i }} read</span> •
+          <span style="margin: 0 5px" data-disqus-identifier="{{ post.id }}">comments</span> •
+          <span style="margin-left: 5px" class="ga-page-views" data-ga-identifier="{{ post.url }}"></span> views
+        </small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
