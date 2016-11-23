@@ -6,7 +6,7 @@
         <small style="color: #999;padding-left: 1.5rem">
           <span style="margin-right: 5px">{{ post.date | date: "%b %-d, %Y" }}</span> •
           <span style="margin: 0 5px">{{ post.content | reading_time_as_i }} read</span> •
-          <span style="margin: 0 5px" data-disqus-identifier="{{ post.id }}">comments</span> •
+          <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" style="text-decoration: none; color: #999; margin: 0 5px" data-disqus-identifier="{{ post.id }}">comments</a> •
           <span style="margin-left: 5px" class="ga-page-views" data-ga-identifier="{{ post.url }}"></span> views
         </small>
       </li>
