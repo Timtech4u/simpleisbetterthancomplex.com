@@ -182,7 +182,7 @@ will create a `Photo` instance and save the file in the file system.
 
 We will follow the same strategy for the next examples as well.
 
-Now where the magic happens, in the client side. First the required jQuery File Upload scripts:
+Now where the magic happens: the client side. First the required jQuery File Upload scripts:
 
 **photos/basic_upload/index.html**
 
