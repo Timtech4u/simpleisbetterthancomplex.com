@@ -136,9 +136,6 @@ The app folder structure:
 Edit the `decorators.py` file creating a new function named `user_is_entry_author`:
 
 {% highlight python %}
-# coding: utf-8
-
-from functools import wraps
 from django.core.exceptions import PermissionDenied
 from simple_decorators.apps.models import Entry
 
