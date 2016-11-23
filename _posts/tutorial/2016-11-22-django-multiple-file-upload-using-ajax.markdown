@@ -247,7 +247,7 @@ First, **block 1** of the snippet, is the button to start the workflow. We will 
 **Block 2** is the most important part of the page. It's the the file input that will be used to load the jQuery File
 Upload component. A few things to note:
 
-* The name of the input must match with the Model Form Field. That is, if the field is called **document**, the input
+* The name of the input must match with the Model Form Field. That is, if the `FileField` is called **document**, the input
 must be named `name="document"` instead. Otherwise the processing of the file will fail.
 * The `multiple` attribute will enable multiple file selection in the file explorer window.
 * The `data-url` attribute must point to the route/view where the file form will be processed.
