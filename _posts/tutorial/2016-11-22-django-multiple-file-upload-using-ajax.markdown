@@ -35,7 +35,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 {% endhighlight %}
 
-And to test the uploads in the development environment, add this to the button of your root urlconf:
+And to test the uploads in the development environment, add this to the bottom of the root urlconf:
 
 **urls.py**
 
