@@ -7,4 +7,5 @@ group :jekyll_plugins do
   gem 'jekyll-paginate'
   gem 'jekyll-sitemap'
   gem 'jekyll-time-to-read'
+  gem 'jekyll-archives'
 end

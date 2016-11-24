@@ -20,6 +20,8 @@ gems:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-time-to-read
+  - jekyll-archives
+
 paginate: 5
 paginate_path: "page:num"
 
@@ -45,3 +47,15 @@ defaults:
       layout: "snippets"
       author: "Vitor Freitas"
       gist_username: "vitorfs"
+
+jekyll-archives:
+  enabled:
+    - year
+    - month
+    - categories
+    - tags
+  layouts:
+    year: year_archive
+    month: month_archive
+    category: archive
+    tag: archive

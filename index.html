@@ -52,7 +52,7 @@ layout: home
     <div class="row">
       <div class="five columns post-tags" itemprop="keywords">
         {% for tag in post.tags %}
-          <span class="tag">{{ tag }}</span>
+          <a href="/tag/{{ tag | slugify }}/"><span class="tag">{{ tag }}</span></a>
         {% endfor %}
       </div>
       <div class="seven columns post-share">

@@ -82,7 +82,7 @@
             <div class="row">
               <div class="twelve columns post-tags" style="padding-top: 0">
                 {% for tag in page.tags %}
-                  <span class="tag">{{ tag }}</span>
+                  <a href="/tag/{{ tag | slugify }}/"><span class="tag">{{ tag }}</span></a>
                 {% endfor %}
               </div>
             </div>

@@ -4,7 +4,7 @@ title: "Django Tips #11 Custom Manager With Chainable QuerySets"
 author: Vitor Freitas
 date: 2016-08-16 21:28:00 +0300
 date_modified: 2016-08-17 10:17:00 +0300
-tags: django db queryset models
+tags: django database queryset models
 category: tips
 thumbnail: "/media/2016-08-16-django-tip-11-custom-manager-with-chainable-querysets/featured.jpg"
 featured_image: "/media/2016-08-16-django-tip-11-custom-manager-with-chainable-querysets/featured.jpg"

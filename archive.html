@@ -1,0 +1,32 @@
+---
+layout: page
+title: Article Archive — Simple is Better Than Complex
+permalink: /archive/
+redirect_from: /articles/
+---
+
+<h4 class="page-title">Article Archive</h4>
+<hr class="sm">
+
+<h5 id="articles">Articles</h5>
+{% include articles_summary.html posts=site.categories.article %}
+
+<h5 id="packages">Packages</h5>
+{% include articles_summary.html posts=site.categories.packages %}
+
+<h5 id="snippets">Snippets</h5>
+{% include articles_summary.html posts=site.categories.snippet %}
+
+<h5 id="references">References</h5>
+{% include articles_summary.html posts=site.categories.references %}
+
+<h5 id="tips">Tips</h5>
+{% include articles_summary.html posts=site.categories.tips %}
+
+<h5 id="tutorials">Tutorials</h5>
+{% include articles_summary.html posts=site.categories.tutorial %}
+
+{% if jekyll.environment == "production" %}
+  <script id="dsq-count-scr" src="//simpleisbetterthancomplex.disqus.com/count.js" async></script>
+  <script id="ga-page-views" src="/js/page-views.js?v=1" async data-filter="all"></script>
+{% endif %}

@@ -3,7 +3,7 @@ layout: post
 title: "Django Tips #13 Using F() Expressions"
 author: Vitor Freitas
 date: 2016-08-23 23:49:00 +0300
-tags: django db queryset
+tags: django database queryset
 category: tips
 thumbnail: "/media/2016/08/featured-f-expressions.jpg"
 featured_image: "/media/2016/08/featured-f-expressions.jpg"

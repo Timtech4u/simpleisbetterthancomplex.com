@@ -1,0 +1,13 @@
+---
+layout: page
+---
+
+<h4 class="page-header">Archive of articles with {{ page.type }} "{{ page.title }}"</h4>
+<hr class="sm">
+
+{% include articles_summary.html posts=page.posts %}
+
+{% if jekyll.environment == "production" %}
+  <script id="dsq-count-scr" src="//simpleisbetterthancomplex.disqus.com/count.js" async></script>
+  <script id="ga-page-views" src="/js/page-views.js?v=1" async data-filter="all"></script>
+{% endif %}
