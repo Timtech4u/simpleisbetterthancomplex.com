@@ -232,5 +232,4 @@ Keep reading:
 * [Exploring Django Utils #2][part2]
 
 [part2]: /article/2016/08/17/exploring-django-utils-2.html
-
-[date-ref-guide]: /ref/date/
+[date-ref-guide]: /references/2016/06/21/date-filter.html
