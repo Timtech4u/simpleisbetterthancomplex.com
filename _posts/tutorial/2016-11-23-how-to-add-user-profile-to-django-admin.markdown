@@ -8,6 +8,7 @@ tags:
   - user
 thumbnail: "/media/2016/11/thumbnail-admin.jpg"
 featured_image: "/media/2016/11/featured-admin.jpg"
+shortname: profile-admin
 ---
 
 There are several ways to extend the the default Django User model. Perhaps one of the most common way (and also less
@@ -165,6 +166,3 @@ on the definitions of the `UserAdmin`, don't be afraid to explore the source cod
 methods: [django.contrib.auth.admin](https://github.com/django/django/blob/master/django/contrib/auth/admin.py#L44){:target="_blank"}.
 
 Also the source code I used in this tutorial is available on GitHub: [sibtc/django-admin-user-profile](https://github.com/sibtc/django-admin-user-profile){:target="_blank"}.
-
-
-
