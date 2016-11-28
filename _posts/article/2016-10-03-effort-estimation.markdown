@@ -18,7 +18,7 @@ to get it right.
 I wanted to write a little bit on that subject to try to highlight the challenges of making an accurate estimation and
 perhaps share some of my experience about it.
 
-[![Estimation](http://imgs.xkcd.com/comics/estimation.png)](http://xkcd.com/612/){:target="_blank"}
+[![Estimation](/media/2016/10/estimation.png)](http://xkcd.com/612/){:target="_blank"}
 
 ***
 
