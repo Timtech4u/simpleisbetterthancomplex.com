@@ -6,6 +6,7 @@ tags: django ajax jquery upload
 thumbnail: "/media/2016/11/thumbnail-uploads.jpg"
 featured_image: "/media/2016/11/featured-uploads.jpg"
 featured_image_source: "https://www.pexels.com/photo/person-using-laptop-computer-during-daytime-196655/"
+shortname: multiple-upload
 ---
 
 In this tutorial I will guide you through the steps to implement an AJAX multiple file upload with Django using jQuery.
