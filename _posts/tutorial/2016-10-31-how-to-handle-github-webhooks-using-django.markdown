@@ -1,12 +1,19 @@
 ---
 title: "How to Handle GitHub Webhooks Using Django"
 date: 2016-10-31 16:41:00 +0300
+date_modified: 2016-12-02 22:55:00 +0200
 category: tutorial
 tags: django webhooks github
 thumbnail: "/media/2016/10/featured-webhooks.jpg"
 featured_image: "/media/2016/10/featured-webhooks.jpg"
 featured_image_source: "https://unsplash.com/photos/OjE4RtaibFc"
 ---
+
+<div class="info">
+    <strong><i class="fa fa-info-circle"></i> Updated at {{ page.date_modified | date: "%b %-d, %Y" }}:</strong>
+    Thanks to <a href="http://disq.us/p/1e3x891" target="_blank">wiesson</a> for pointing out the compatibility problem with Python 3.
+    I've updated the article to use Django's <code>force_byte</code> instead, so this way the code is compatible both with Python 2 and 3.
+</div>
 
 Webhooks are a convenient way to notify external services when a certain event occur. GitHub provides an easy way to
 create Webhooks for the git repositories. You can pick the events such as **push**, **pull requests**, and only be
@@ -184,6 +191,7 @@ from hashlib import sha1
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.encoding import force_bytes
 
 @csrf_exempt
 def hello(request):
@@ -199,8 +207,8 @@ def hello(request):
     if sha_name != 'sha1':
         return HttpResponseServerError('Operation not supported.', status=501)
 
-    mac = hmac.new(str(settings.GITHUB_WEBHOOK_KEY), msg=request.body, digestmod=sha1)
-    if not hmac.compare_digest(str(mac.hexdigest()), str(signature)):
+    mac = hmac.new(force_bytes(settings.GITHUB_WEBHOOK_KEY), msg=force_bytes(request.body), digestmod=sha1)
+    if not hmac.compare_digest(force_bytes(mac.hexdigest()), force_bytes(signature)):
         return HttpResponseForbidden('Permission denied.')
 
     # If request reached this point we are in a good shape
@@ -279,6 +287,7 @@ from django.conf import settings
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.utils.encoding import force_bytes
 
 import requests
 from ipaddress import ip_address, ip_network
@@ -306,8 +315,8 @@ def hello(request):
     if sha_name != 'sha1':
         return HttpResponseServerError('Operation not supported.', status=501)
 
-    mac = hmac.new(str(settings.GITHUB_WEBHOOK_KEY), msg=request.body, digestmod=sha1)
-    if not hmac.compare_digest(str(mac.hexdigest()), str(signature)):
+    mac = hmac.new(force_bytes(settings.GITHUB_WEBHOOK_KEY), msg=force_bytes(request.body), digestmod=sha1)
+    if not hmac.compare_digest(force_bytes(mac.hexdigest()), force_bytes(signature)):
         return HttpResponseForbidden('Permission denied.')
 
     # If request reached this point we are in a good shape
